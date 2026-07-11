@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vercel
+
+!public/glowwww_1200x630.png
+!public/glowwww_1200x630.jpg

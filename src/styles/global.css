@@ -1,0 +1,144 @@
+:root {
+  --red: #e53935;
+  --red-deep: #b71c1c;
+  --red-soft: #ef5350;
+  --void: #0a0806;
+  --ink: #1a1410;
+  --ash: #2e2924;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --smoke: #6b645c;
+  --mist: #b8b0a6;
+  --pearl: #ede8e2;
+  --white: #faf8f5;
+  --skin-1: #f5d8c4;
+  --rose-gold: #c8896a;
+  --prism-b: #a8ccee;
+  --prism-p: #d0a8ee;
+  --prism-g: #a8eed0;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --nav-bg: rgba(10, 8, 6, 0.75);
+  --marquee-bg: rgba(26, 20, 16, 0.5);
+  --card-bg: var(--ink);
+  --cta-bg-1: rgba(26, 20, 16, 0.95);
+  --cta-bg-2: rgba(10, 8, 6, 0.98);
+  --logo-vignette: #010002;
+  --phone-wallpaper-1: rgba(229, 57, 53, 0.2);
+  --phone-wallpaper-2: var(--ink);
+  --phone-dock-bg: rgba(46, 41, 36, 0.85);
+  --pwa-badge-bg: #0a180a;
+  --pwa-badge-border: #2a4a2a;
+  --grid-line: rgba(46, 41, 36, 0.35);
+  --ambient-vignette: rgba(10, 8, 6, 0.45);
+  --phone-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  --frame-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  --frame-shadow-hover: 0 32px 64px rgba(0, 0, 0, 0.45);
+  --pwa-phone-shadow: 0 32px 64px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] {
+  --void: #f5f2ed;
+  --ink: #ffffff;
+  --ash: #d9d4ce;
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --smoke: #8a8278;
+  --mist: #5a5248;
+  --pearl: #1c1612;
+  --white: #0a0806;
+  --nav-bg: rgba(245, 242, 237, 0.85);
+  --marquee-bg: rgba(255, 255, 255, 0.6);
+  --card-bg: #ffffff;
+  --cta-bg-1: rgba(255, 255, 255, 0.95);
+  --cta-bg-2: rgba(245, 242, 237, 0.98);
+  --logo-vignette: #f5f2ed;
+  --phone-wallpaper-1: rgba(229, 57, 53, 0.1);
+  --phone-wallpaper-2: #f0ece7;
+  --phone-dock-bg: rgba(220, 215, 208, 0.85);
+  --pwa-badge-bg: #e8f5e9;
+  --pwa-badge-border: #a5d6a7;
+  --grid-line: rgba(0, 0, 0, 0.08);
+  --ambient-vignette: rgba(245, 242, 237, 0.6);
+  --phone-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+  --frame-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --frame-shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --pwa-phone-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void);
+  color: var(--pearl);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+::selection {
+  background: rgba(229, 57, 53, 0.35);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+
+.quantum-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 30%, var(--logo-vignette) 110%);
+}
