@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Nav } from './Nav'
 import { Hero } from './Hero'
 import { Marquee } from './Marquee'
@@ -9,11 +9,25 @@ import UpdatesSection from './UpdatesSection'
 import BillboardSection from './BillboardSection'
 import { CTA } from './CTA'
 import { Footer } from './Footer'
-import AgentOverlay from './AgentOverlay'
+import { AgentModeOverlay } from './AgentOverlay'
 import AgentTestTrigger from './AgentTestTrigger'
+
+const AGENT_SESSION_KEY = 'agent-overlay-shown'
 
 export default function Landing() {
   const [agentOpen, setAgentOpen] = useState(false)
+  const [agentForce, setAgentForce] = useState(false)
+
+  const closeAgent = useCallback(() => {
+    setAgentOpen(false)
+    setAgentForce(false)
+  }, [])
+
+  useEffect(() => {
+    if (sessionStorage.getItem(AGENT_SESSION_KEY) !== '1') {
+      setAgentOpen(true)
+    }
+  }, [])
 
   return (
     <div className="landing">
@@ -37,8 +51,13 @@ export default function Landing() {
       <CTA />
       <Footer />
 
-      {agentOpen && <AgentOverlay onClose={() => setAgentOpen(false)} />}
-      <AgentTestTrigger onClick={() => setAgentOpen(true)} />
+      <AgentModeOverlay open={agentOpen} onClose={closeAgent} force={agentForce} />
+      <AgentTestTrigger
+        onClick={() => {
+          setAgentForce(true)
+          setAgentOpen(true)
+        }}
+      />
     </div>
   )
 }

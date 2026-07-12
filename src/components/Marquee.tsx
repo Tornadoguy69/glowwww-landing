@@ -1,13 +1,13 @@
 const items = [
-  "GLOWWWW DIFFERENT",
-  "REAL ONES SHINE",
-  "FULL SIGNAL",
-  "NO FILTER",
-  "MAIN CHARACTER",
-  "AI THAT BUILDS",
-  "YOUR GLOWWWW YOUR WORLD",
-  "VOICE MODE ACTIVE",
-  "CODE. CHAT. CREATE.",
+  "PRIVACY FIRST",
+  "REAL-TIME POSTS",
+  "AI THAT SHIPS",
+  "E2E MESSAGING",
+  "CLIPS & EDITOR",
+  "CREATOR DASHBOARD",
+  "NO ALGORITHM JAIL",
+  "ONE APP",
+  "YOUR GLOWWWW",
 ];
 
 function MarqueeItem({ text }: { text: string }) {
@@ -30,7 +30,7 @@ export function Marquee() {
         {doubled.map((text, i) => (
           <span key={`${text}-${i}`} className="marquee__item">
             <MarqueeItem text={text} />
-            <span> · </span>
+            <span className="marquee__dot"> · </span>
           </span>
         ))}
       </div>

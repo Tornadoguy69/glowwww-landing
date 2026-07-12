@@ -1,70 +1,91 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { fadeUp } from "../motion";
 
 interface Guide {
-  id: string
-  title: string
-  steps: string[]
+  id: string;
+  short: string;
+  title: string;
+  steps: string[];
 }
 
 const guides: Guide[] = [
   {
     id: "ios",
+    short: "iOS",
     title: "Safari on iPhone & iPad",
     steps: [
       "Open glowwww.vercel.app in Safari (not an in-app browser).",
-      "Tap the Share button at the bottom of the screen.",
-      "Scroll the sheet and tap Add to Home Screen.",
-      "Edit the name to Glowwww if needed, then tap Add.",
-      "Find the icon on your home screen — launch for a full-screen app experience.",
+      "Tap Share, then Add to Home Screen.",
+      "Confirm Add — launch full-screen from your home screen.",
     ],
   },
   {
     id: "android",
+    short: "Android",
     title: "Chrome on phones & tablets",
     steps: [
       "Open glowwww.vercel.app in Chrome.",
-      "Tap the menu (⋮) in the top-right corner.",
-      "Tap Install app or Add to Home screen.",
-      "Confirm when prompted — Glowwww installs like a native app.",
-      "Open from your app drawer or home screen for offline-ready PWA mode.",
+      "Tap menu (⋮) → Install app or Add to Home screen.",
+      "Open from your drawer — offline-ready PWA mode.",
     ],
   },
   {
     id: "desktop",
-    title: "Desktop & laptop browsers",
+    short: "Desktop",
+    title: "Chrome & Edge",
     steps: [
-      "Visit glowwww.vercel.app in Chrome or Microsoft Edge.",
-      "Look for the install icon in the address bar (monitor + arrow).",
-      "Click Install Glowwww in the browser prompt.",
-      "Confirm Install in the dialog — the app opens in its own window.",
-      "Pin to taskbar or dock; launch anytime without a browser tab.",
+      "Visit glowwww.vercel.app in Chrome or Edge.",
+      "Click the install icon in the address bar.",
+      "Pin to taskbar or dock — no browser tab needed.",
     ],
   },
-]
+];
 
 export default function PWAInstall() {
-  const [active, setActive] = useState(guides[0].id)
-  const guide = guides.find(g => g.id === active)!
+  const [active, setActive] = useState(guides[0].id);
+  const guide = guides.find((g) => g.id === active)!;
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="install" className="section">
-      <p className="section__label">Install</p>
-      <h2 className="section__title">
-        INSTALL<br /><span style={{ color: "var(--red)" }}>THE APP</span>
-      </h2>
-      <p className="section__lead">
-        Updates ship automatically when you launch — no manual store downloads.
-      </p>
-      <div className="pwa-layout">
+    <section id="install" className="section" ref={ref}>
+      <motion.div
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={fadeUp}
+        custom={0}
+      >
+        <p className="section__label">Install</p>
+        <h2 className="section__title">
+          ONE TAP.
+          <br />
+          <span className="section__title-accent">FEELS NATIVE.</span>
+        </h2>
+        <p className="section__lead">
+          Install Glowwww as a PWA. Updates ship when you launch — no store
+          downloads, no version lag.
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="pwa-layout"
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={fadeUp}
+        custom={0.1}
+      >
         <div>
           <div className="pwa-tabs">
-            {guides.map(g => (
+            {guides.map((g) => (
               <button
                 key={g.id}
-                className={`pwa-tab${g.id === active ? ' pwa-tab--active' : ''}`}
+                type="button"
+                className={`pwa-tab${g.id === active ? " pwa-tab--active" : ""}`}
                 onClick={() => setActive(g.id)}
               >
-                {g.title}
+                {g.short}
               </button>
             ))}
           </div>
@@ -77,26 +98,26 @@ export default function PWAInstall() {
               </li>
             ))}
           </ol>
+          <a
+            href="https://glowwww.vercel.app"
+            className="btn-primary pwa-open"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open app to install
+          </a>
         </div>
         <div className="pwa-mock">
           <div className="pwa-mock__badge">PWA ready</div>
           <div className="pwa-phone">
             <div className="pwa-phone__status">
               <span>9:41</span>
-              <span className="pwa-phone__signal">●●●●●●</span>
+              <span className="pwa-phone__signal">●●●●</span>
             </div>
             <div className="pwa-phone__homescreen">
               <div className="pwa-phone__wallpaper" />
-              <div className="pwa-phone__icons">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="pwa-phone__icon">
-                    <div className="pwa-phone__icon--ghost" />
-                    <span>&nbsp;</span>
-                  </div>
-                ))}
-              </div>
               <div className="pwa-phone__hero-icon">
-                <div className="pwa-phone__icon--ghost" style={{ width: 52, height: 52, borderRadius: 12, background: "var(--red)" }} />
+                <div className="pwa-phone__logo">G</div>
                 <span>Glowwww</span>
               </div>
               <div className="pwa-phone__dock">
@@ -105,10 +126,10 @@ export default function PWAInstall() {
             </div>
           </div>
           <p className="pwa-mock__caption">
-            Glowwww runs as a standalone PWA — install it once, launch it like any native app.
+            Standalone window. Home-screen icon. Feels like a native install.
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
-  )
+  );
 }

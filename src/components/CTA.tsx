@@ -16,13 +16,15 @@ export function CTA() {
       custom={0}
     >
       <div className="cta__glow" />
+      <p className="cta__eyebrow">Ready when you are</p>
       <h2 className="cta__title">
-        <span className="accent">GLOWWWW</span>
+        STOP SCROLLING.
         <br />
-        AWAITS
+        <span className="accent">START GLOWWWW.</span>
       </h2>
       <p className="cta__sub">
-        Stop scrolling. Start building, creating, and connecting. Your Glowwww. Your signal.
+        One app for creators who want signal over noise — social, AI, messaging,
+        and tools that actually ship with you.
       </p>
       <div className="cta__actions">
         <motion.a
@@ -30,14 +32,14 @@ export function CTA() {
           className="btn-primary"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.03 }}
+          whileHover={{ scale: 1.04, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
         >
-          Open Glowwww
+          Launch Glowwww
         </motion.a>
-        <a href="#features" className="btn-ghost">
-          Learn more
+        <a href="#install" className="btn-ghost">
+          Install as app
         </a>
       </div>
     </motion.section>

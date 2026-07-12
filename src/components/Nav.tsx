@@ -59,11 +59,13 @@ export function Nav() {
         <Wordmark className="nav__wordmark" />
       </Link>
       <div className="nav__links">
+        <NavLink to={onHome ? "#demos" : "/#demos"}>Demos</NavLink>
         <NavLink to={onHome ? "#features" : "/#features"}>Features</NavLink>
         <NavLink to={onHome ? "#preview" : "/#preview"}>App</NavLink>
         <NavLink to={onHome ? "#install" : "/#install"}>Install</NavLink>
         <NavLink to="/blog">Blog</NavLink>
         <button
+          type="button"
           className="nav__theme-btn"
           onClick={toggle}
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}

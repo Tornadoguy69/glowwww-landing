@@ -3,105 +3,57 @@ export type PlatformFeature = {
   title: string;
   tagline: string;
   description: string;
+  icon: string;
 };
 
+/** Six pillars — one story each. Everything else is detail. */
 export const platformFeatures: PlatformFeature[] = [
   {
-    id: "posts",
-    title: "Real-time Posts",
-    tagline: "No lag, no algorithm jail",
+    id: "social",
+    title: "Real-time Social",
+    tagline: "No algorithm cage",
     description:
-      "Posts land instantly across feeds and profiles. No refresh lag — your network sees it the moment you share.",
+      "Posts land instantly. A real dislike that trains your feed. Vertical clips built for momentum — not endless loops.",
+    icon: "⚡",
   },
   {
-    id: "clips",
-    title: "Clips",
-    tagline: "Momentum, not loops",
+    id: "create",
+    title: "Create Suite",
+    tagline: "Capture → polish → publish",
     description:
-      "Vertical clips built for momentum. Capture, trim, and publish without leaving the app.",
+      "Image and video editor, drafts, and scheduler in one flow. Ship when the idea hits — not after five app switches.",
+    icon: "✦",
   },
   {
-    id: "editor",
-    title: "Image / Video Editor",
-    tagline: "One takeoff, one workflow",
+    id: "ai",
+    title: "AI That Ships",
+    tagline: "Chat. Voice. Tools. Canvas.",
     description:
-      "Crop, grade, and polish photos and video before they go live. One workflow from capture to post.",
+      "Talk, draft, call tools, and render artifacts without leaving Glowwww. Plus AI Studio insights on any post.",
+    icon: "◎",
   },
   {
-    id: "messaging",
-    title: "E2E Encrypted Messaging",
-    tagline: "Your eyes only",
+    id: "messages",
+    title: "Private Messaging",
+    tagline: "End-to-end encrypted",
     description:
-      "Direct messages protected end-to-end. Your conversations stay between you and who you're talking to.",
+      "DMs that stay between you and who you're talking to. No silent scanning. No data theatre.",
+    icon: "◈",
   },
   {
-    id: "ai-chat",
-    title: "AI Chat",
-    tagline: "Talks. Codes. Builds.",
-    description:
-      "AI chat with voice when you want ideas, drafts, or answers — plus tool calls and artifacts when you need more than text.",
-  },
-  {
-    id: "tools",
-    title: "Tool Call Support",
-    tagline: "AI that ships",
-    description:
-      "AI that can invoke tools — search, create, and act on your behalf inside guarded workflows.",
-  },
-  {
-    id: "canvas",
-    title: "Artifact Canvas",
-    tagline: "Render, iterate, ship",
-    description:
-      "Generate and refine documents, boards, and visual artifacts in a shared canvas you can revisit.",
-  },
-  {
-    id: "communities",
+    id: "community",
     title: "Communities",
     tagline: "Crew over crowd",
     description:
-      "Spaces for crews, niches, and movements — moderated feeds built around shared signal, not noise.",
+      "Spaces for niches and movements with live moderation — healthy signal without killing the conversation.",
+    icon: "⬡",
   },
   {
-    id: "moderation",
-    title: "Real-time Moderation",
-    tagline: "Peace, not patrol",
-    description:
-      "Live moderation signals and actions so communities stay healthy without slowing the conversation.",
-  },
-  {
-    id: "drafts",
-    title: "Drafts & Scheduler",
-    tagline: "Write when it hits",
-    description:
-      "Save drafts mid-thought and pick them up later. Schedule posts to drop when your audience is actually awake.",
-  },
-  {
-    id: "ui-ux",
-    title: "Polished UI/UX",
-    tagline: "Feels like an app",
-    description:
-      "Smooth gestures, haptic-like feedback, native-feeling navigation, and thoughtful micro-interactions across every surface.",
-  },
-  {
-    id: "dislike",
-    title: "Dislike Button",
-    tagline: "Vote signal, not ego",
-    description:
-      "A proper dislike that actually shapes your feed. Downvote low-effort posts and train the algorithm to show you better content.",
-  },
-  {
-    id: "ai-studio",
-    title: "Glowwww AI Studio",
-    tagline: "Analyse your signal",
-    description:
-      "Click the Glowwww icon on any post to get instant AI analysis — engagement breakdowns, content insights, tone feedback, and tips to improve your reach.",
-  },
-  {
-    id: "creator-dashboard",
+    id: "dashboard",
     title: "Creator Dashboard",
-    tagline: "Know your reach",
+    tagline: "Know what hits",
     description:
-      "Real-time analytics on views, engagement, follower growth, and post performance. See what hits and why — all in one clean dashboard.",
+      "Views, engagement, growth, and post performance in one clean view — so you double down on what works.",
+    icon: "▣",
   },
 ];

@@ -1,21 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Nav } from "../components/Nav";
 import { Hero } from "../components/Hero";
-import { VideoHero } from "../components/VideoHero";
 import { Marquee } from "../components/Marquee";
+import { DemoShowcase } from "../components/DemoShowcase";
 import PlatformFeatures from "../components/PlatformFeatures";
 import { AppPreview } from "../components/AppPreview";
-import { BillboardGallery } from "../components/BillboardGallery";
 import PWAInstall from "../components/PWAInstall";
 import { CTA } from "../components/CTA";
 import { Footer } from "../components/Footer";
-import AgentOverlay from "../components/AgentOverlay";
-import AgentTestTrigger from "../components/AgentTestTrigger";
 
 export function HomePage() {
   const { hash } = useLocation();
-  const [agentOpen, setAgentOpen] = useState(false);
 
   useEffect(() => {
     if (!hash) return;
@@ -36,18 +32,14 @@ export function HomePage() {
       <Nav />
       <main>
         <Hero />
-        <VideoHero />
         <Marquee />
+        <DemoShowcase />
         <PlatformFeatures />
         <AppPreview />
-        <BillboardGallery />
         <PWAInstall />
         <CTA />
       </main>
       <Footer />
-
-      {agentOpen && <AgentOverlay onClose={() => setAgentOpen(false)} />}
-      <AgentTestTrigger onClick={() => setAgentOpen(true)} />
     </div>
   );
 }

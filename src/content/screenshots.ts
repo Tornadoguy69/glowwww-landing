@@ -5,18 +5,13 @@ export type AppScreenshot = {
   alt: string;
 };
 
-export const coreScreens: AppScreenshot[] = [
+/** Curated set — strongest first-look surfaces only. */
+export const showcaseScreens: AppScreenshot[] = [
   {
     id: "feed",
     label: "Feed",
     src: "/feed.png",
-    alt: "Glowwww feed",
-  },
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    src: "/dashboard.png",
-    alt: "Glowwww dashboard",
+    alt: "Glowwww real-time feed",
   },
   {
     id: "create",
@@ -40,39 +35,12 @@ export const coreScreens: AppScreenshot[] = [
     id: "messages",
     label: "Messages",
     src: "/messages.png",
-    alt: "Glowwww messages",
+    alt: "Glowwww encrypted messages",
   },
   {
-    id: "editor",
-    label: "Video Editor",
-    src: "/editorv.png",
-    alt: "Glowwww video editor",
-  },
-  {
-    id: "voice",
-    label: "AI Voice",
-    src: "/ai_voice.png",
-    alt: "Glowwww AI voice",
-  },
-];
-
-export const navScreens: AppScreenshot[] = [
-  {
-    id: "explore",
-    label: "Explore",
-    src: "/explore.png",
-    alt: "Glowwww explore",
-  },
-  {
-    id: "profile",
-    label: "Profile",
-    src: "/profile.png",
-    alt: "Glowwww profile",
-  },
-  {
-    id: "notifications",
-    label: "Notifications",
-    src: "/notifications.png",
-    alt: "Glowwww notifications",
+    id: "dashboard",
+    label: "Dashboard",
+    src: "/dashboard.png",
+    alt: "Glowwww creator dashboard",
   },
 ];
