@@ -1,0 +1,383 @@
+{
+  "name": "03-comment-reply-followup",
+  "width": 958,
+  "height": 888,
+  "durationMs": 11090,
+  "frameCount": 93,
+  "intervalMs": 110,
+  "errors": [],
+  "frames": [
+    {
+      "file": "frame-00000.jpg",
+      "t": 71
+    },
+    {
+      "file": "frame-00001.jpg",
+      "t": 187
+    },
+    {
+      "file": "frame-00002.jpg",
+      "t": 321
+    },
+    {
+      "file": "frame-00003.jpg",
+      "t": 430
+    },
+    {
+      "file": "frame-00004.jpg",
+      "t": 545
+    },
+    {
+      "file": "frame-00005.jpg",
+      "t": 691
+    },
+    {
+      "file": "frame-00006.jpg",
+      "t": 774
+    },
+    {
+      "file": "frame-00007.jpg",
+      "t": 885
+    },
+    {
+      "file": "frame-00008.jpg",
+      "t": 994
+    },
+    {
+      "file": "frame-00009.jpg",
+      "t": 1110
+    },
+    {
+      "file": "frame-00010.jpg",
+      "t": 1225
+    },
+    {
+      "file": "frame-00011.jpg",
+      "t": 1347
+    },
+    {
+      "file": "frame-00012.jpg",
+      "t": 1505
+    },
+    {
+      "file": "frame-00013.jpg",
+      "t": 1604
+    },
+    {
+      "file": "frame-00014.jpg",
+      "t": 1728
+    },
+    {
+      "file": "frame-00015.jpg",
+      "t": 1847
+    },
+    {
+      "file": "frame-00016.jpg",
+      "t": 1966
+    },
+    {
+      "file": "frame-00017.jpg",
+      "t": 2081
+    },
+    {
+      "file": "frame-00018.jpg",
+      "t": 2198
+    },
+    {
+      "file": "frame-00019.jpg",
+      "t": 2306
+    },
+    {
+      "file": "frame-00020.jpg",
+      "t": 2463
+    },
+    {
+      "file": "frame-00021.jpg",
+      "t": 2564
+    },
+    {
+      "file": "frame-00022.jpg",
+      "t": 2697
+    },
+    {
+      "file": "frame-00023.jpg",
+      "t": 2800
+    },
+    {
+      "file": "frame-00024.jpg",
+      "t": 2913
+    },
+    {
+      "file": "frame-00025.jpg",
+      "t": 3031
+    },
+    {
+      "file": "frame-00026.jpg",
+      "t": 3148
+    },
+    {
+      "file": "frame-00027.jpg",
+      "t": 3258
+    },
+    {
+      "file": "frame-00028.jpg",
+      "t": 3358
+    },
+    {
+      "file": "frame-00029.jpg",
+      "t": 3481
+    },
+    {
+      "file": "frame-00030.jpg",
+      "t": 3587
+    },
+    {
+      "file": "frame-00031.jpg",
+      "t": 3709
+    },
+    {
+      "file": "frame-00032.jpg",
+      "t": 3824
+    },
+    {
+      "file": "frame-00033.jpg",
+      "t": 3931
+    },
+    {
+      "file": "frame-00034.jpg",
+      "t": 4061
+    },
+    {
+      "file": "frame-00035.jpg",
+      "t": 4174
+    },
+    {
+      "file": "frame-00036.jpg",
+      "t": 4341
+    },
+    {
+      "file": "frame-00037.jpg",
+      "t": 4446
+    },
+    {
+      "file": "frame-00038.jpg",
+      "t": 4582
+    },
+    {
+      "file": "frame-00039.jpg",
+      "t": 4689
+    },
+    {
+      "file": "frame-00040.jpg",
+      "t": 4831
+    },
+    {
+      "file": "frame-00041.jpg",
+      "t": 4937
+    },
+    {
+      "file": "frame-00042.jpg",
+      "t": 5094
+    },
+    {
+      "file": "frame-00043.jpg",
+      "t": 5178
+    },
+    {
+      "file": "frame-00044.jpg",
+      "t": 5304
+    },
+    {
+      "file": "frame-00045.jpg",
+      "t": 5462
+    },
+    {
+      "file": "frame-00046.jpg",
+      "t": 5549
+    },
+    {
+      "file": "frame-00047.jpg",
+      "t": 5671
+    },
+    {
+      "file": "frame-00048.jpg",
+      "t": 5832
+    },
+    {
+      "file": "frame-00049.jpg",
+      "t": 5910
+    },
+    {
+      "file": "frame-00050.jpg",
+      "t": 6049
+    },
+    {
+      "file": "frame-00051.jpg",
+      "t": 6171
+    },
+    {
+      "file": "frame-00052.jpg",
+      "t": 6285
+    },
+    {
+      "file": "frame-00053.jpg",
+      "t": 6413
+    },
+    {
+      "file": "frame-00054.jpg",
+      "t": 6503
+    },
+    {
+      "file": "frame-00055.jpg",
+      "t": 6643
+    },
+    {
+      "file": "frame-00056.jpg",
+      "t": 6753
+    },
+    {
+      "file": "frame-00057.jpg",
+      "t": 6872
+    },
+    {
+      "file": "frame-00058.jpg",
+      "t": 7002
+    },
+    {
+      "file": "frame-00059.jpg",
+      "t": 7083
+    },
+    {
+      "file": "frame-00060.jpg",
+      "t": 7285
+    },
+    {
+      "file": "frame-00061.jpg",
+      "t": 7369
+    },
+    {
+      "file": "frame-00062.jpg",
+      "t": 7481
+    },
+    {
+      "file": "frame-00063.jpg",
+      "t": 7615
+    },
+    {
+      "file": "frame-00064.jpg",
+      "t": 7728
+    },
+    {
+      "file": "frame-00065.jpg",
+      "t": 7842
+    },
+    {
+      "file": "frame-00066.jpg",
+      "t": 7979
+    },
+    {
+      "file": "frame-00067.jpg",
+      "t": 8078
+    },
+    {
+      "file": "frame-00068.jpg",
+      "t": 8204
+    },
+    {
+      "file": "frame-00069.jpg",
+      "t": 8339
+    },
+    {
+      "file": "frame-00070.jpg",
+      "t": 8459
+    },
+    {
+      "file": "frame-00071.jpg",
+      "t": 8571
+    },
+    {
+      "file": "frame-00072.jpg",
+      "t": 8693
+    },
+    {
+      "file": "frame-00073.jpg",
+      "t": 8798
+    },
+    {
+      "file": "frame-00074.jpg",
+      "t": 9007
+    },
+    {
+      "file": "frame-00075.jpg",
+      "t": 9080
+    },
+    {
+      "file": "frame-00076.jpg",
+      "t": 9201
+    },
+    {
+      "file": "frame-00077.jpg",
+      "t": 9317
+    },
+    {
+      "file": "frame-00078.jpg",
+      "t": 9438
+    },
+    {
+      "file": "frame-00079.jpg",
+      "t": 9540
+    },
+    {
+      "file": "frame-00080.jpg",
+      "t": 9669
+    },
+    {
+      "file": "frame-00081.jpg",
+      "t": 9781
+    },
+    {
+      "file": "frame-00082.jpg",
+      "t": 9909
+    },
+    {
+      "file": "frame-00083.jpg",
+      "t": 10009
+    },
+    {
+      "file": "frame-00084.jpg",
+      "t": 10127
+    },
+    {
+      "file": "frame-00085.jpg",
+      "t": 10245
+    },
+    {
+      "file": "frame-00086.jpg",
+      "t": 10378
+    },
+    {
+      "file": "frame-00087.jpg",
+      "t": 10500
+    },
+    {
+      "file": "frame-00088.jpg",
+      "t": 10616
+    },
+    {
+      "file": "frame-00089.jpg",
+      "t": 10765
+    },
+    {
+      "file": "frame-00090.jpg",
+      "t": 10852
+    },
+    {
+      "file": "frame-00091.jpg",
+      "t": 10973
+    },
+    {
+      "file": "frame-00092.jpg",
+      "t": 11090
+    }
+  ]
+}
