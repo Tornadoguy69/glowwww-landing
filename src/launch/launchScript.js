@@ -461,31 +461,77 @@ async function playRecording(imgEl, names, { speed = 1, gap = 600 } = {}) {
 // @ai mention → asks, streams a reply, then a follow-up (two real recordings)
 once($('#mentionSeq'), () => playRecording($('#mentionSeq'), ['02-comment-ai-mention', '03-comment-reply-followup']), 0.2);
 
-/* ---- Agent Mode verification sequence ---- */
-once(agentSection, () => {
+/* ---- Agent Mode verification sequence (hand → act → check motif) ---- */
+const runAgentDemo = () => {
+  const panel = $('#agentpanel');
+  if (!panel) return;
   const lis = $$('#agentlog .li');
   const bar = $('#agentBar'), gGoal = $('#gGoal'), gAct = $('#gAct'), gVer = $('#gVer'), verify = $('#agentVerify');
+  const replay = $('#agentReplay');
   const goals = ['1/3', '2/3', '3/3', '3/3'];
   let i = 0;
+  let timers = [];
+  const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
+  const later = (fn, ms) => { timers.push(setTimeout(fn, ms)); };
+
+  // reset visual state for replay
+  lis.forEach((li) => {
+    li.classList.remove('on', 'ok');
+  });
+  if (bar) bar.style.width = '0%';
+  if (gGoal) gGoal.textContent = '0/3';
+  if (gAct) gAct.textContent = '0';
+  if (gVer) gVer.textContent = '—';
+  if (verify) verify.classList.remove('on');
+  if (replay) replay.hidden = true;
+  panel.classList.add('agentpanel--running');
+  panel.classList.remove('agentpanel--done');
+
   const step = () => {
+    if (!__alive) return;
     if (i < lis.length) {
       lis[i].classList.add('on');
-      setTimeout(() => {
+      later(() => {
+        if (!__alive) return;
         lis[i].classList.add('ok');
-        lis[i].querySelector('.ck').textContent = '✓';
-        gGoal.textContent = goals[i];
-        gAct.textContent = String(i + 1);
-        bar.style.width = ((i + 1) / lis.length * 100) + '%';
+        if (gGoal) gGoal.textContent = goals[i];
+        if (gAct) gAct.textContent = String(i + 1);
+        if (bar) bar.style.width = ((i + 1) / lis.length * 100) + '%';
         i++;
-        setTimeout(step, 520);
+        later(step, 520);
       }, 620);
     } else {
-      gVer.textContent = 'Complete';
-      verify.classList.add('on');
+      if (gVer) gVer.textContent = 'Complete';
+      if (verify) verify.classList.add('on');
+      panel.classList.remove('agentpanel--running');
+      panel.classList.add('agentpanel--done');
+      if (replay) replay.hidden = false;
     }
   };
-  setTimeout(step, 400);
-}, 0.28);
+  later(step, 400);
+
+  if (replay && !replay.dataset.bound) {
+    replay.dataset.bound = '1';
+    replay.addEventListener('click', () => {
+      clearTimers();
+      i = 0;
+      runAgentDemo();
+    });
+  }
+};
+once(agentSection, () => runAgentDemo(), 0.28);
+
+/* ---- Delete four → keep one brand sequence ---- */
+once($('#deleteFour'), () => {
+  const root = $('#deleteFour');
+  if (!root) return;
+  root.classList.add('is-on');
+  // staggered "delete" marks, then converge to monogram
+  $$('.df-app', root).forEach((el, idx) => {
+    setTimeout(() => el.classList.add('is-struck'), 280 + idx * 220);
+  });
+  setTimeout(() => root.classList.add('is-merged'), 280 + 4 * 220 + 200);
+}, 0.35);
 
 /* ---- studio + moderation bars ---- */
 $$('.studio').forEach(s => once(s, () => {
@@ -689,15 +735,15 @@ let reelStop = null;
   // To re-render the voice, POST each `say` to the Ava TTS endpoint
   // (kokoro, voice "ava") and overwrite voice/ava-NN.mp3 — keep this order.
   const BEATS = [
-    { img: 'c38e4f51-cabb-4d51-82b0-ff79e36604cf.png', pos: '42% 42%', say: 'Everything shuts right when you need it. This one doesn’t.', dur: 4000 },
-    { img: '5ad151ec-fb3c-4c8d-8625-7923a241e3c5.png', pos: '50% 28%', say: 'Some things you don’t rush. You just sit with them a while.', dur: 4000 },
-    { img: '71016c5b-8cb8-4e9a-9066-cc14dc5b0e69.png', pos: '52% 30%', say: 'You can come apart a little, and still be whole.', dur: 3200 },
-    { img: '8e934188-97a6-4462-a0f7-ab59d09767b8.png', pos: '48% 34%', say: 'And the heavy stuff, you were never meant to carry alone.', dur: 4000 },
-    { img: 'b9fceaae-5419-4b7d-86f8-45d5cb5bf5b2.png', pos: '52% 46%', say: 'It’s so loud out there. All the time.', dur: 3400, flash: true },
-    { img: '04d0d5fc-ce36-4911-9d76-d60295c238e3.png', pos: '62% 42%', say: 'This one actually gets you. However you need it to.', dur: 4100 },
-    { img: '788862b8-96bf-458e-ac1f-640d94a19cc5.png', pos: '50% 46%', say: 'Look close. It’s all just people. It always was.', dur: 4800, flash: true },
-    { img: '3eb97d31-19a0-46f6-ab4b-4c4e8f8b59fa.png', pos: '50% 40%', say: 'The kind of thing that stays with you.', dur: 2500 },
-    { img: '54d5a130-5bdc-4f76-849a-72fa2a3d4fdf.png', pos: '50% 28%', say: 'Tell it when you’re ready. No rush.', dur: 3100 },
+    { img: 'film-01-still-open.png', pos: '42% 42%', say: 'Everything shuts right when you need it. This one doesn’t.', dur: 4000 },
+    { img: 'film-02-sit-with-it.png', pos: '50% 28%', say: 'Some things you don’t rush. You just sit with them a while.', dur: 4000 },
+    { img: 'film-03-come-apart.png', pos: '52% 30%', say: 'You can come apart a little, and still be whole.', dur: 3200 },
+    { img: 'film-04-not-alone.png', pos: '48% 34%', say: 'And the heavy stuff, you were never meant to carry alone.', dur: 4000 },
+    { img: 'film-05-loud-out-there.png', pos: '52% 46%', say: 'It’s so loud out there. All the time.', dur: 3400, flash: true },
+    { img: 'film-06-gets-you.png', pos: '62% 42%', say: 'This one actually gets you. However you need it to.', dur: 4100 },
+    { img: 'film-07-just-people.png', pos: '50% 46%', say: 'Look close. It’s all just people. It always was.', dur: 4800, flash: true },
+    { img: 'film-08-stays-with-you.png', pos: '50% 40%', say: 'The kind of thing that stays with you.', dur: 2500 },
+    { img: 'film-09-when-ready.png', pos: '50% 28%', say: 'Tell it when you’re ready. No rush.', dur: 3100 },
     { img: 'something-real.png', pos: '50% 26%', say: 'Nothing fake here. I mean it.', dur: 3100 },
     { img: 'where-you-belong.png', pos: '40% 40%', say: 'Somewhere that actually feels like yours.', dur: 3300, red: true },
     { img: 'glowwww-monolith.png', pos: '50% 50%', say: 'So, come find us. Glow.', url: 'glowwww.vercel.app', noCap: true, dur: 4400, red: true },
@@ -1152,11 +1198,75 @@ $$('a[href^="#"]').forEach(a => a.addEventListener('click', (e) => {
   if (id.length > 1) { const t = $(id); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }
 }));
 
+/* ---- Mobile nav drawer ---- */
+const burger = $('#navBurger');
+const drawer = $('#navDrawer');
+const scrim = $('#navScrim');
+const navClose = $('#navClose');
+const setDrawer = (open) => {
+  if (!drawer || !burger) return;
+  drawer.hidden = !open;
+  document.documentElement.classList.toggle('lp-drawer-open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  burger.classList.toggle('is-open', open);
+  if (open) {
+    const first = drawer.querySelector('.nav-drawer__links a');
+    if (first) laterFocus(first);
+  }
+};
+const laterFocus = (el) => { try { el.focus({ preventScroll: true }); } catch (e) { try { el.focus(); } catch (_) {} } };
+if (burger && drawer && !burger.dataset.bound) {
+  burger.dataset.bound = '1';
+  burger.addEventListener('click', () => setDrawer(drawer.hidden));
+  if (scrim) scrim.addEventListener('click', () => setDrawer(false));
+  if (navClose) navClose.addEventListener('click', () => setDrawer(false));
+  drawer.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => setDrawer(false));
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer && !drawer.hidden) setDrawer(false);
+  });
+}
+
+/* ---- Billboard lightbox ---- */
+const boardLb = $('#boardLb');
+const boardLbImg = $('#boardLbImg');
+const boardLbCap = $('#boardLbCap');
+const openBoard = (src, title) => {
+  if (!boardLb || !boardLbImg) return;
+  boardLbImg.src = src;
+  boardLbImg.alt = title ? `Glowwww billboard — ${title}` : 'Glowwww billboard';
+  if (boardLbCap) boardLbCap.textContent = title || '';
+  boardLb.hidden = false;
+  document.documentElement.classList.add('lp-lb-open');
+};
+const closeBoard = () => {
+  if (!boardLb) return;
+  boardLb.hidden = true;
+  document.documentElement.classList.remove('lp-lb-open');
+  if (boardLbImg) boardLbImg.removeAttribute('src');
+};
+$$('.board-card').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    openBoard(btn.getAttribute('data-board'), btn.getAttribute('data-title') || '');
+  });
+});
+const boardLbClose = $('#boardLbClose');
+const boardLbScrim = $('#boardLbScrim');
+if (boardLbClose) boardLbClose.addEventListener('click', closeBoard);
+if (boardLbScrim) boardLbScrim.addEventListener('click', closeBoard);
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && boardLb && !boardLb.hidden) closeBoard();
+});
+
   return () => {
     __alive = false;
     if (reelStop) reelStop();
     if (orb && orb.dispose) orb.dispose();
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('mousemove', onMove);
+    setDrawer(false);
+    closeBoard();
   };
 }

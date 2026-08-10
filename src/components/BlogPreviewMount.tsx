@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BrandCover } from "./BrandCover";
 import { blogPosts } from "../content/posts";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -34,12 +35,20 @@ export function BlogPreviewMount() {
       <div className="blog-preview-grid">
         {posts.map((post) => (
           <Link key={post.slug} to={`/blog/${post.slug}`} className="frame blog-preview-card">
-            <div className="blog-preview-card__meta">
-              {catLabel[post.category] ?? post.category} · {formatDate(post.date)}
+            <BrandCover
+              category={post.category}
+              title={post.title}
+              size="compact"
+              className="blog-preview-card__cover"
+            />
+            <div className="blog-preview-card__body">
+              <div className="blog-preview-card__meta">
+                {catLabel[post.category] ?? post.category} · {formatDate(post.date)}
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <span className="blog-preview-card__go">Read post →</span>
             </div>
-            <h3>{post.title}</h3>
-            <p>{post.excerpt}</p>
-            <span className="blog-preview-card__go">Read post →</span>
           </Link>
         ))}
       </div>

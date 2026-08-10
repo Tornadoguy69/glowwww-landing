@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogBackButton } from "../components/BlogBackButton";
+import { BrandCover } from "../components/BrandCover";
 import { PageShell } from "../components/layout/PageShell";
 import { blogPosts, formatDate } from "../content/posts";
 import { easeOutExpo, fadeUp } from "../motion";
@@ -64,6 +65,12 @@ export function BlogPage() {
             transition={{ duration: 0.65, delay: 0.08, ease: easeOutExpo }}
           >
             <Link to={`/blog/${featured.slug}`} className="blog-featured">
+              <BrandCover
+                category={featured.category}
+                title={featured.title}
+                size="hero"
+                className="blog-featured__cover"
+              />
               <div className="blog-featured__inner">
                 <div className="blog-featured__badge">Latest</div>
                 <div className="blog-featured__meta">
@@ -91,13 +98,21 @@ export function BlogPage() {
               }}
             >
               <Link to={`/blog/${post.slug}`} className="blog-card">
-                <div className="blog-card__meta">
-                  <span>{categoryLabel[post.category]}</span>
-                  <time dateTime={post.date}>{shortDate(post.date)}</time>
+                <BrandCover
+                  category={post.category}
+                  title={post.title}
+                  size="compact"
+                  className="blog-card__cover"
+                />
+                <div className="blog-card__body">
+                  <div className="blog-card__meta">
+                    <span>{categoryLabel[post.category]}</span>
+                    <time dateTime={post.date}>{shortDate(post.date)}</time>
+                  </div>
+                  <h2 className="blog-card__title">{post.title}</h2>
+                  <p className="blog-card__excerpt">{post.excerpt}</p>
+                  <span className="blog-card__read">Read post →</span>
                 </div>
-                <h2 className="blog-card__title">{post.title}</h2>
-                <p className="blog-card__excerpt">{post.excerpt}</p>
-                <span className="blog-card__read">Read post →</span>
               </Link>
             </motion.div>
           ))}

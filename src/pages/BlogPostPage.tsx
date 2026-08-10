@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, type ReactNode } from "react";
 import { BlogBackButton } from "../components/BlogBackButton";
+import { BrandCover } from "../components/BrandCover";
 import { PageShell } from "../components/layout/PageShell";
 import { getPost, getAdjacentPosts, formatDate, type BodyItem } from "../content/posts";
 import { easeOutExpo } from "../motion";
@@ -188,6 +189,12 @@ export function BlogPostPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.28, ease: easeOutExpo }}
         >
+          <BrandCover
+            category={post.category}
+            title={post.title}
+            size="hero"
+            className="blog-post__cover"
+          />
           <div className="blog-post__meta">
             <span>{categoryLabel[post.category]}</span>
             <time dateTime={post.date}>{formatDate(post.date)}</time>

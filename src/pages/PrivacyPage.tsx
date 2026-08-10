@@ -42,11 +42,20 @@ export function PrivacyPage() {
         </section>
 
         <section style={{ marginBottom: 28 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Public by design — private by choice</h2>
+          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
+            Content you choose to publish — posts, media, and public communities — is public by design.
+            That is the product, not a privacy leak. You can also keep your account private: limit who can
+            see your profile, posts, and activity so discovery stays under your control. Private messaging
+            stays end-to-end encrypted either way.
+          </p>
+        </section>
+
+        <section style={{ marginBottom: 28 }}>
           <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Account &amp; product data</h2>
           <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Public posts, profiles, communities, and media you publish are public by design. Account
-            credentials and settings are stored to run the service. Analytics are kept restrained — enough
-            to run and improve the product, not to build an ad profile.
+            Account credentials and settings are stored to run the service. Analytics are kept restrained —
+            enough to run and improve the product, not to build an ad profile.
           </p>
         </section>
 

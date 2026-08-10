@@ -5,6 +5,7 @@ export type Billboard = {
   alt: string;
 };
 
+/** Full archive */
 export const billboards: Billboard[] = [
   { id: "08", title: "The Question", src: "/billboards/glowwww_billboard_08_the_question.png", alt: "Glowwww billboard — the question" },
   { id: "09", title: "Verified", src: "/billboards/glowwww_billboard_09_verified.png", alt: "Glowwww billboard — verified" },
@@ -26,3 +27,15 @@ export const billboards: Billboard[] = [
   { id: "26", title: "Early Adopters", src: "/billboards/glowwww_billboard_26_early_adopters.png", alt: "Glowwww billboard — early adopters" },
   { id: "27", title: "Glowwww", src: "/billboards/glowwww_billboard_27_glow_www.png", alt: "Glowwww billboard — glowwww" },
 ];
+
+/** Launch homepage rail — story order, not archive dump */
+export const launchBillboards: Billboard[] = [
+  billboards.find((b) => b.id === "20")!,
+  billboards.find((b) => b.id === "09")!,
+  billboards.find((b) => b.id === "19")!,
+  billboards.find((b) => b.id === "10")!,
+  billboards.find((b) => b.id === "16")!,
+  billboards.find((b) => b.id === "22")!,
+  billboards.find((b) => b.id === "18")!,
+  billboards.find((b) => b.id === "27")!,
+].filter(Boolean);

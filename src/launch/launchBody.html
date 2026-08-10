@@ -100,6 +100,29 @@
     <path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/>
     <path d="M5.8 5.8a9 9 0 0 0 0 12.4M18.2 5.8a9 9 0 0 1 0 12.4"/>
   </symbol>
+  <!-- Brand motif: agent hands / verify / cursor -->
+  <symbol id="gi-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12"/>
+    <path d="M11 11.5V5.5a1.5 1.5 0 0 1 3 0V12"/>
+    <path d="M14 11V7a1.5 1.5 0 0 1 3 0v6.5"/>
+    <path d="M5.5 13.5v1A5.5 5.5 0 0 0 11 20h2.5a5 5 0 0 0 5-5v-3.5a1.5 1.5 0 0 0-3 0"/>
+    <path d="M5.5 13.5A1.5 1.5 0 0 1 8 12"/>
+  </symbol>
+  <symbol id="gi-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="m8.5 12.2 2.4 2.4 4.6-5"/>
+  </symbol>
+  <symbol id="gi-cursor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 4.5 10.2 19l2-5.2L17.5 12 5 4.5z"/>
+    <path d="m12.2 13.8 4.3 5.4"/>
+  </symbol>
+  <!-- Canonical Glowwww mark — paths identical to favicon.svg / logo-mark.svg -->
+  <symbol id="gi-mark" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="11" fill="#222" stroke="#E53935" stroke-width="2"/>
+    <path d="M3 11C6 7 18 7 21 11" stroke="#E53935" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M3 13C6 17 18 17 21 13" stroke="#E53935" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M5 12C8 9 16 9 19 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </symbol>
 </svg>
 
 
@@ -125,12 +148,13 @@
     <img class="logo logo--for-light" src="/launch/assets/brand/logo-light.png" alt="" aria-hidden="true">
   </a>
   <div class="navright">
-    <div class="links">
+    <div class="links" id="navLinks">
       <a href="#proof">Proof</a>
       <a href="#product">Product</a>
       <a href="#privacy">Privacy</a>
       <a href="#install">Install</a>
       <a href="#story">Story</a>
+      <a href="#billboards">Brand</a>
       <a href="/blog">Blog</a>
       <a href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
@@ -139,8 +163,36 @@
       <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
     </button>
     <a class="cta" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open free</a>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer" hidden>
+  <div class="nav-drawer__scrim" id="navScrim" tabindex="-1"></div>
+  <div class="nav-drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="nav-drawer__head">
+      <img class="logo logo--for-dark" src="/launch/assets/brand/logo-dark.png" alt="Glowwww" height="28">
+      <img class="logo logo--for-light" src="/launch/assets/brand/logo-light.png" alt="" aria-hidden="true" height="28">
+      <button class="nav-drawer__close" id="navClose" type="button" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#proof">Proof</a>
+      <a href="#product">Product</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#install">Install</a>
+      <a href="#story">Story</a>
+      <a href="#billboards">Brand</a>
+      <a href="/blog">Blog</a>
+      <a href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <a class="btn btn--primary nav-drawer__cta" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open Glowwww free →</a>
+  </div>
+</div>
 
 <main id="main">
 
@@ -163,6 +215,15 @@
       <span><b>PWA</b> install</span>
       <span><b>$0</b> funding</span>
     </div>
+    <!-- Muted product strip — brand motion without sound autoplay -->
+    <div class="hero__strip reveal d5" aria-hidden="true">
+      <div class="hero__strip-track">
+        <div class="hero__strip-cell"><video class="lazy-vid" src="/launch/assets/footage/clips.mp4" muted loop playsinline preload="metadata"></video><span>Clips</span></div>
+        <div class="hero__strip-cell"><video class="lazy-vid" src="/launch/assets/footage/editor-a.mp4" muted loop playsinline preload="metadata"></video><span>Editor</span></div>
+        <div class="hero__strip-cell"><video class="lazy-vid" src="/launch/assets/footage/voice_expanded.mp4" muted loop playsinline preload="metadata"></video><span>Voice</span></div>
+        <div class="hero__strip-cell"><video class="lazy-vid" src="/launch/assets/footage/agent-youtube.mp4" muted loop playsinline preload="metadata"></video><span>Agent</span></div>
+      </div>
+    </div>
   </div>
   <div class="hero__scroll"><span>Scroll</span><span class="line"></span></div>
 </header>
@@ -174,6 +235,46 @@
     <span class="eyebrow" style="justify-content:center">The map</span>
     <h2 class="map-title">One app. Four jobs.</h2>
     <p class="map-lead">Everything else is noise. Glowwww is the stack most creators juggle across four products.</p>
+
+    <!-- Brand metaphor: delete four → keep one (CSS motion) -->
+    <div class="delete-four" id="deleteFour" data-delete-four aria-label="Four apps collapse into Glowwww">
+      <div class="delete-four__stage">
+        <div class="delete-four__apps" aria-hidden="true">
+          <div class="df-app" data-i="0">
+            <span class="df-app__ic"><svg class="ic-svg" width="22" height="22"><use href="#gi-bolt"/></svg></span>
+            <span class="df-app__name">Feed</span>
+            <span class="df-app__x" aria-hidden="true">×</span>
+          </div>
+          <div class="df-app" data-i="1">
+            <span class="df-app__ic"><svg class="ic-svg" width="22" height="22"><use href="#gi-scissors"/></svg></span>
+            <span class="df-app__name">Editor</span>
+            <span class="df-app__x" aria-hidden="true">×</span>
+          </div>
+          <div class="df-app" data-i="2">
+            <span class="df-app__ic"><svg class="ic-svg" width="22" height="22"><use href="#gi-chat"/></svg></span>
+            <span class="df-app__name">Chatbot</span>
+            <span class="df-app__x" aria-hidden="true">×</span>
+          </div>
+          <div class="df-app" data-i="3">
+            <span class="df-app__ic"><svg class="ic-svg" width="22" height="22"><use href="#gi-lock"/></svg></span>
+            <span class="df-app__name">DMs</span>
+            <span class="df-app__x" aria-hidden="true">×</span>
+          </div>
+        </div>
+        <div class="delete-four__arrow" aria-hidden="true">
+          <span class="delete-four__arrow-line"></span>
+          <span class="delete-four__arrow-label">delete four</span>
+        </div>
+        <div class="delete-four__one" aria-hidden="true">
+          <div class="delete-four__mark">
+            <img src="/launch/assets/icons/logo-mark.svg" alt="" width="72" height="72">
+          </div>
+          <span class="delete-four__keep">Keep <b>one</b></span>
+        </div>
+      </div>
+      <p class="delete-four__caption">Social · create · private messaging · AI that acts — one home screen icon.</p>
+    </div>
+
     <div class="pillars" role="list">
       <a class="pillar" href="#product" role="listitem">
         <span class="pillar__n">01</span>
@@ -195,6 +296,41 @@
         <strong>Private</strong>
         <span>Encrypted DMs</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section how" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-spark"/></svg></span>How it works</span>
+      <h2>Three moves. One home screen.</h2>
+      <p>No store maze. No four-app stack. Open it, ship something, let the agent handle the busywork.</p>
+    </div>
+    <ol class="how-steps reveal d1">
+      <li class="how-step">
+        <span class="how-step__n">01</span>
+        <div class="how-step__ic" aria-hidden="true"><svg class="ic-svg" width="22" height="22"><use href="#gi-download"/></svg></div>
+        <h3>Open free</h3>
+        <p>Browser or install as a PWA. No invite wall. Your feed starts the second you land.</p>
+      </li>
+      <li class="how-step">
+        <span class="how-step__n">02</span>
+        <div class="how-step__ic" aria-hidden="true"><svg class="ic-svg" width="22" height="22"><use href="#gi-scissors"/></svg></div>
+        <h3>Create &amp; post</h3>
+        <p>Edit clips, schedule, publish — capture → polish → ship without leaving Glowwww.</p>
+      </li>
+      <li class="how-step">
+        <span class="how-step__n">03</span>
+        <div class="how-step__ic" aria-hidden="true"><svg class="ic-svg" width="22" height="22"><use href="#gi-hand"/></svg></div>
+        <h3>AI acts</h3>
+        <p>Voice, @ai in threads, agent mode that navigates the app — then verifies it worked.</p>
+      </li>
+    </ol>
+    <div class="how-cta reveal d2 center">
+      <a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Start free →</a>
+      <a class="btn btn--ghost" href="#proof">See AI proof</a>
     </div>
   </div>
 </section>
@@ -257,6 +393,27 @@
         </div>
       </div>
     </div>
+    <!-- Accessible brand film transcript (Ava narration) -->
+    <details class="reel-transcript reveal d2">
+      <summary>
+        <span class="reel-transcript__ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-mic"/></svg></span>
+        Film transcript · narrated by Ava
+      </summary>
+      <ol class="reel-transcript__list">
+        <li>Everything shuts right when you need it. This one doesn’t.</li>
+        <li>Some things you don’t rush. You just sit with them a while.</li>
+        <li>You can come apart a little, and still be whole.</li>
+        <li>And the heavy stuff, you were never meant to carry alone.</li>
+        <li>It’s so loud out there. All the time.</li>
+        <li>This one actually gets you. However you need it to.</li>
+        <li>Look close. It’s all just people. It always was.</li>
+        <li>The kind of thing that stays with you.</li>
+        <li>Tell it when you’re ready. No rush.</li>
+        <li>Nothing fake here. I mean it.</li>
+        <li>Somewhere that actually feels like yours.</li>
+        <li>So, come find us. Glow.</li>
+      </ol>
+    </details>
   </div>
 </section>
 
@@ -268,16 +425,35 @@
 <section class="section proof-band">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-agent"/></svg></span>The proof</span>
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-hand"/></svg></span>The proof</span>
       <h2>Your AI has hands.</h2>
       <p>Not a chatbot tab. An agent that navigates the app, acts, then <b style="color:var(--text)">verifies</b> app state before it claims success. Still early — hallucinations happen; verification catches many of them.</p>
+    </div>
+
+    <!-- Agent visual language: hand → cursor → check -->
+    <div class="agent-motif reveal d1" aria-hidden="true">
+      <div class="agent-motif__step">
+        <span class="agent-motif__ic"><svg class="ic-svg" width="20" height="20"><use href="#gi-hand"/></svg></span>
+        <span>Hands</span>
+      </div>
+      <span class="agent-motif__line"></span>
+      <div class="agent-motif__step">
+        <span class="agent-motif__ic"><svg class="ic-svg" width="20" height="20"><use href="#gi-cursor"/></svg></span>
+        <span>Acts</span>
+      </div>
+      <span class="agent-motif__line"></span>
+      <div class="agent-motif__step agent-motif__step--verify">
+        <span class="agent-motif__ic"><svg class="ic-svg" width="20" height="20"><use href="#gi-check"/></svg></span>
+        <span>Verifies</span>
+      </div>
     </div>
 
     <div class="feature reveal d1" style="align-items:stretch">
       <div class="feature__demo">
         <div class="agentpanel" id="agentpanel">
           <div class="agentpanel__top">
-            <span>◎</span> Give me a task. I will act, verify, and report back.
+            <span class="agentpanel__hand" aria-hidden="true"><svg class="ic-svg" width="16" height="16"><use href="#gi-hand"/></svg></span>
+            Give me a task. I will act, verify, and report back.
             <span class="badge"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block"></span>AGENT MODE</span>
           </div>
           <div class="gav">
@@ -287,19 +463,25 @@
           </div>
           <div class="agentbar"><i id="agentBar"></i></div>
           <div class="agentlog" id="agentlog">
-            <div class="li"><span class="ck">○</span><span><b>Understand:</b> “Mark my notifications as read.”</span></div>
-            <div class="li"><span class="ck">○</span><span><b>Act:</b> open Notifications</span></div>
-            <div class="li"><span class="ck">○</span><span><b>Act:</b> mark all as read</span></div>
-            <div class="li"><span class="ck">○</span><span><b>Check:</b> did the unread badge disappear?</span></div>
+            <div class="li" data-step="understand"><span class="ck" aria-hidden="true"><svg class="ic-svg ck-o" width="14" height="14"><use href="#gi-cursor"/></svg></span><span><b>Understand:</b> “Mark my notifications as read.”</span></div>
+            <div class="li" data-step="act"><span class="ck" aria-hidden="true"><svg class="ic-svg ck-o" width="14" height="14"><use href="#gi-hand"/></svg></span><span><b>Act:</b> open Notifications</span></div>
+            <div class="li" data-step="act"><span class="ck" aria-hidden="true"><svg class="ic-svg ck-o" width="14" height="14"><use href="#gi-hand"/></svg></span><span><b>Act:</b> mark all as read</span></div>
+            <div class="li" data-step="check"><span class="ck" aria-hidden="true"><svg class="ic-svg ck-o" width="14" height="14"><use href="#gi-check"/></svg></span><span><b>Check:</b> did the unread badge disappear?</span></div>
           </div>
-          <div class="agent-verify" id="agentVerify">✓ Verified — unread badge is gone. Reporting success.</div>
+          <div class="agent-verify" id="agentVerify">
+            <svg class="ic-svg" width="16" height="16" aria-hidden="true"><use href="#gi-check"/></svg>
+            Verified — unread badge is gone. Reporting success.
+          </div>
+          <button type="button" class="agent-replay" id="agentReplay" hidden>Replay demo</button>
         </div>
       </div>
       <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
         <h3 class="feature-h3">It doesn’t answer — it acts.</h3>
         <p class="lede">Open notifications, mark read, draft a reply, play music, drive a browser — then inspect whether the UI actually changed.</p>
         <div class="chips">
-          <span class="chip">Voice</span><span class="chip">Screen-aware</span><span class="chip">Verifies first</span>
+          <span class="chip chip--motif"><svg class="ic-svg" width="12" height="12" aria-hidden="true"><use href="#gi-mic"/></svg> Voice</span>
+          <span class="chip chip--motif"><svg class="ic-svg" width="12" height="12" aria-hidden="true"><use href="#gi-cursor"/></svg> Screen-aware</span>
+          <span class="chip chip--motif"><svg class="ic-svg" width="12" height="12" aria-hidden="true"><use href="#gi-check"/></svg> Verifies first</span>
         </div>
       </div>
     </div>
@@ -498,8 +680,8 @@
         <p>Prompts, thread context, and agent screen context you invoke. Don’t put secrets in AI chat you wouldn’t give any model.</p>
       </div>
       <div class="trust-card">
-        <h4>Public by design</h4>
-        <p>Posts, profiles, and communities you publish are public. That’s the product — not a privacy leak.</p>
+        <h4>Public by design — private by choice</h4>
+        <p>What you publish (posts, media, public communities) is public on purpose. Your account can stay private: limit who sees your profile, posts, and activity so discovery is yours to control.</p>
       </div>
       <div class="trust-card">
         <h4>Early &amp; honest</h4>
@@ -621,6 +803,64 @@
   </div>
 </section>
 
+<!-- ==================== BILLBOARDS (curated brand strip) ==================== -->
+<section class="section boards" id="billboards">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-mark"/></svg></span>Brand</span>
+      <h2>Out of home. Still on brand.</h2>
+      <p>Campaign frames for the same story — delete four, keep one, AI with hands.</p>
+    </div>
+  </div>
+  <div class="boards-rail reveal d1" id="boardsRail" tabindex="0" aria-label="Billboard gallery, scroll horizontally">
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_20_delete_four.png" data-title="Delete Four">
+      <img src="/billboards/glowwww_billboard_20_delete_four.png" alt="Glowwww billboard — Delete four" loading="lazy" decoding="async" width="400" height="250">
+      <span>Delete Four</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_09_verified.png" data-title="Verified">
+      <img src="/billboards/glowwww_billboard_09_verified.png" alt="Glowwww billboard — Verified" loading="lazy" decoding="async" width="400" height="250">
+      <span>Verified</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_19_your_ai_has_a_name.png" data-title="Your AI Has A Name">
+      <img src="/billboards/glowwww_billboard_19_your_ai_has_a_name.png" alt="Glowwww billboard — Your AI has a name" loading="lazy" decoding="async" width="400" height="250">
+      <span>Your AI Has A Name</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_10_the_editor.png" data-title="The Editor">
+      <img src="/billboards/glowwww_billboard_10_the_editor.png" alt="Glowwww billboard — The editor" loading="lazy" decoding="async" width="400" height="250">
+      <span>The Editor</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_16_1_app.png" data-title="One App">
+      <img src="/billboards/glowwww_billboard_16_1_app.png" alt="Glowwww billboard — One app" loading="lazy" decoding="async" width="400" height="250">
+      <span>One App</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_22_ai_never_sleeps.png" data-title="AI Never Sleeps">
+      <img src="/billboards/glowwww_billboard_22_ai_never_sleeps.png" alt="Glowwww billboard — AI never sleeps" loading="lazy" decoding="async" width="400" height="250">
+      <span>AI Never Sleeps</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_18_native.png" data-title="Native">
+      <img src="/billboards/glowwww_billboard_18_native.png" alt="Glowwww billboard — Native" loading="lazy" decoding="async" width="400" height="250">
+      <span>Native</span>
+    </button>
+    <button type="button" class="board-card" data-board="/billboards/glowwww_billboard_27_glow_www.png" data-title="Glowwww">
+      <img src="/billboards/glowwww_billboard_27_glow_www.png" alt="Glowwww billboard — Glowwww" loading="lazy" decoding="async" width="400" height="250">
+      <span>Glowwww</span>
+    </button>
+  </div>
+  <p class="boards-hint reveal d2">Tap a frame to expand · scroll for more</p>
+</section>
+
+<!-- Billboard lightbox -->
+<div class="board-lb" id="boardLb" hidden>
+  <button type="button" class="board-lb__scrim" id="boardLbScrim" aria-label="Close"></button>
+  <figure class="board-lb__fig">
+    <img id="boardLbImg" src="" alt="">
+    <figcaption id="boardLbCap"></figcaption>
+    <button type="button" class="board-lb__close" id="boardLbClose" aria-label="Close lightbox">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </figure>
+</div>
+
 <!-- SOLO BUILDER STORY -->
 <section class="section story" id="story">
   <div class="story__grid">
@@ -689,11 +929,20 @@
       <p>Glowwww for people. Afterglow for the universe. One solo builder — live products, no fake demos.</p>
     </div>
 
+    <!-- Shared monogram bridge between products -->
+    <div class="tcorp-bridge reveal" aria-hidden="true">
+      <span class="tcorp-bridge__line"></span>
+      <img class="tcorp-bridge__mark" src="/launch/assets/icons/logo-mark.svg" alt="" width="40" height="40">
+      <span class="tcorp-bridge__line"></span>
+    </div>
+    <p class="tcorp-bridge__label reveal">Built under the Tornado banner</p>
+
     <div class="tcorp reveal d1">
       <a class="tcard" href="https://glowwww.vercel.app" target="_blank" rel="noopener">
         <div class="tcard__media">
           <img src="/launch/assets/shots/feed.png" alt="Glowwww feed" loading="lazy" decoding="async">
           <span class="tcard__num">01</span>
+          <span class="tcard__mark" aria-hidden="true"><img src="/launch/assets/icons/logo-mark.svg" alt="" width="28" height="28"></span>
           <span class="tcard__status"><span class="dot"></span>Live</span>
         </div>
         <div class="tcard__body">
@@ -708,10 +957,13 @@
         </div>
       </a>
 
-      <a class="tcard" href="https://afterglow-ecru.vercel.app/site/" target="_blank" rel="noopener">
+      <a class="tcard tcard--afterglow" href="https://afterglow-ecru.vercel.app/site/" target="_blank" rel="noopener">
         <div class="tcard__media">
           <img src="/launch/assets/campaign/afterglow.jpg" alt="Afterglow — space science you can play with" loading="lazy" decoding="async">
           <span class="tcard__num">02</span>
+          <span class="tcard__mark tcard__mark--star" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#38bdf8" stroke-width="1.5" opacity=".9"/><circle cx="14" cy="14" r="3" fill="#38bdf8"/><path d="M14 4v3M14 21v3M4 14h3M21 14h3" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </span>
           <span class="tcard__status"><span class="dot"></span>Live</span>
         </div>
         <div class="tcard__body">
@@ -753,8 +1005,10 @@
       <img class="logo logo--for-light" src="/launch/assets/brand/logo-light.png" alt="" aria-hidden="true">
     </span>
     <nav class="foot__links" aria-label="Footer">
+      <a href="#how">How</a>
       <a href="#proof">Proof</a>
       <a href="#install">Install</a>
+      <a href="#billboards">Brand</a>
       <a href="#story">Story</a>
       <a href="/blog">Blog</a>
       <a href="/privacy">Privacy</a>
