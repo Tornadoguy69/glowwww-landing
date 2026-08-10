@@ -1,9 +1,38 @@
 {
   "name": "Glowwww",
   "short_name": "Glowwww",
-  "start_url": "/",
+  "description": "Social media, rebuilt around AI. Privacy-first, really E2E encrypted messaging.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#000000",
+  "orientation": "any",
+  "background_color": "#060607",
   "theme_color": "#E53935",
-  "icons": []
+  "categories": ["social", "productivity"],
+  "icons": [
+    {
+      "src": "/launch/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/launch/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/launch/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/launch/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }

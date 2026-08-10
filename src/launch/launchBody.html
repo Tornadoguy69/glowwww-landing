@@ -116,6 +116,8 @@
 
 <div class="scroll-prog" id="prog"></div>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
   <a class="brand" href="#top">
@@ -124,50 +126,76 @@
   </a>
   <div class="navright">
     <div class="links">
-      <a href="#ai">AI</a>
-      <a href="#create">Create</a>
-      <a href="#social">Social</a>
+      <a href="#proof">Proof</a>
+      <a href="#product">Product</a>
+      <a href="#privacy">Privacy</a>
       <a href="#install">Install</a>
       <a href="#story">Story</a>
       <a href="/blog">Blog</a>
+      <a href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark mode" title="Toggle light / dark">
       <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
     </button>
-    <a class="cta" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open Glowwww</a>
+    <a class="cta" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open free</a>
   </div>
 </nav>
 
+<main id="main">
+
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <div class="hero__bg"><img src="/launch/assets/campaign/connected-always.png" alt=""></div>
+  <div class="hero__bg"><img src="/launch/assets/campaign/connected-always.png" alt="" fetchpriority="high" decoding="async"></div>
   <div class="hero__flash" id="heroFlash"></div>
   <div class="hero__inner">
-    <div class="hero__mark" id="heroMark"><img src="/launch/assets/brand/logo-dark.png" alt="Glowwww"></div>
-    <span class="eyebrow reveal"><span class="dot"></span>Launching now · built by Tornado</span>
-    <h1 class="reveal d1">Social media,<br>rebuilt around <span class="em">AI</span>.</h1>
-    <p class="hero__sub reveal d2">A feed with no lag and no algorithm jail — wrapped around an AI that talks, codes, builds, and acts inside the app for you. This is Glowwww.</p>
+    <div class="hero__mark" id="heroMark"><img src="/launch/assets/brand/logo-dark.png" alt="Glowwww" width="160" height="40"></div>
+    <span class="eyebrow reveal"><span class="dot"></span>Early access · ~69 users · solo-built by Tornado</span>
+    <h1 class="reveal d1">Delete four apps.<br>Keep <span class="em">one</span>.</h1>
+    <p class="hero__sub reveal d2">Social, create, private messaging, and AI that <b style="color:var(--text);font-weight:600">acts inside the app</b> — not a chatbot bolted on. No algorithm jail.</p>
     <div class="hero__cta reveal d3">
-      <a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open Glowwww →</a>
-      <a class="btn btn--ghost" href="#ai">See how it works</a>
+      <a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open Glowwww free →</a>
+      <a class="btn btn--ghost" href="#proof">See the proof</a>
     </div>
     <div class="hero__meta reveal d4">
-      <span><b>End-to-end</b> encrypted messaging</span>
-      <span><b>On-device</b> AI where possible</span>
-      <span><b>PWA</b> — install like an app</span>
+      <span><b>Private</b> messaging</span>
+      <span><b>AI agent</b> that verifies</span>
+      <span><b>PWA</b> install</span>
+      <span><b>$0</b> funding</span>
     </div>
   </div>
   <div class="hero__scroll"><span>Scroll</span><span class="line"></span></div>
 </header>
 
-<!-- ============ THESIS ============ -->
-<section class="section center">
+<!-- ============ MAP + THESIS ============ -->
+<section class="section center" id="map">
   <div class="wrap reveal">
-    <div id="quantumMount" style="width:100%;max-width:560px;height:340px;margin:0 auto 30px"></div>
-    <span class="eyebrow" style="justify-content:center">The thesis</span>
-    <h2 style="font-size:clamp(28px,5vw,58px);font-weight:700;letter-spacing:-1.4px;max-width:16ch;margin:16px auto 0;line-height:1.05">AI isn't an add-on tab.<br>It's the <span style="color:var(--red)">fabric</span>.</h2>
-    <p style="color:var(--dim);max-width:44ch;margin:18px auto 0">Every surface — feed, comments, messages, editor — has the same intelligence woven through it. Not a chatbot bolted on the side.</p>
+    <div id="quantumMount" style="width:100%;max-width:560px;height:280px;margin:0 auto 24px"></div>
+    <span class="eyebrow" style="justify-content:center">The map</span>
+    <h2 class="map-title">One app. Four jobs.</h2>
+    <p class="map-lead">Everything else is noise. Glowwww is the stack most creators juggle across four products.</p>
+    <div class="pillars" role="list">
+      <a class="pillar" href="#product" role="listitem">
+        <span class="pillar__n">01</span>
+        <strong>Social</strong>
+        <span>Real-time feed · no algorithm jail</span>
+      </a>
+      <a class="pillar" href="#proof" role="listitem">
+        <span class="pillar__n">02</span>
+        <strong>AI that acts</strong>
+        <span>Agent · @ai · tools · voice</span>
+      </a>
+      <a class="pillar" href="#create" role="listitem">
+        <span class="pillar__n">03</span>
+        <strong>Create</strong>
+        <span>Editor · clips · publish</span>
+      </a>
+      <a class="pillar" href="#privacy" role="listitem">
+        <span class="pillar__n">04</span>
+        <strong>Private</strong>
+        <span>Encrypted DMs</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -222,191 +250,27 @@
           </button>
           <div class="reel__bar" id="reelBar"><i id="reelFill"></i></div>
           <span class="reel__time" id="reelTime">0:00</span>
+          <button class="reel__btn reel__fs" id="reelFs" type="button" aria-label="Enter fullscreen" title="Fullscreen">
+            <svg class="reel__fs-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
+            <svg class="reel__fs-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M8 3v5H3M16 3v5h5M8 21v-5H3M16 21v-5h5"/></svg>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== AI CLUSTER ==================== -->
+<!-- ==================== PROOF (the money moments) ==================== -->
 <div id="ai"></div>
+<div id="proof"></div>
 
-<!-- REAL-TIME POSTS -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-bolt"/></svg></span>Real-time posts</span>
-        <h2>No lag,<br>no algorithm jail.</h2>
-        <p class="lede">Posts appear instantly across feeds and profiles — no refresh, no waiting for a batch job, no black-box ranking deciding whether you exist.</p>
-        <div class="chips">
-          <span class="chip">Instant fan-out</span><span class="chip">Live across devices</span>
-          <span class="chip">For You + Following</span><span class="chip">No refresh</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="frame frame--browser mockfeed">
-          <span class="dots"><i></i><i></i><i></i></span>
-          <span class="url">glowwww.app/home</span>
-          <div class="livepost" id="livepost">
-            <div class="row">
-              <div class="av">T</div>
-              <div><div class="nm">tornadog</div><div class="tm">just now</div></div>
-              <div class="live"><span class="dot"></span>LIVE</div>
-            </div>
-            <div class="bd">shipped real-time posts today. it just appears. no refresh, no algorithm deciding if you get seen. 🌩️</div>
-          </div>
-          <img class="shot" src="/launch/assets/shots/feed.png" alt="Glowwww feed">
-          <div class="frame__glow"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AI CHAT — marquee: talks, codes, builds (real live render) -->
-<section class="section">
+<!-- AI AGENT — lead with the differentiator -->
+<section class="section proof-band">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-chat"/></svg></span>AI Chat</span>
-      <h2>Talks. Codes. Builds.</h2>
-      <p>A complete AI workspace — not a basic chatbot. Ask for something real, watch it write the code, run it, and render the result in the same place.</p>
-    </div>
-    <div class="reveal d1" id="aiworkMount">
-      <div class="aiwork">
-        <div class="aiwork__code">
-          <div class="aiwork__bar"><span class="g"></span> dashboard.html<span class="run" id="runBtn">▶ Run</span></div>
-          <pre id="codePane"></pre>
-        </div>
-        <div class="aiwork__prev">
-          <div class="aiwork__prevbar">Live Preview <span class="live" id="prevLive"><span class="d"></span>rendering</span></div>
-          <iframe id="previewFrame" title="Live preview" sandbox="allow-scripts"></iframe>
-        </div>
-        <div class="aiwork__prompt"><span>You:</span> <span class="u" id="promptEcho"></span></div>
-      </div>
-    </div>
-    <div class="chips reveal d2 center" style="justify-content:center;margin-top:26px">
-      <span class="chip">Voice + hands-free</span><span class="chip">Interruptible replies</span>
-      <span class="chip">Markdown · tables · math</span><span class="chip">Syntax highlighting</span>
-      <span class="chip">Code execution</span><span class="chip">Image understanding</span>
-      <span class="chip">Attachments · documents</span><span class="chip">Interactive artifacts</span>
-      <span class="chip">Data visualizations</span><span class="chip">Local Gemma inference</span>
-      <span class="chip">Continues across devices</span>
-    </div>
-  </div>
-</section>
-
-<!-- VOICE -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-mic"/></svg></span>Voice</span>
-        <h2>Just say it.</h2>
-        <p class="lede">Full hands-free voice conversations — interruptible, with multiple TTS voices and real-time speed control. Talk to Glowwww like a person, and change how it sounds mid-sentence.</p>
-        <div class="chips">
-          <span class="chip">Ava · Emma · Jenny · Aria · Andrew</span><span class="chip">Hands-free mode</span>
-          <span class="chip">Interruptible</span><span class="chip">Speed 0.85–1.3×</span>
-          <span class="chip">Real-time tone changes</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="frame frame--browser" id="voiceDemo">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">AI Chat · voice mode</span>
-          <video src="/launch/assets/footage/voice_expanded.mp4" muted loop playsinline autoplay style="width:100%;display:block"></video>
-          <div class="frame__glow"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOL CALL SUPPORT -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature rev">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-tools"/></svg></span>Tool calls</span>
-        <h2>AI that ships.</h2>
-        <p class="lede">Glowwww's AI invokes tools to search, create, navigate, analyse and act on your behalf — with a visible execution timeline so you always see what it did.</p>
-        <div class="chips">
-          <span class="chip">Search</span><span class="chip">Create</span><span class="chip">Navigate</span>
-          <span class="chip">Analyse</span><span class="chip">Verify</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="toolflow" id="toolflow">
-          <div class="toolstep"><span class="n">1</span><div><div class="tt">Understand request</div><div class="ts">“Post my weekly recap and pin the top comment.”</div></div><span class="stat">parsed</span></div>
-          <div class="toolstep"><span class="n">2</span><div><div class="tt">Choose tool</div><div class="ts">create_post · pin_comment</div></div><span class="stat">selected</span></div>
-          <div class="toolstep"><span class="n">3</span><div><div class="tt">Perform action</div><div class="ts">Composing draft, attaching media…</div></div><span class="stat">running</span></div>
-          <div class="toolstep"><span class="n">4</span><div><div class="tt">Check the result</div><div class="ts">Post visible in feed · comment pinned?</div></div><span class="stat">verifying</span></div>
-          <div class="toolstep"><span class="n">5</span><div><div class="tt">Report verified completion</div><div class="ts">Done — recap is live, top comment pinned.</div></div><span class="stat">verified</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ARTIFACT CANVAS -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-grid"/></svg></span>Artifact Canvas</span>
-        <h2>Render, iterate, ship.</h2>
-        <p class="lede">Generate documents, boards, prototypes, interfaces and diagrams inside a shared canvas — with AI chat right beside the artifact and full version history.</p>
-        <div class="chips">
-          <span class="chip">Resizable canvas</span><span class="chip">Live preview</span>
-          <span class="chip">Version history</span><span class="chip">Direct manipulation</span>
-          <span class="chip">Code + visual editing</span><span class="chip">Export</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="frame frame--browser" id="artifactDemo">
-          <span class="dots"><i></i><i></i><i></i></span>
-          <span class="url">glowwww.app/ai · artifact</span>
-          <img class="shot" src="/launch/assets/shots/aichat-html-history.png" alt="Artifact canvas with live preview">
-          <div class="frame__glow"></div>
-        </div>
-        <div class="chips" style="margin-top:12px;justify-content:center">
-          <span class="chip">v1</span><span class="chip">v2</span><span class="chip" style="border-color:rgba(229,57,53,.4);color:var(--accent)">v3 · current</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- @AI MENTIONS -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature rev">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-at"/></svg></span>@ai mentions</span>
-        <h2>Real-time AI<br>in every thread.</h2>
-        <p class="lede">Tag <b style="color:var(--accent)">@ai</b> in any post or comment and get a streaming reply right inside the conversation — context-aware, and back in under a second.</p>
-        <div class="chips">
-          <span class="chip">Dedicated mention button</span><span class="chip">Character-by-character</span>
-          <span class="chip">Context from the thread</span><span class="chip">Gemma-based</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="frame frame--browser">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">post · comments · @ai</span>
-          <img class="shot" id="mentionSeq" src="/recordings/02-comment-ai-mention/frame-00000.jpg" alt="@ai mention, streaming reply">
-          <div class="frame__glow"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AI AGENT MODE — the largest section -->
-<section class="section" style="background:linear-gradient(180deg,transparent,rgba(229,57,53,.03),transparent)">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-agent"/></svg></span>AI Agent Mode</span>
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-agent"/></svg></span>The proof</span>
       <h2>Your AI has hands.</h2>
-      <p>Voice-activated, screen-aware, and able to navigate the app and the web for you — open notifications, draft replies, play music, fill forms, scrape data, automate a browser. And it <b style="color:var(--text)">verifies</b> before it claims success.</p>
+      <p>Not a chatbot tab. An agent that navigates the app, acts, then <b style="color:var(--text)">verifies</b> app state before it claims success. Still early — hallucinations happen; verification catches many of them.</p>
     </div>
 
     <div class="feature reveal d1" style="align-items:stretch">
@@ -432,27 +296,23 @@
         </div>
       </div>
       <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
-        <h3 style="font-size:24px;font-weight:600;margin-bottom:12px">It doesn't answer — it acts. And it never claims blind.</h3>
-        <p class="lede">The agent opens notifications, performs the action, then <b style="color:var(--text)">inspects the resulting app state</b> — checking whether the unread badge actually disappeared — before it ever reports “done.”</p>
+        <h3 class="feature-h3">It doesn’t answer — it acts.</h3>
+        <p class="lede">Open notifications, mark read, draft a reply, play music, drive a browser — then inspect whether the UI actually changed.</p>
         <div class="chips">
-          <span class="chip">Voice activation</span><span class="chip">Screen awareness</span>
-          <span class="chip">App navigation</span><span class="chip">Draft & publish (with confirm)</span>
-          <span class="chip">Search w/ source credit</span><span class="chip">Dark / light toggle</span>
-          <span class="chip">Play music</span><span class="chip">Fill forms · scrape</span>
-          <span class="chip">Playwright browser automation</span><span class="chip">Live browser streamed in chat</span>
+          <span class="chip">Voice</span><span class="chip">Screen-aware</span><span class="chip">Verifies first</span>
         </div>
       </div>
     </div>
 
-    <div class="feature reveal d2 mt" style="margin-top:40px">
+    <div class="feature reveal d2 mt-lg">
       <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
-        <h3 style="font-size:22px;font-weight:600;margin-bottom:10px">Watch it navigate the real web.</h3>
-        <p class="lede">“Play our song on YouTube.” The agent drives a real browser — streamed live inside AI Chat — and lands on playback. No copy-paste, no leaving the app.</p>
+        <h3 class="feature-h3">Real web, inside the app.</h3>
+        <p class="lede">“Play our song on YouTube.” A live browser stream — no copy-paste, no leaving Glowwww.</p>
       </div>
       <div class="feature__demo">
         <div class="frame frame--browser">
           <span class="dots"><i></i><i></i><i></i></span><span class="url">agent · in-app browser</span>
-          <video src="/launch/assets/footage/agent-youtube.mp4" muted loop playsinline autoplay style="width:100%;display:block"></video>
+          <video class="lazy-vid" src="/launch/assets/footage/agent-youtube.mp4" muted loop playsinline preload="none" style="width:100%;display:block"></video>
           <div class="frame__glow"></div>
         </div>
       </div>
@@ -460,293 +320,244 @@
   </div>
 </section>
 
-<!-- AI STUDIO -->
+<!-- @AI + AI workspace -->
 <section class="section">
   <div class="wrap">
     <div class="feature rev">
       <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-studio"/></svg></span>AI Studio</span>
-        <h2>Analyse your signal.</h2>
-        <p class="lede">Click the Glowwww icon on any post for instant AI analysis — engagement, tone, hooks, and creator-focused recommendations you can actually act on.</p>
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-at"/></svg></span>@ai in threads</span>
+        <h2>AI in the conversation.</h2>
+        <p class="lede">Tag <b style="color:var(--accent)">@ai</b> in any post or comment — streaming reply in the thread, context-aware, real time.</p>
         <div class="chips">
-          <span class="chip">Engagement breakdown</span><span class="chip">Tone analysis</span>
-          <span class="chip">Hook feedback</span><span class="chip">Reach suggestions</span>
-          <span class="chip">Audience patterns</span>
+          <span class="chip">One-tap mention</span><span class="chip">Streams live</span><span class="chip">Thread context</span>
         </div>
       </div>
       <div class="feature__demo reveal d2">
-        <div class="studio" id="studio">
-          <h4>◎ Post analysis</h4>
-          <div class="sub">“shipped real-time posts today…”</div>
-          <div class="metric"><div class="top"><b>Engagement</b><span>strong · 8.4%</span></div><div class="bar"><i data-w="84%" style="background:linear-gradient(90deg,#ef4444,#f87171)"></i></div></div>
-          <div class="metric"><div class="top"><b>Hook strength</b><span>good</span></div><div class="bar"><i data-w="72%" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></i></div></div>
-          <div class="metric"><div class="top"><b>Tone · authentic</b><span>90%</span></div><div class="bar"><i data-w="90%" style="background:linear-gradient(90deg,#22c55e,#4ade80)"></i></div></div>
-          <div class="metric"><div class="top"><b>Estimated reach lift</b><span>+31%</span></div><div class="bar"><i data-w="63%" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc)"></i></div></div>
-          <div class="insight"><b>Suggestion:</b> lead with the outcome, not the tool. Try “It just appears — no refresh” as the first line to lift the hook.</div>
+        <div class="frame frame--browser">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">post · comments · @ai</span>
+          <img class="shot" id="mentionSeq" src="/recordings/02-comment-ai-mention/frame-00000.jpg" alt="@ai mention, streaming reply" loading="lazy" decoding="async">
+          <div class="frame__glow"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==== CAMPAIGN INTERSTITIAL: your-stage ==== -->
-<section class="interstitial" data-inter>
-  <img src="/launch/assets/campaign/your-stage.png" alt="" style="object-position:26% center">
-  <div class="interstitial__txt reveal">
-    <span class="k">For creators</span>
-    <h3>The stage was always yours.</h3>
-    <p>Capture, edit, and publish without ever leaving the app.</p>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-chat"/></svg></span>AI workspace</span>
+      <h2>Talks. Codes. Builds.</h2>
+      <p>Ask for something real — watch it write code, run it, and render the result. Voice mode when typing slows you down.</p>
+    </div>
+    <div class="reveal d1" id="aiworkMount">
+      <div class="aiwork">
+        <div class="aiwork__code">
+          <div class="aiwork__bar"><span class="g"></span> dashboard.html<span class="run" id="runBtn">▶ Run</span></div>
+          <pre id="codePane"></pre>
+        </div>
+        <div class="aiwork__prev">
+          <div class="aiwork__prevbar">Live Preview <span class="live" id="prevLive"><span class="d"></span>rendering</span></div>
+          <iframe id="previewFrame" title="Live preview" sandbox="allow-scripts"></iframe>
+        </div>
+        <div class="aiwork__prompt"><span>You:</span> <span class="u" id="promptEcho"></span></div>
+      </div>
+    </div>
+    <div class="chips reveal d2 center chips--tight">
+      <span class="chip">Code + live preview</span><span class="chip">Voice</span><span class="chip">On-device when possible</span>
+    </div>
+    <div class="feature reveal d2 mt-lg">
+      <div class="feature__demo">
+        <div class="frame frame--browser" id="voiceDemo">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">AI Chat · voice mode</span>
+          <video class="lazy-vid" src="/launch/assets/footage/voice_expanded.mp4" muted loop playsinline preload="none" style="width:100%;display:block"></video>
+          <div class="frame__glow"></div>
+        </div>
+      </div>
+      <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 class="feature-h3">Just say it.</h3>
+        <p class="lede">Hands-free voice with multiple TTS voices. Interrupt anytime.</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ==================== PRODUCT ==================== -->
+<div id="product"></div>
 <div id="create"></div>
 
-<!-- CLIPS -->
+<!-- SOCIAL + CREATE (product) -->
 <section class="section">
   <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-bolt"/></svg></span>Product</span>
+      <h2>Feed. Create. Ship.</h2>
+      <p>Real-time social and a real editor — without five app switches.</p>
+    </div>
+
     <div class="feature">
       <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-play"/></svg></span>Clips</span>
-        <h2>Momentum,<br>not loops.</h2>
-        <p class="lede">Vertical short-form built for creation, discovery and momentum — not endless passive scrolling. Capture, trim, publish, and swipe.</p>
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-bolt"/></svg></span>Real-time social</span>
+        <h2>No lag.<br>No algorithm jail.</h2>
+        <p class="lede">Posts land instantly. Following is following. You’re not waiting for a black-box ranker to decide if you exist.</p>
         <div class="chips">
-          <span class="chip">Vertical short-form</span><span class="chip">Native playback</span>
-          <span class="chip">Gesture navigation</span><span class="chip">Built for momentum</span>
+          <span class="chip">Instant posts</span><span class="chip">Following feed</span><span class="chip">Clips</span>
         </div>
+      </div>
+      <div class="feature__demo reveal d2">
+        <div class="frame frame--browser mockfeed">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="url">glowwww.app/home</span>
+          <div class="livepost" id="livepost">
+            <div class="row">
+              <div class="av">T</div>
+              <div><div class="nm">tornadog</div><div class="tm">just now</div></div>
+              <div class="live"><span class="dot"></span>LIVE</div>
+            </div>
+            <div class="bd">shipped real-time posts today. it just appears. no refresh, no algorithm deciding if you get seen. 🌩️</div>
+          </div>
+          <img class="shot" src="/launch/assets/shots/feed.png" alt="Glowwww feed" loading="lazy" decoding="async">
+          <div class="frame__glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature rev mt-lg">
+      <div class="feature__copy reveal">
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-scissors"/></svg></span>Editor + clips</span>
+        <h2>Capture → polish → publish.</h2>
+        <p class="lede">Timeline editor, captions, effects, and vertical clips in the same place you post from.</p>
+        <div class="chips">
+          <span class="chip">Multi-track timeline</span><span class="chip">On-device captions</span><span class="chip">Effects</span>
+        </div>
+      </div>
+      <div class="feature__demo reveal d2">
+        <div class="frame frame--browser">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/editor</span>
+          <img class="shot" src="/launch/assets/shots/editor.png" alt="Glowwww video editor" loading="lazy" decoding="async">
+          <div class="frame__glow"></div>
+        </div>
+        <div class="frame frame--browser mt">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">editor · live</span>
+          <video class="lazy-vid" src="/launch/assets/footage/editor-a.mp4" muted loop playsinline preload="none" style="width:100%;display:block"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature mt-lg">
+      <div class="feature__copy reveal">
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-play"/></svg></span>Clips</span>
+        <h2>Momentum, not loops.</h2>
+        <p class="lede">Vertical short-form for creation and discovery — swipe native, not endless passive sludge.</p>
       </div>
       <div class="feature__demo reveal d2">
         <div class="phone">
           <div class="phone__notch"></div>
           <div class="phone__screen">
-            <video src="/launch/assets/footage/clips.mp4" muted loop playsinline autoplay style="width:100%;height:100%;object-fit:contain;background:#000"></video>
+            <video class="lazy-vid" src="/launch/assets/footage/clips.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:contain;background:#000"></video>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- IMAGE & VIDEO EDITOR -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-scissors"/></svg></span>Image &amp; Video Editor</span>
-      <h2>One takeoff, one workflow.</h2>
-      <p>Crop, grade, polish, edit and publish photos or videos without ever leaving Glowwww. A real timeline — multiple tracks, frame-by-frame, speed, music, text, filters.</p>
-    </div>
-    <div class="feature reveal d1">
-      <div class="feature__demo">
+    <div class="feature rev mt-lg">
+      <div class="feature__copy reveal">
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-pen"/></svg></span>Drafts &amp; schedule</span>
+        <h2>Write when it hits.</h2>
+        <p class="lede">Save drafts and schedule for when your audience is awake — built in.</p>
+      </div>
+      <div class="feature__demo reveal d2">
         <div class="frame frame--browser">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/editor</span>
-          <img class="shot" src="/launch/assets/shots/editor.png" alt="Glowwww video editor timeline">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/create · schedule</span>
+          <img class="shot" src="/launch/assets/shots/create-scheduler.png" alt="Post scheduler" loading="lazy" decoding="async">
           <div class="frame__glow"></div>
         </div>
       </div>
-      <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
-        <div class="chips">
-          <span class="chip">Trim &amp; merge</span><span class="chip">Multiple tracks</span><span class="chip">Timeline controls</span>
-          <span class="chip">Frame-by-frame</span><span class="chip">Speed adjustment</span><span class="chip">Background music</span>
-          <span class="chip">Text overlays</span><span class="chip">Filters</span><span class="chip">Crop &amp; resize</span>
-          <span class="chip">Volume mixing</span><span class="chip">Real-time previews</span><span class="chip">Drag-to-reorder carousel</span>
-          <span class="chip">Batch editing</span><span class="chip">Inline while posting</span>
-        </div>
-        <div class="frame frame--browser mt">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">auto-captions · Whisper on-device</span>
-          <video src="/launch/assets/footage/editor-a.mp4" muted loop playsinline autoplay style="width:100%;display:block"></video>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
-
-<!-- MAGIC ERASER -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature rev">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-spark"/></svg></span>Magic Eraser</span>
-        <h2>Remove what should<br>not have made the cut.</h2>
-        <p class="lede">A real, technically-grounded workflow inside the video editor — not a fake one-click effect. Track a person, object or text across frames and remove it, with a live preview while the video plays.</p>
-        <div class="chips">
-          <span class="chip">Background blur</span><span class="chip">Selective blur</span><span class="chip">Pixelation</span>
-          <span class="chip">Person removal</span><span class="chip">Text removal</span><span class="chip">Object removal</span>
-          <span class="chip">Mask tracking</span><span class="chip">Before / after</span><span class="chip">Live while playing</span>
-        </div>
-        <p class="lede mt" style="font-size:14px">Drag the handle → see the mask applied. The <b style="color:var(--accent)">PERSON · TRACKED</b> box follows the subject across the clip.</p>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="ba" id="ba">
-          <img class="before" src="/launch/assets/campaign/where-you-belong.png" alt="before">
-          <img class="after" src="/launch/assets/campaign/where-you-belong.png" alt="after" style="filter:blur(9px) brightness(.85) saturate(.7)">
-          <div class="track"><span class="tag">PERSON · TRACKED</span></div>
-          <span class="lab b">Before</span><span class="lab a">Blur applied</span>
-          <div class="handle" id="baHandle"><div class="grip">⇔</div></div>
-        </div>
-        <div class="frame frame--browser mt">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">pixelate · real-time preview</span>
-          <video src="/launch/assets/footage/editor-b.mp4" muted loop playsinline autoplay style="width:100%;display:block"></video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==== INTERSTITIAL: still-here ==== -->
-<section class="interstitial" data-inter>
-  <img src="/launch/assets/campaign/still-here.png" alt="" style="object-position:70% center">
-  <div class="interstitial__txt reveal">
-    <span class="k">Private by default</span>
-    <h3>Still here.<br>Just for you two.</h3>
-    <p>Conversations protected end-to-end. Only your eyes.</p>
   </div>
 </section>
 
 <div id="social"></div>
 
-<!-- E2E MESSAGING -->
-<section class="section">
+<!-- PRIVACY / E2E -->
+<section class="section" id="privacy">
   <div class="wrap">
-    <div class="feature">
+    <div class="sec-head reveal">
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-lock"/></svg></span>Privacy</span>
+      <h2>Really E2E. Not theatre.</h2>
+      <p>Direct messages are end-to-end encrypted. AI runs on-device where possible. Early product — here’s the honest split.</p>
+    </div>
+
+    <div class="trust-grid reveal d1">
+      <div class="trust-card">
+        <h4>Encrypted DMs</h4>
+        <p>Message bodies are not readable as cleartext on the server. Optional key backup stays under your control.</p>
+      </div>
+      <div class="trust-card">
+        <h4>What AI can see</h4>
+        <p>Prompts, thread context, and agent screen context you invoke. Don’t put secrets in AI chat you wouldn’t give any model.</p>
+      </div>
+      <div class="trust-card">
+        <h4>Public by design</h4>
+        <p>Posts, profiles, and communities you publish are public. That’s the product — not a privacy leak.</p>
+      </div>
+      <div class="trust-card">
+        <h4>Early &amp; honest</h4>
+        <p>~69 users. Solo builder. Agent can still hallucinate; verification reduces (doesn’t erase) that risk.</p>
+      </div>
+    </div>
+
+    <div class="feature mt-lg">
       <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-lock"/></svg></span>Encrypted messaging</span>
+        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-lock"/></svg></span>Messaging</span>
         <h2>Your eyes only.</h2>
-        <p class="lede">Private conversations protected end-to-end, with a native-feeling chat UI — audio messages, inline YouTube, media, reactions and real-time delivery.</p>
+        <p class="lede">Native chat feel — media, voice notes, reactions — on private threads.</p>
         <div class="chips">
-          <span class="chip">Audio messages</span><span class="chip">Inline YouTube</span><span class="chip">Images &amp; media</span>
-          <span class="chip">Real-time delivery</span><span class="chip">Reactions</span><span class="chip">Optional key backup</span>
+          <span class="chip">Encrypted</span><span class="chip">Voice notes</span><span class="chip">Real-time</span>
         </div>
+        <p class="mt"><a class="btn btn--ghost" href="/privacy" style="padding:10px 18px;font-size:13px">Full privacy note →</a></p>
       </div>
       <div class="feature__demo reveal d2">
         <div class="frame frame--browser">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/messages · 🔒 E2E</span>
-          <img class="shot" id="msgSeq" src="/recordings/06-message-tornadog-typing/frame-00000.jpg" alt="Encrypted messaging">
+          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/messages</span>
+          <img class="shot" id="msgSeq" src="/recordings/06-message-tornadog-typing/frame-00000.jpg" alt="Encrypted messaging" loading="lazy" decoding="async">
           <div class="frame__glow"></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ==== INTERSTITIAL: where-you-belong ==== -->
-<section class="interstitial" data-inter>
-  <img src="/launch/assets/campaign/where-you-belong.png" alt="" style="object-position:32% center">
-  <div class="interstitial__txt reveal">
-    <span class="k">Communities</span>
-    <h3>Where you belong.</h3>
-    <p>Crews, niches, movements — feeds built on shared signal, not noise.</p>
-  </div>
-</section>
-
-<!-- COMMUNITIES + MODERATION (paired) -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature">
+    <div class="feature rev mt-lg">
       <div class="feature__copy reveal">
         <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-community"/></svg></span>Communities</span>
         <h2>Crew over crowd.</h2>
-        <p class="lede">Spaces for crews, niches, interests and movements — with community identity, roles, moderation controls, posts and live activity.</p>
-        <div class="chips"><span class="chip">Identity</span><span class="chip">Roles</span><span class="chip">Moderation controls</span><span class="chip">Live activity</span></div>
+        <p class="lede">Spaces for niches and movements — roles, rules, live activity. Signal without surveillance theatre.</p>
       </div>
       <div class="feature__demo reveal d2">
         <div class="frame frame--browser">
           <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/communities</span>
-          <img class="shot" src="/launch/assets/shots/explore.png" alt="Communities">
+          <img class="shot" src="/launch/assets/shots/communities.png" alt="Communities" loading="lazy" decoding="async" onerror="this.src='/launch/assets/shots/explore.png'">
           <div class="frame__glow"></div>
         </div>
-      </div>
-    </div>
-
-    <div class="feature rev" style="margin-top:56px">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-shield"/></svg></span>Real-time moderation</span>
-        <h2>Peace, not patrol.</h2>
-        <p class="lede">Live moderation signals keep communities healthy without turning the platform into a surveillance machine — transparent actions, human review.</p>
-        <div class="chips"><span class="chip">Toxicity signals</span><span class="chip">Spam detection</span><span class="chip">Escalation</span><span class="chip">Community rules</span><span class="chip">Human review</span><span class="chip">Transparent actions</span></div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="studio">
-          <h4>◎ Live moderation signal</h4><div class="sub">community · #builders</div>
-          <div class="metric"><div class="top"><b>Toxicity</b><span style="color:var(--green)">low</span></div><div class="bar"><i data-w="12%" style="background:linear-gradient(90deg,#22c55e,#4ade80)"></i></div></div>
-          <div class="metric"><div class="top"><b>Spam risk</b><span style="color:var(--green)">clear</span></div><div class="bar"><i data-w="7%" style="background:linear-gradient(90deg,#22c55e,#4ade80)"></i></div></div>
-          <div class="metric"><div class="top"><b>Needs human review</b><span style="color:var(--amber)">1 item</span></div><div class="bar"><i data-w="20%" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></i></div></div>
-          <div class="insight" style="background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.22)">Auto-actions are logged and reversible. Nothing hidden.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DRAFTS + DASHBOARD -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature rev">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-pen"/></svg></span>Drafts &amp; scheduler</span>
-        <h2>Write when it hits.</h2>
-        <p class="lede">Save unfinished ideas the moment they land, and schedule posts for when your audience is actually awake. Calendar + drafts, built in.</p>
-        <div class="chips"><span class="chip">Save drafts</span><span class="chip">Schedule</span><span class="chip">Calendar</span><span class="chip">Best-time hints</span></div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="frame frame--browser">
-          <span class="dots"><i></i><i></i><i></i></span><span class="url">glowwww.app/create · schedule</span>
-          <img class="shot" src="/launch/assets/shots/create-scheduler.png" alt="Scheduler">
-          <div class="frame__glow"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature" style="margin-top:56px">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-chart"/></svg></span>Creator dashboard</span>
-        <h2>Know your reach.</h2>
-        <p class="lede">Real-time analytics across views, engagement, audience growth and individual post performance. Clear and restrained — no wall of meaningless metrics.</p>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="dash" id="dash">
-          <div class="dashcard">
-            <div class="kpil">Views · 7d</div><div class="kpi">128.4k</div><div class="delta">▲ 22% vs last week</div>
-            <div class="dashbars" id="dashbars">
-              <i data-h="40%"></i><i data-h="55%"></i><i data-h="48%"></i><i data-h="70%"></i><i data-h="62%"></i><i data-h="85%"></i><i data-h="100%"></i>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div class="dashcard"><div class="kpil">Followers</div><div class="kpi">9,204</div><div class="delta">▲ 318 this week</div></div>
-            <div class="dashcard"><div class="kpil">Engagement</div><div class="kpi">8.4%</div><div class="delta">▲ 1.2pts</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- POLISHED UI / PWA -->
-<section class="section">
-  <div class="wrap">
-    <div class="feature">
-      <div class="feature__copy reveal">
-        <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-star"/></svg></span>Polished UI &amp; PWA</span>
-        <h2>Feels like an app.</h2>
-        <p class="lede">Native-feeling gestures, haptic-like feedback, smooth sheets and micro-interactions, offline capability, and full install on mobile and desktop.</p>
-        <div class="chips">
-          <span class="chip">Swipe gestures</span><span class="chip">Drag interactions</span><span class="chip">Bottom navigation</span>
-          <span class="chip">Smooth sheets &amp; modals</span><span class="chip">Responsive</span><span class="chip">Offline state</span>
-          <span class="chip">Install prompt</span><span class="chip">Home-screen icon</span>
-        </div>
-      </div>
-      <div class="feature__demo reveal d2">
-        <div class="phone"><div class="phone__notch"></div><div class="phone__screen"><img id="pwaClip" src="/launch/assets/shots/clips1.png" alt="Glowwww native UI"></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PWA INSTALL GUIDE -->
-<section class="section" id="install" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.015),transparent)">
+<section class="section" id="install">
   <div class="wrap pwa">
     <div class="sec-head reveal">
       <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-download"/></svg></span>Install</span>
-      <h2>Install the internet like an app.</h2>
-      <p>No app store. Add Glowwww to your home screen and it launches full-screen, with its own icon.</p>
+      <h2>Install like an app.</h2>
+      <p>No store. One home-screen icon. Full-screen PWA — Android/Chrome often one tap; iOS uses Share → Add to Home Screen.</p>
+    </div>
+    <div class="feature reveal d1" style="margin-bottom:40px">
+      <div class="feature__copy" style="display:flex;flex-direction:column;justify-content:center">
+        <p class="lede">Feels native: gestures, sheets, home-screen launch. Updates when you open it.</p>
+      </div>
+      <div class="feature__demo">
+        <div class="phone"><div class="phone__notch"></div><div class="phone__screen"><img id="pwaClip" src="/launch/assets/shots/clips1.png" alt="Glowwww native UI" loading="lazy" decoding="async"></div></div>
+      </div>
     </div>
     <div class="tabs reveal d1" id="pwaTabs">
       <div class="tab on" data-tab="ios">iOS · Safari</div>
@@ -778,7 +589,7 @@
 
     <div class="pwapanel reveal d2" data-panel="android">
       <ol class="steps" data-steps>
-        <li><div><div class="st">Open Glowwww in Chrome</div><div class="sd">Head to glowwww.app.</div></div></li>
+        <li><div><div class="st">Open Glowwww in Chrome</div><div class="sd">Go to glowwww.vercel.app on your phone.</div></div></li>
         <li><div><div class="st">Tap the browser menu</div><div class="sd">The three dots, top-right.</div></div></li>
         <li><div><div class="st">Select “Install app”</div><div class="sd">Or “Add to Home Screen”.</div></div></li>
         <li><div><div class="st">Confirm installation</div><div class="sd">Tap Install.</div></div></li>
@@ -803,7 +614,10 @@
         </div>
       </div>
     </div>
-    <div class="center mt reveal"><a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Install Glowwww →</a></div>
+    <div class="center mt reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <button class="btn btn--primary" type="button" id="installOneTap">Install in one tap</button>
+      <a class="btn btn--ghost" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open Glowwww →</a>
+    </div>
   </div>
 </section>
 
@@ -813,19 +627,24 @@
     <div class="reveal">
       <span class="tagchip"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-moon"/></svg></span>The build</span>
       <h2>No team was available.<br>So Tornado built the team<br><span class="em">into the product</span>.</h2>
-      <p>Glowwww was built by one solo college student — from scratch, over five to six months, with no funding and no team.</p>
-      <p>No expensive proprietary-model dependency. Open tools and locally-hosted AI where possible. Built through late nights, failed experiments, rewrites, and direct user feedback.</p>
+      <p>Glowwww was built alone by one college student — from scratch, over five to six months, with no funding and no team.</p>
+      <p>No expensive proprietary-model dependency. Open tools and locally-hosted AI where possible. Built through late nights, failed experiments, rewrites, and direct feedback from early users.</p>
       <div class="facts">
-        <div class="f"><b>1</b><span>Builder</span></div>
-        <div class="f"><b>5–6 mo</b><span>From scratch</span></div>
+        <div class="f"><b>1</b><span>Solo builder</span></div>
+        <div class="f"><b>~69</b><span>Early users</span></div>
         <div class="f"><b>$0</b><span>Funding</span></div>
-        <div class="f"><b>Local</b><span>AI where possible</span></div>
+        <div class="f"><b>5–6 mo</b><span>From scratch</span></div>
       </div>
+      <p class="story__gh" style="margin-top:20px">
+        <a class="btn btn--ghost" href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer" style="padding:10px 18px;font-size:13px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.584 2 12.253c0 4.526 2.865 8.363 6.839 9.718.5.094.682-.222.682-.486 0-.24-.009-.875-.014-1.717-2.782.618-3.369-1.372-3.369-1.372-.454-1.18-1.11-1.494-1.11-1.494-.908-.635.069-.622.069-.622 1.003.072 1.531 1.057 1.531 1.057.892 1.564 2.341 1.112 2.91.85.092-.66.35-1.112.636-1.367-2.22-.259-4.555-1.14-4.555-5.073 0-1.12.39-2.037 1.029-2.755-.103-.26-.446-1.302.098-2.713 0 0 .84-.275 2.75 1.052A9.35 9.35 0 0 1 12 6.844c.85.004 1.705.118 2.504.346 1.909-1.327 2.747-1.052 2.747-1.052.546 1.411.203 2.453.1 2.713.64.718 1.028 1.635 1.028 2.755 0 3.943-2.339 4.811-4.566 5.065.359.317.679.943.679 1.902 0 1.373-.012 2.48-.012 2.817 0 .267.18.586.688.486A10.02 10.02 0 0 0 22 12.253C22 6.584 17.523 2 12 2z"/></svg>
+          github.com/Tornadoguy69
+        </a>
+      </p>
     </div>
     <div class="reveal d2">
       <div class="story__img">
-        <img src="/launch/assets/campaign/still-here.png" alt="">
-        <div class="story__cap">// 03:14 · local GPU · one more rewrite</div>
+        <img src="/launch/assets/campaign/still-here.png" alt="Glowwww — still building">
       </div>
     </div>
   </div>
@@ -852,70 +671,56 @@
 <section class="section" id="blog">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-pen"/></svg></span>Blog &amp; updates</span>
-      <h2>News from Glowwww.</h2>
-      <p>Notes from a solo build — what shipped, what surprised me, and what's coming next.</p>
+      <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-pen"/></svg></span>Blog</span>
+      <h2>Notes from the build.</h2>
+      <p>What shipped, what broke, what’s next — from one builder.</p>
     </div>
-    <div class="reveal d1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
-      <a href="/blog/i-built-glowwww-as-a-hobby" class="frame" style="display:block;padding:24px;text-decoration:none">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:10px">Product · Jun 2026</div>
-        <h3 style="font-size:20px;font-weight:600;margin-bottom:10px;color:var(--text);line-height:1.25">I built Glowwww as a hobby. I never thought it would become this.</h3>
-        <p style="font-size:14px;color:var(--dim)">No team. No funding. Just code and curiosity — and features that started working in ways that surprised even the person who built them.</p>
-        <span style="display:inline-block;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px">Read post →</span>
-      </a>
-      <a href="/blog/ai-chat-native-app-tools" class="frame" style="display:block;padding:24px;text-decoration:none">
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:10px">Update · Jun 2026</div>
-        <h3 style="font-size:20px;font-weight:600;margin-bottom:10px;color:var(--text);line-height:1.25">Glowwww AI Chat now uses native app tools — it acts, not just talks</h3>
-        <p style="font-size:14px;color:var(--dim)">It can see your screen, open notifications, messages and profiles, mark things read, and verify the app actually updated before it says it's done.</p>
-        <span style="display:inline-block;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px">Read post →</span>
-      </a>
-    </div>
-    <div class="center mt reveal"><a class="btn btn--ghost" href="/blog">Read the blog →</a></div>
+    <!-- React island: BlogPreviewMount (no .reveal here — empty node never intersects) -->
+    <div id="blogMount" class="blog-mount"></div>
   </div>
 </section>
 
-<!-- TORNADO CORP — every product under the banner -->
-<section class="section" id="tornado" style="background:linear-gradient(180deg,transparent,rgba(229,57,53,.03),transparent)">
+<!-- TORNADO CORP -->
+<section class="section" id="tornado">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tagchip" style="justify-content:center"><span class="ic" aria-hidden="true"><svg class="ic-svg" width="14" height="14"><use href="#gi-grid"/></svg></span>Tornado corp</span>
       <h2>More from the same builder.</h2>
-      <p>Everything here ships under the Tornado banner — one person, several products, no team and no fake demos.</p>
+      <p>Glowwww for people. Afterglow for the universe. One solo builder — live products, no fake demos.</p>
     </div>
 
     <div class="tcorp reveal d1">
       <a class="tcard" href="https://glowwww.vercel.app" target="_blank" rel="noopener">
         <div class="tcard__media">
-          <img src="/launch/assets/shots/feed.png" alt="Glowwww feed" loading="lazy">
+          <img src="/launch/assets/shots/feed.png" alt="Glowwww feed" loading="lazy" decoding="async">
           <span class="tcard__num">01</span>
           <span class="tcard__status"><span class="dot"></span>Live</span>
         </div>
         <div class="tcard__body">
           <h3>Glowwww</h3>
           <span class="tcard__tag">AI-native everything app</span>
-          <p>The app you are on. Social media rebuilt around AI — real-time feeds, on-device intelligence, a creator studio, and end-to-end encrypted messaging.</p>
+          <p>Social media rebuilt around AI — real-time feeds, creator tools, private messaging, and an agent that acts inside the app.</p>
           <div class="chips">
             <span class="chip">Real-time posts</span><span class="chip">AI that acts</span>
-            <span class="chip">Video editor</span><span class="chip">E2E messages</span>
-            <span class="chip">PWA</span>
+            <span class="chip">Editor</span><span class="chip">Private DMs</span>
           </div>
           <span class="tcard__go">Open Glowwww →</span>
         </div>
       </a>
 
-      <a class="tcard" href="https://afterglow-ecru.vercel.app" target="_blank" rel="noopener">
+      <a class="tcard" href="https://afterglow-ecru.vercel.app/site/" target="_blank" rel="noopener">
         <div class="tcard__media">
-          <img src="/launch/assets/campaign/afterglow.jpg" alt="Afterglow — interactive astronomy" loading="lazy">
+          <img src="/launch/assets/campaign/afterglow.jpg" alt="Afterglow — space science you can play with" loading="lazy" decoding="async">
           <span class="tcard__num">02</span>
           <span class="tcard__status"><span class="dot"></span>Live</span>
         </div>
         <div class="tcard__body">
           <h3>Afterglow</h3>
-          <span class="tcard__tag">Physics you can poke at</span>
-          <p>Interactive astronomy where the equations actually run in the browser. Ten topics, from stellar evolution to the multiverse — each page states how confident the field really is.</p>
+          <span class="tcard__tag">Space science you can play with</span>
+          <p>Browser simulations you grab hold of — dark matter, black holes, stars, the Big Bang, exoplanets, and more. Free, no account. Every topic is labelled Established, Active research, or Speculative so “we measured this” never looks like “we’re still guessing.”</p>
           <div class="chips">
-            <span class="chip">10 live simulations</span><span class="chip">Honest confidence labels</span>
-            <span class="chip">52 cited sources</span><span class="chip">Black holes · CMB</span>
+            <span class="chip">10 interactive topics</span><span class="chip">Narrated walkthroughs</span>
+            <span class="chip">Confidence badges</span><span class="chip">No signup</span>
           </div>
           <span class="tcard__go">Open Afterglow →</span>
         </div>
@@ -926,15 +731,20 @@
 
 <!-- FINAL CTA -->
 <section class="finale" id="cta">
-  <img class="bg" src="/launch/assets/campaign/something-real.png" alt="">
+  <img class="bg" src="/launch/assets/campaign/something-real.png" alt="" loading="lazy" decoding="async">
   <div class="finale__in">
-    <span class="eyebrow reveal"><span class="dot"></span>Something real</span>
-    <h2 class="reveal d1">You already know what the other apps want from you.</h2>
-    <p class="reveal d2">Glowwww is being built around what <i>you</i> want from the app.</p>
-    <div class="reveal d3"><a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener" style="font-size:17px;padding:16px 34px">Open Glowwww →</a></div>
-    <div class="sig reveal d4">Built by <b>Tornado</b>. Still building.</div>
+    <span class="eyebrow reveal"><span class="dot"></span>Early access</span>
+    <h2 class="reveal d1">Stop juggling four apps.</h2>
+    <p class="reveal d2">Open free in the browser. Install when you want it on your home screen.</p>
+    <div class="reveal d3 finale__ctas">
+      <a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener" style="font-size:17px;padding:16px 34px">Open Glowwww free →</a>
+      <a class="btn btn--ghost" href="#install" style="font-size:15px;padding:14px 24px">Install as app</a>
+    </div>
+    <div class="sig reveal d4">Built alone by <b>Tornado</b> · ~69 early users · <a href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer">GitHub</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="foot">
   <div class="foot__in">
@@ -942,6 +752,21 @@
       <img class="logo logo--for-dark" src="/launch/assets/brand/logo-dark.png" alt="Glowwww">
       <img class="logo logo--for-light" src="/launch/assets/brand/logo-light.png" alt="" aria-hidden="true">
     </span>
-    <span>Social media, rebuilt around AI. · © 2026 Glowwww</span>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="#proof">Proof</a>
+      <a href="#install">Install</a>
+      <a href="#story">Story</a>
+      <a href="/blog">Blog</a>
+      <a href="/privacy">Privacy</a>
+      <a href="https://github.com/Tornadoguy69" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://glowwww.vercel.app" target="_blank" rel="noopener noreferrer">Open app</a>
+    </nav>
+    <span class="foot__note">Solo-built · ~69 early users · © 2026 Glowwww</span>
   </div>
 </footer>
+
+<!-- sticky mobile CTA -->
+<div class="sticky-cta" id="stickyCta" hidden>
+  <a class="btn btn--primary" href="https://glowwww.vercel.app" target="_blank" rel="noopener">Open free →</a>
+  <a class="btn btn--ghost" href="#install">Install</a>
+</div>

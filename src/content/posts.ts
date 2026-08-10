@@ -13,6 +13,30 @@ export type BlogPost = {
 /** Add new posts at the top — newest first */
 export const blogPosts: BlogPost[] = [
   {
+    slug: "why-i-built-afterglow",
+    title: "Why I built Afterglow — space science you can play with",
+    date: "2026-08-10",
+    category: "company",
+    excerpt:
+      "Documentaries are passive. Textbooks don’t let you turn dark matter off. AI will invent a confident answer. I built Afterglow so you can poke at the universe in your browser — and always know how solid the science actually is.",
+    body: [
+      "I built Afterglow because I was tired of learning about the universe as a spectator.",
+      "You watch a documentary. It looks beautiful. You nod. You forget half of it. Or you open a textbook and the equations sit there like a locked door. Or you ask an AI and it answers like it’s sure — even when the field isn’t.",
+      "I wanted something else: space science you can play with. Free. No account. In the browser. Drag the control, change the number, and watch the picture update for real — not a video of someone else doing it.",
+      "That’s Afterglow: afterglow-ecru.vercel.app",
+      "What it is — Afterglow is a set of interactive astronomy and cosmology topics. You pick a card, press play for a narrated walkthrough that moves the controls while it talks, then take over. Zoom, drag, flip a switch. The simulation responds.",
+      "There are ten topics right now, grouped by how solid the science is — on purpose.",
+      "Things we understand well (Established) — Dark matter (with multiple scenes — including turning that “invisible something” off to watch galaxies misbehave). The life of a star — mass at birth decides almost everything. Black holes — the silhouette, and why a bigger one can be gentler to fall into. Nebulae — why the same cloud looks pink or blue depending on the star next to it. How planets form — dust to worlds and the icy snow line. The expanding universe — every galaxy racing away from every other. The Big Bang — slide through cosmic history and see where evidence stops. Finding exoplanets — watch a star dim by a tiny fraction and feel why we needed space telescopes.",
+      "Still being figured out (Active research) — The little red dots from JWST that nobody expected. Are we alone? — the numbers we actually know versus the ones that can swing the answer wildly.",
+      "Ideas we cannot test yet (Speculative) — The multiverse. Clever theories. Not the same thing as knowledge. Afterglow keeps that separation visible.",
+      "Why the badges matter — Most science content blurs “we measured this” into “someone guessed on a podcast.” I labelled every topic Established, Active research, or Speculative so you never confuse a textbook fact with an open argument or an untestable idea. That honesty is the product as much as the graphics.",
+      "Why I built it next to Glowwww — Glowwww is social, create, private messaging, AI that acts. Afterglow is curiosity without the feed. Same builder (me — Tornado), same rule: no fake demos, no theatre. One is where people meet. One is where the universe becomes something you can touch.",
+      "I didn’t want another wall of text about black holes. I wanted you to feel the expansion, kill the dark matter, watch a transit, and walk away knowing what science is sure about — and what it isn’t.",
+      "If that sounds like your kind of rabbit hole: afterglow-ecru.vercel.app/site/ — free, no signup, works in the browser.",
+      "Built under the Tornado banner. Still building.",
+    ],
+  },
+  {
     slug: "i-built-glowwww-as-a-hobby",
     title: "I built Glowwww as a hobby. I never thought it would become this.",
     date: "2026-06-07",

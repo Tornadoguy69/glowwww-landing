@@ -36,8 +36,8 @@ function centerVis(el) {
 
 const agentSection = $('#agentpanel')?.closest('.section');
 // sections that use AI features → the orb wears its agent eyes over these
-const aiEyeSections = ['#aiworkMount', '#voiceDemo', '#toolflow', '#artifactDemo', '#mentionSeq', '#agentpanel', '#studio']
-  .map(s => $(s)?.closest('.section')).filter(Boolean);
+const aiEyeSections = ['#aiworkMount', '#voiceDemo', '#mentionSeq', '#agentpanel', '#proof']
+  .map(s => $(s)?.closest?.('.section') || $(s)).filter(Boolean);
 const aiVis = () => aiEyeSections.reduce((m, el) => Math.max(m, centerVis(el)), 0);
 
 /* ---- UFO flight: a small orb rings the frame, cloaking over content ----
@@ -185,12 +185,35 @@ if (document.readyState === 'complete') heroIntro();
 else window.addEventListener('load', heroIntro);
 
 /* ============================================================
-   Reveal-on-scroll
+   Reveal-on-scroll (+ stagger chips / facts / cards)
    ============================================================ */
 const revObs = new IntersectionObserver((ents) => {
-  ents.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+  ents.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    // stagger sibling chips / fact tiles inside this reveal
+    const kids = e.target.querySelectorAll('.chip, .facts .f, .upcard, .tcard, .toolstep');
+    kids.forEach((kid, i) => {
+      kid.style.setProperty('--stagger', `${Math.min(i * 45, 540)}ms`);
+      kid.classList.add('stagger-in');
+    });
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
 $$('.reveal').forEach(e => revObs.observe(e));
+
+// Feature blocks + frames float in when the section hits the viewport
+const floatObs = new IntersectionObserver((ents) => {
+  ents.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      floatObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.18, rootMargin: '0px 0px -4% 0px' });
+$$('.feature, .frame, .phone, .aiwork, .agentpanel, .dash, .chatdemo').forEach(el => {
+  el.classList.add('float-in');
+  floatObs.observe(el);
+});
 
 $$('.interstitial').forEach(el => {
   new IntersectionObserver((ents) => {
@@ -213,6 +236,104 @@ function once(el, fn, threshold = 0.3) {
 
 /* ---- real-time live post drops in ---- */
 once($('#livepost'), () => setTimeout(() => $('#livepost').classList.add('show'), 500));
+
+/* ---- lazy videos: play only in view (perf + battery) ---- */
+$$('video.lazy-vid').forEach((vid) => {
+  vid.pause();
+  new IntersectionObserver((ents) => {
+    ents.forEach((e) => {
+      if (e.isIntersecting) {
+        const p = vid.play();
+        if (p && p.catch) p.catch(() => {});
+      } else {
+        // Don't pause while this video is fullscreen
+        const fs = document.fullscreenElement || document.webkitFullscreenElement;
+        if (fs === vid || vid.webkitDisplayingFullscreen) return;
+        vid.pause();
+      }
+    });
+  }, { threshold: 0.35 }).observe(vid);
+});
+
+/* ---- tap any video → fullscreen (no icon, no chrome controls) ---- */
+(function bindVideoFullscreen() {
+  const getFsEl = () =>
+    document.fullscreenElement || document.webkitFullscreenElement || null;
+
+  const isVideoFs = (vid) =>
+    getFsEl() === vid || Boolean(vid.webkitDisplayingFullscreen);
+
+  const enterFs = (vid) => {
+    try {
+      if (typeof vid.requestFullscreen === 'function') {
+        return vid.requestFullscreen();
+      }
+      if (typeof vid.webkitRequestFullscreen === 'function') {
+        return vid.webkitRequestFullscreen();
+      }
+      // iOS Safari native video fullscreen
+      if (typeof vid.webkitEnterFullscreen === 'function') {
+        vid.webkitEnterFullscreen();
+        return Promise.resolve();
+      }
+      if (typeof vid.webkitEnterFullScreen === 'function') {
+        vid.webkitEnterFullScreen();
+        return Promise.resolve();
+      }
+    } catch (e) {}
+    return Promise.resolve();
+  };
+
+  const exitFs = (vid) => {
+    try {
+      if (getFsEl()) {
+        if (document.exitFullscreen) return document.exitFullscreen();
+        if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+      }
+      if (vid && typeof vid.webkitExitFullscreen === 'function') {
+        vid.webkitExitFullscreen();
+      }
+    } catch (e) {}
+    return Promise.resolve();
+  };
+
+  $$('video').forEach((vid) => {
+    vid.classList.add('tap-fs');
+    vid.setAttribute('playsinline', '');
+    // Keep custom UX: no native control bar / no fs button chrome
+    vid.removeAttribute('controls');
+    vid.setAttribute('title', 'Tap for fullscreen');
+    vid.setAttribute('aria-label', (vid.getAttribute('aria-label') || 'Video') + ' — tap for fullscreen');
+
+    vid.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (isVideoFs(vid)) {
+        exitFs(vid);
+        return;
+      }
+      // Ensure playback when entering fullscreen
+      const p = vid.play();
+      if (p && p.catch) p.catch(() => {});
+      enterFs(vid);
+    });
+  });
+})();
+
+/* ---- sticky mobile CTA after hero ---- */
+(() => {
+  const bar = $('#stickyCta');
+  const hero = $('#top');
+  if (!bar || !hero) return;
+  const io = new IntersectionObserver(([e]) => {
+    const show = !e.isIntersecting && window.innerWidth < 820;
+    bar.hidden = !show;
+  }, { threshold: 0.08 });
+  io.observe(hero);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 820) bar.hidden = true;
+  }, { passive: true });
+})();
 
 /* ---- AI Chat: stream code, then run → live render ---- */
 const CODE = [
@@ -419,48 +540,6 @@ once($('#pwaClip'), () => {
 }, 0.2);
 
 /* ============================================================
-   Before / after magic-eraser slider (drag)
-   ============================================================ */
-(function () {
-  const ba = $('#ba'); if (!ba) return;
-  const after = $('.after', ba), handle = $('#baHandle');
-  let auto = true;
-  function setPos(px) {
-    const rect = ba.getBoundingClientRect();
-    let p = clamp01((px - rect.left) / rect.width);
-    after.style.clipPath = `inset(0 0 0 ${p * 100}%)`;
-    handle.style.left = (p * 100) + '%';
-  }
-  function fromEvent(e) {
-    auto = false;
-    const x = (e.touches ? e.touches[0].clientX : e.clientX);
-    setPos(x);
-  }
-  let dragging = false;
-  const down = (e) => { dragging = true; fromEvent(e); };
-  const move = (e) => { if (dragging) { e.preventDefault(); fromEvent(e); } };
-  const up = () => dragging = false;
-  handle.addEventListener('mousedown', down); ba.addEventListener('mousedown', down);
-  window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
-  handle.addEventListener('touchstart', down, { passive: true });
-  window.addEventListener('touchmove', move, { passive: false });
-  window.addEventListener('touchend', up);
-  // gentle auto-sweep until user interacts
-  let t = 0;
-  (function sweep() {
-    if (!__alive) return;
-    if (auto) {
-      t += 0.016;
-      const rect = ba.getBoundingClientRect();
-      const p = 0.5 + Math.sin(t) * 0.32;
-      after.style.clipPath = `inset(0 0 0 ${p * 100}%)`;
-      handle.style.left = (p * 100) + '%';
-    }
-    requestAnimationFrame(sweep);
-  })();
-})();
-
-/* ============================================================
    PWA install tabs + step highlight (click any step to select)
    ============================================================ */
 (function () {
@@ -555,6 +634,44 @@ once($('#pwaClip'), () => {
   }));
 
   once($('#install'), () => animateSteps($('.pwapanel.on')), 0.25);
+
+  // One-tap install from the Install section (uses browser native Add to Home Screen when available)
+  const oneTap = $('#installOneTap');
+  if (oneTap) {
+    oneTap.addEventListener('click', async () => {
+      const req = window.glowwwwRequestInstall;
+      if (typeof req === 'function') {
+        oneTap.disabled = true;
+        const prev = oneTap.textContent;
+        oneTap.textContent = 'Installing…';
+        try {
+          const outcome = await req();
+          if (outcome === 'accepted') {
+            oneTap.textContent = 'Installed ✓';
+            return;
+          }
+          if (outcome === 'dismissed') {
+            oneTap.textContent = prev || 'Install in one tap';
+            oneTap.disabled = false;
+            return;
+          }
+        } catch (e) {}
+        oneTap.disabled = false;
+        oneTap.textContent = prev || 'Install in one tap';
+      }
+      // Fallback: open the matching platform panel with steps (iOS needs Share → Add to Home Screen)
+      const ua = navigator.userAgent.toLowerCase();
+      const isIOS = /iphone|ipad|ipod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const tabName = isIOS ? 'ios' : /android/.test(ua) ? 'android' : 'desktop';
+      const tab = $(`#pwaTabs .tab[data-tab="${tabName}"]`);
+      if (tab) tab.click();
+      const panel = $(`.pwapanel[data-panel="${tabName}"]`);
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        animateSteps(panel);
+      }
+    });
+  }
 })();
 
 /* ============================================================
@@ -597,6 +714,7 @@ let reelStop = null;
   const ui = $('#reelUi');
   const toggleBtn = $('#reelToggle');
   const muteBtn = $('#reelMute');
+  const fsBtn = $('#reelFs');
   const bar = $('#reelBar');
   const fill = $('#reelFill');
   const timeEl = $('#reelTime');
@@ -936,6 +1054,63 @@ let reelStop = null;
     if (muted) { stopVoice(); stopMusic(); }
     else if (playing) { startMusic(); if (curIdx >= 0) playClip(curIdx); }
   }, { signal: sig });
+
+  /* ---- fullscreen film ---- */
+  const fsEnterIcon = fsBtn && fsBtn.querySelector('.reel__fs-enter');
+  const fsExitIcon = fsBtn && fsBtn.querySelector('.reel__fs-exit');
+  const getFsEl = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+  const reqFs = (el) => {
+    if (el.requestFullscreen) return el.requestFullscreen();
+    if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+    return Promise.reject(new Error('fullscreen unsupported'));
+  };
+  const exitFs = () => {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    return Promise.resolve();
+  };
+  const syncFsUi = () => {
+    const on = getFsEl() === stage;
+    stage.classList.toggle('is-fs', on);
+    reel.classList.toggle('is-fs', on);
+    if (fsBtn) {
+      fsBtn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
+      fsBtn.title = on ? 'Exit fullscreen' : 'Fullscreen';
+      if (fsEnterIcon) fsEnterIcon.hidden = on;
+      if (fsExitIcon) fsExitIcon.hidden = !on;
+    }
+  };
+  if (fsBtn) {
+    fsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      try {
+        if (getFsEl() === stage) exitFs();
+        else reqFs(stage).catch(() => {});
+      } catch (err) {}
+    }, { signal: sig });
+  }
+  document.addEventListener('fullscreenchange', syncFsUi, { signal: sig });
+  document.addEventListener('webkitfullscreenchange', syncFsUi, { signal: sig });
+  // Esc is handled by the browser; double-tap f when film is focused also works
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'f' || e.key === 'F') {
+      if (!stage.closest || !document.body.contains(stage)) return;
+      // only when film is in view / playing to avoid hijacking typing
+      if (!started && !playing) return;
+      const r = stage.getBoundingClientRect();
+      const inView = r.top < window.innerHeight && r.bottom > 0;
+      if (!inView) return;
+      e.preventDefault();
+      try {
+        if (getFsEl() === stage) exitFs();
+        else reqFs(stage).catch(() => {});
+      } catch (err) {}
+    }
+    if (e.key === 'Escape' && getFsEl() === stage) {
+      // browser exits FS; sync on event
+    }
+  }, { signal: sig });
+
   bar.addEventListener('click', (e) => {
     e.stopPropagation();
     const r = bar.getBoundingClientRect();

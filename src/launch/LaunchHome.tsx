@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, type Root } from 'react-dom/client';
 import './launch.css';
 import body from './launchBody.html?raw';
 import { initLaunch } from './launchScript.js';
 import { QuantumLogo } from '../components/QuantumLogo';
+import { InstallPwaPrompt } from '../components/InstallPwaPrompt';
+import { BlogPreviewMount } from '../components/BlogPreviewMount';
 
 /**
  * The Glowwww launch page — the cinematic scroll experience ported from the
- * standalone static build. The body markup is injected verbatim (preserving the
- * hand-tuned design), the imperative scroll/orb/demo logic runs via initLaunch(),
- * and the QuantumLogo React component is mounted into its placeholder inside the
- * injected HTML with its own root. All launch CSS is scoped under `.lp` so it
- * never touches the blog routes.
+ * standalone static build. Markup is injected, imperative demos run via
+ * initLaunch(), and React islands mount into placeholders (logo, blog strip).
  */
 export function LaunchHome() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,18 +18,36 @@ export function LaunchHome() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const teardown = initLaunch();
+    const roots: Root[] = [];
 
-    const node = ref.current?.querySelector('#quantumMount') as HTMLElement | null;
-    const qRoot = node ? createRoot(node) : null;
-    if (qRoot) qRoot.render(<QuantumLogo />);
+    const qNode = ref.current?.querySelector('#quantumMount') as HTMLElement | null;
+    if (qNode) {
+      const r = createRoot(qNode);
+      r.render(<QuantumLogo />);
+      roots.push(r);
+    }
+
+    const bNode = ref.current?.querySelector('#blogMount') as HTMLElement | null;
+    if (bNode) {
+      const r = createRoot(bNode);
+      r.render(<BlogPreviewMount />);
+      roots.push(r);
+      // Ensure visible even if parent was empty when scroll-reveal observed it
+      bNode.classList.add('blog-mount--ready');
+    }
 
     return () => {
       if (typeof teardown === 'function') teardown();
-      if (qRoot) qRoot.unmount();
+      roots.forEach((r) => r.unmount());
     };
   }, []);
 
-  return <div className="lp" ref={ref} dangerouslySetInnerHTML={{ __html: body }} />;
+  return (
+    <>
+      <div className="lp" ref={ref} dangerouslySetInnerHTML={{ __html: body }} />
+      <InstallPwaPrompt />
+    </>
+  );
 }
 
 export default LaunchHome;
