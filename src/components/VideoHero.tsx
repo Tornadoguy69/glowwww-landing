@@ -18,9 +18,9 @@ export function VideoHero() {
       >
         <p className="section__label">Demo</p>
         <h2 className="section__title">
-          SEE IT
+          HERE IT IS
           <br />
-          <span style={{ color: "var(--red)" }}>IN ACTION</span>
+          <span style={{ color: "var(--red)" }}>RUNNING</span>
         </h2>
       </motion.div>
 

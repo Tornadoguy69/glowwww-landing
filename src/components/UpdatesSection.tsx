@@ -8,11 +8,11 @@ export default function UpdatesSection() {
     <section id="updates" className="section">
       <div className="updates-section__head">
         <h2 className="section__title">
-          LATEST<br /><span style={{ color: "var(--red)" }}>UPDATES</span>
+          FROM THE<br /><span style={{ color: "var(--red)" }}>BLOG</span>
         </h2>
       </div>
       <p className="section__lead">
-        Glowwww keeps getting better. Here's what changed and why.
+        What I shipped, what broke, and what I&apos;m working on next.
       </p>
       <div className="updates-grid">
         {posts.map(post => (

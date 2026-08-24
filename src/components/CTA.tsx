@@ -16,15 +16,15 @@ export function CTA() {
       custom={0}
     >
       <div className="cta__glow" />
-      <p className="cta__eyebrow">Ready when you are</p>
+      <p className="cta__eyebrow">It&apos;s live</p>
       <h2 className="cta__title">
-        STOP SCROLLING.
+        YOU CAN JUST
         <br />
-        <span className="accent">START GLOWWWW.</span>
+        <span className="accent">OPEN IT.</span>
       </h2>
       <p className="cta__sub">
-        One app for creators who want signal over noise — social, AI, messaging,
-        and tools that actually ship with you.
+        No invite. Works in the browser. Install it later if you want an icon
+        on your home screen.
       </p>
       <div className="cta__actions">
         <motion.a
@@ -36,10 +36,10 @@ export function CTA() {
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
         >
-          Launch Glowwww
+          Open Glowwww
         </motion.a>
         <a href="#install" className="btn-ghost">
-          Install as app
+          Add to home screen
         </a>
       </div>
     </motion.section>

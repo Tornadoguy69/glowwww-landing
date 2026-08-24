@@ -79,7 +79,7 @@ const getInstructions = (mode: InstallMode): InstallInstructions => {
   if (mode === "native") {
     return {
       title: "Install Glowwww",
-      description: "One tap adds Glowwww to your home screen — full screen, own icon.",
+      description: "One tap puts Glowwww on your home screen — full screen, own icon.",
       steps: [],
     };
   }
@@ -121,7 +121,7 @@ const getInstructions = (mode: InstallMode): InstallInstructions => {
 
   return {
     title: "Install Glowwww",
-    description: "Add Glowwww to your home screen for the full app feel.",
+    description: "Add Glowwww to your home screen. Own icon, full screen.",
     steps: [
       {
         text: (

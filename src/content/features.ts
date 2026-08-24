@@ -10,50 +10,50 @@ export type PlatformFeature = {
 export const platformFeatures: PlatformFeature[] = [
   {
     id: "social",
-    title: "Real-time Social",
-    tagline: "No algorithm cage",
+    title: "The feed",
+    tagline: "Posts just show up",
     description:
-      "Posts land instantly. A real dislike that trains your feed. Vertical clips built for momentum — not endless loops.",
+      "If someone follows you, they see it. Real-time posts, a dislike that actually trains the feed, and clips that aren't an endless loop.",
     icon: "⚡",
   },
   {
     id: "create",
-    title: "Create Suite",
-    tagline: "Capture → polish → publish",
+    title: "The editor",
+    tagline: "Edit where you post",
     description:
-      "Image and video editor, drafts, and scheduler in one flow. Ship when the idea hits — not after five app switches.",
+      "Image and video editor, drafts, and a scheduler in the same app. You don't export from somewhere else and upload.",
     icon: "✦",
   },
   {
     id: "ai",
-    title: "AI That Ships",
-    tagline: "Chat. Voice. Tools. Canvas.",
+    title: "The AI",
+    tagline: "It can actually do things",
     description:
-      "Talk, draft, call tools, and render artifacts without leaving Glowwww. Plus AI Studio insights on any post.",
+      "Chat, voice, tools, and a canvas — inside Glowwww. It can open screens and act, not just talk.",
     icon: "◎",
   },
   {
     id: "messages",
-    title: "Private Messaging",
+    title: "Messages",
     tagline: "End-to-end encrypted",
     description:
-      "DMs that stay between you and who you're talking to. No silent scanning. No data theatre.",
+      "DMs stay between you and who you're talking to. The server can't read the bodies as plain text.",
     icon: "◈",
   },
   {
     id: "community",
     title: "Communities",
-    tagline: "Crew over crowd",
+    tagline: "Small groups",
     description:
-      "Spaces for niches and movements with live moderation — healthy signal without killing the conversation.",
+      "Spaces for niches and people who actually know each other — roles, rules, live activity.",
     icon: "⬡",
   },
   {
     id: "dashboard",
-    title: "Creator Dashboard",
-    tagline: "Know what hits",
+    title: "Dashboard",
+    tagline: "See what landed",
     description:
-      "Views, engagement, growth, and post performance in one clean view — so you double down on what works.",
+      "Views, engagement, growth, and how each post did — in one place, without a separate analytics app.",
     icon: "▣",
   },
 ];

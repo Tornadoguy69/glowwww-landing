@@ -1,7 +1,7 @@
 {
   "name": "Glowwww",
   "short_name": "Glowwww",
-  "description": "Social media, rebuilt around AI. Privacy-first, really E2E encrypted messaging.",
+  "description": "An everything app: a feed, an editor, encrypted messages, and an AI with agent features inside it.",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",

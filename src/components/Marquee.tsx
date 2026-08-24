@@ -1,13 +1,13 @@
 const items = [
-  "PRIVACY FIRST",
+  "ENCRYPTED MESSAGES",
   "REAL-TIME POSTS",
-  "AI THAT SHIPS",
-  "E2E MESSAGING",
-  "CLIPS & EDITOR",
-  "CREATOR DASHBOARD",
-  "NO ALGORITHM JAIL",
+  "AI THAT ACTS",
+  "BUILT-IN EDITOR",
+  "CLIPS",
+  "SOLO BUILT",
+  "STILL EARLY",
   "ONE APP",
-  "YOUR GLOWWWW",
+  "GLOWWWW",
 ];
 
 function MarqueeItem({ text }: { text: string }) {

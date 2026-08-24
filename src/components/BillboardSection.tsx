@@ -34,12 +34,12 @@ export default function BillboardSection() {
 
   return (
     <section id="billboards" className="section billboard-section">
-      <p className="section__label">Campaign</p>
+      <p className="section__label">Brand</p>
       <h2 className="section__title">
-        BILLBOARD<br /><span style={{ color: "var(--red)" }}>CONCEPTS</span>
+        SOME BILLBOARD<br /><span style={{ color: "var(--red)" }}>IDEAS</span>
       </h2>
       <p className="section__lead">
-        A collection of outdoor campaign concepts exploring Glowwww's identity — minimal, bold, typographic.
+        Campaign frames I made for Glowwww. Half of them started as 3am jokes.
       </p>
       <div className="billboard-grid">
         {billboards.map(b => (

@@ -19,11 +19,11 @@ export function UpdatesPreview() {
         custom={0}
       >
         <div>
-          <p className="section__label">Updates</p>
+          <p className="section__label">Blog</p>
           <h2 className="section__title">
-            LATEST FROM
+            I WRITE ABOUT
             <br />
-            <span style={{ color: "var(--red)" }}>THE BLOG</span>
+            <span style={{ color: "var(--red)" }}>WHAT I SHIP</span>
           </h2>
         </div>
         <Link to="/blog" className="btn-ghost updates-section__all">

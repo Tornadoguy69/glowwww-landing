@@ -16,15 +16,15 @@ export function AppPreview() {
         variants={fadeUp}
         custom={0}
       >
-        <p className="section__label">Inside the app</p>
+        <p className="section__label">Screenshots</p>
         <h2 className="section__title">
-          BUILT TO FEEL
+          THIS IS THE
           <br />
-          <span className="section__title-accent">NATIVE.</span>
+          <span className="section__title-accent">ACTUAL APP.</span>
         </h2>
         <p className="section__lead">
-          Feed, create, clips, AI, messages, and analytics — captured from the
-          live product.
+          Feed, create, clips, AI, messages, and the dashboard — captured from
+          the live product, not mockups.
         </p>
       </motion.div>
 

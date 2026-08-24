@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { QuantumLogo } from "./QuantumLogo";
 import { easeOutExpo } from "../motion";
 
-const chips = ["Privacy-first", "Anti-algorithm", "AI native", "PWA"];
+const chips = ["Encrypted messages", "AI that acts", "Built-in editor", "PWA"];
 
 export function Hero() {
   return (
@@ -14,7 +14,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: easeOutExpo }}
         >
-          The everything app for creators
+          Built by Tornado · early access
         </motion.p>
 
         <motion.h1
@@ -23,11 +23,11 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.95, delay: 0.18, ease: easeOutExpo }}
         >
-          CREATE
+          I BUILT AN
           <br />
-          WITHOUT
+          <span className="accent">EVERYTHING</span>
           <br />
-          <span className="accent">THE CAGE</span>
+          APP
         </motion.h1>
 
         <motion.p
@@ -36,8 +36,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.4, ease: easeOutExpo }}
         >
-          Social, AI, messaging, and creation tools in one privacy-first app.
-          Your feed. Your signal. No algorithm jail.
+          Tired of side projects, so I built one app I can keep adding to. A
+          feed, an editor, messages, and an AI that acts inside Glowwww — not a
+          chatbot bolted onto 𝕏 or Instagram.
         </motion.p>
 
         <motion.div
@@ -55,10 +56,10 @@ export function Hero() {
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 420, damping: 22 }}
           >
-            Open Glowwww free
+            Open Glowwww
           </motion.a>
           <a href="#demos" className="btn-ghost">
-            Watch demos
+            Watch it work
           </a>
         </motion.div>
 

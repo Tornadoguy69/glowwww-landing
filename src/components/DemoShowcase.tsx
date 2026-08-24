@@ -61,15 +61,15 @@ export function DemoShowcase() {
         variants={fadeUp}
         custom={0}
       >
-        <p className="section__label">Product demos</p>
+        <p className="section__label">Demos</p>
         <h2 className="section__title">
-          SEE THE APP.
+          HERE&apos;S THE APP
           <br />
-          <span className="section__title-accent">FEEL THE FLOW.</span>
+          <span className="section__title-accent">ACTUALLY RUNNING.</span>
         </h2>
         <p className="section__lead">
-          Real product clips — editor, AI voice, messages, and tool calls —
-          not mockups. Expand any clip for a larger view.
+          Real clips from Glowwww — the editor, voice, messages, and the AI
+          using tools. Not mockups. Expand any clip for a larger view.
         </p>
       </motion.div>
 

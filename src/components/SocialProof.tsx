@@ -4,7 +4,7 @@ import { fadeUp, staggerContainer } from "../motion";
 
 const testimonials = [
   {
-    quote: "Finally, a platform that doesn't punish me for posting too much. My signal, my rules.",
+    quote: "Finally, a platform that doesn't bury my posts. If people follow me, they see it.",
     author: "Maya Chen",
     role: "Digital Artist",
   },
@@ -14,7 +14,7 @@ const testimonials = [
     role: "Writer & Creator",
   },
   {
-    quote: "Moved my entire community here. Moderation that actually works, no algorithm drama.",
+    quote: "Moved my community here. Moderation that actually works, and posts that actually land.",
     author: "Samir Patel",
     role: "Community Builder",
   },
@@ -33,11 +33,11 @@ export function SocialProof() {
           variants={fadeUp}
           custom={0}
         >
-          <p className="section__label">Trusted by creators</p>
+          <p className="section__label">Early users</p>
           <h2 className="section__title">
-            WHAT USERS
+            WHAT PEOPLE
             <br />
-            <span style={{ color: "var(--red)" }}>ARE SAYING</span>
+            <span style={{ color: "var(--red)" }}>HAVE SAID</span>
           </h2>
         </motion.div>
         <motion.div

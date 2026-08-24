@@ -106,7 +106,7 @@ export function PageShell({ children }: { children: ReactNode }) {
               aria-hidden="true"
             />
           </Link>
-          <span>Social media, rebuilt around AI. · © 2026 Glowwww</span>
+          <span>Built by Tornado. Still building. · © 2026 Glowwww</span>
           <nav className="blog-shell__foot-links" aria-label="Footer">
             <Link to="/">Home</Link>
             <Link to="/blog">Blog</Link>

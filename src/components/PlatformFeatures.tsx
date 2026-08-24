@@ -15,15 +15,15 @@ export default function PlatformFeatures() {
         variants={fadeUp}
         custom={0}
       >
-        <p className="section__label">Platform</p>
+        <p className="section__label">What&apos;s in it</p>
         <h2 className="section__title">
-          EVERYTHING YOU NEED.
+          THE PARTS I
           <br />
-          <span className="section__title-accent">NOTHING YOU DON&apos;T.</span>
+          <span className="section__title-accent">ACTUALLY BUILT.</span>
         </h2>
         <p className="section__lead">
-          Six surfaces. One native stack. Social, creation, AI, messaging,
-          communities, and analytics — built to work together in real time.
+          A feed, an editor, an AI, private messages, communities, and a
+          dashboard. One app I keep adding to — not another side project.
         </p>
       </motion.div>
 

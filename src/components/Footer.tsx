@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer__brand">
         <Wordmark className="footer__wordmark" />
-        <p className="footer__tagline">Where creators glowwww without the cage.</p>
+        <p className="footer__tagline">Built by Tornado. Still building.</p>
       </div>
       <nav className="footer__nav" aria-label="Footer">
         <Link to="/#demos">Demos</Link>
@@ -15,11 +15,11 @@ export function Footer() {
         <Link to="/#install">Install</Link>
         <Link to="/blog">Blog</Link>
         <a href="https://glowwww.vercel.app" target="_blank" rel="noopener noreferrer">
-          Launch
+          Open Glowwww
         </a>
       </nav>
       <p className="footer__note">
-        Product site · Updates & news
+        The site · the blog
         <br />
         <a href="https://glowwww.vercel.app" target="_blank" rel="noopener noreferrer">
           glowwww.vercel.app

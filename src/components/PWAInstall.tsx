@@ -59,13 +59,12 @@ export default function PWAInstall() {
       >
         <p className="section__label">Install</p>
         <h2 className="section__title">
-          ONE TAP.
+          PUT IT ON YOUR
           <br />
-          <span className="section__title-accent">FEELS NATIVE.</span>
+          <span className="section__title-accent">HOME SCREEN.</span>
         </h2>
         <p className="section__lead">
-          Install Glowwww as a PWA. Updates ship when you launch — no store
-          downloads, no version lag.
+          It&apos;s a PWA. No app store. Updates when you open it.
         </p>
       </motion.div>
 
@@ -104,11 +103,11 @@ export default function PWAInstall() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open app to install
+            Open Glowwww to install
           </a>
         </div>
         <div className="pwa-mock">
-          <div className="pwa-mock__badge">PWA ready</div>
+          <div className="pwa-mock__badge">Home screen</div>
           <div className="pwa-phone">
             <div className="pwa-phone__status">
               <span>9:41</span>
@@ -126,7 +125,7 @@ export default function PWAInstall() {
             </div>
           </div>
           <p className="pwa-mock__caption">
-            Standalone window. Home-screen icon. Feels like a native install.
+            Own window. Own icon. Updates when you open it.
           </p>
         </div>
       </motion.div>
