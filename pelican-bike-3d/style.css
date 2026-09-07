@@ -1,0 +1,25 @@
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#87c5eb;font-family:ui-sans-system,Inter,Helvetica,Arial;color:#10202e}
+#scene{position:fixed;inset:0}
+#scene canvas{display:block}
+.ui{position:fixed;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:22px 24px;pointer-events:none;z-index:5}
+.ui.top{top:0}
+.ui.bottom{bottom:0;flex-direction:column;gap:10px}
+.title .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;background:#10202e;color:#fff;padding:5px 10px;border-radius:99px}
+.title h1{font-size:clamp(32px,6vw,64px);line-height:.9;letter-spacing:-.04em;margin:10px 0 6px}
+.title h1 em{font-style:normal;background:#ff5c2a;color:#fff;padding:0 12px;border-radius:14px;transform:rotate(-3deg);display:inline-block}
+.title p{font-size:13px;opacity:.75}
+.stats{display:flex;gap:10px;pointer-events:none}
+.stats div{background:rgba(255,255,255,.75);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:10px 14px;text-align:center;min-width:78px}
+.stats b{font-size:22px;display:block;line-height:1}
+.stats span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;opacity:.6}
+.controls{pointer-events:auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:rgba(16,32,46,.88);color:#fff;padding:12px 14px;border-radius:18px;backdrop-filter:blur(14px)}
+.controls label{display:flex;gap:10px;align-items:center;font-size:12px;text-transform:uppercase;letter-spacing:.15em}
+.controls input{width:140px;accent-color:#ff5c2a}
+.cams{display:flex;gap:6px}
+.cams button,.controls #pause{border:0;border-radius:99px;padding:8px 14px;font-size:12px;cursor:pointer;background:#263d52;color:#fff;text-transform:uppercase;letter-spacing:.1em}
+.cams button.active{background:#ff5c2a}
+.hint{font-size:12px;color:#0f2233;background:rgba(255,255,255,.65);align-self:flex-start;padding:6px 12px;border-radius:99px}
+.loader{position:fixed;inset:0;display:grid;place-items:center;background:#87c5eb;z-index:10;transition:opacity .6s;font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.loader.hide{opacity:0;pointer-events:none}
+@media(max-width:640px){.stats{display:none}.ui{padding:14px}}

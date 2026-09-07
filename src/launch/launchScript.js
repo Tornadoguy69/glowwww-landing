@@ -428,35 +428,72 @@ once($('#toolflow'), () => {
   tick();
 });
 
-/* ---- frame-sequence player: real app recordings (JPG frames + manifest) ---- */
+/* ---- frame-sequence player: real app recordings (JPG frames + manifest) ----
+   No-white-flash version: dark placeholder, decode-before-show, plays only
+   while visible, binary-search frame lookup. */
 async function playRecording(imgEl, names, { speed = 1, gap = 600 } = {}) {
-  if (!imgEl) return;
+  if (!imgEl || imgEl.dataset.playing) return;
+  imgEl.dataset.playing = '1';
+  imgEl.style.background = '#0b0b0e';
+  if (imgEl.parentElement) imgEl.parentElement.style.background = '#0b0b0e';
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const base = '/recordings/';
   const segs = []; let offset = 0;
+  const loadOne = (f, sync) => new Promise((res) => {
+    if (f.ready) { res(); return; }
+    const im = new Image();
+    if (sync) { try { im.decoding = 'sync'; } catch (e) {} }
+    let done = false;
+    const fin = () => { if (!done) { done = true; f.ready = true; res(); } };
+    im.onload = fin; im.onerror = fin;
+    try { im.src = f.src; } catch (e) { fin(); return; }
+    setTimeout(fin, 4000);
+  });
   for (const n of names) {
     try {
       const m = await fetch(base + n + '/manifest.json').then(r => r.json());
-      const frames = m.frames.map(f => ({ src: base + n + '/' + f.file, t: f.t }));
+      const frames = m.frames.map(f => ({ src: base + n + '/' + f.file, t: f.t, ready: false }));
       if (!frames.length) continue;
       const dur = m.durationMs || (frames[frames.length - 1].t + 300);
       segs.push({ frames, start: offset, dur });
       offset += dur + gap;
-      frames.forEach(f => { const im = new Image(); im.src = f.src; }); // preload
     } catch (e) { /* ignore */ }
   }
   if (!segs.length) return;
-  const total = offset, t0 = performance.now();
-  (function tick() {
-    if (!__alive) return;
-    const elapsed = ((performance.now() - t0) * speed) % total;
+  if (reduce) return; // static poster frame, no animation
+  // warm the opening frames first so playback starts instantly with no flash;
+  // the rest keep loading in the background while it plays
+  try { await Promise.all(segs[0].frames.slice(0, 10).map(f => loadOne(f, true))); } catch (e) {}
+  segs.forEach(s => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 300));
+    idle(() => s.frames.forEach(f => loadOne(f)));
+  });
+  const total = offset;
+  let t0 = performance.now(), visible = true, lastSrc = imgEl.getAttribute('src') || '';
+  const pick = (elapsed) => {
     let seg = segs[0];
     for (const s of segs) if (elapsed >= s.start && elapsed < s.start + s.dur) { seg = s; break; }
     const local = Math.max(0, elapsed - seg.start);
-    let fr = seg.frames[0];
-    for (const f of seg.frames) { if (f.t <= local) fr = f; else break; }
-    if (imgEl.getAttribute('src') !== fr.src) imgEl.setAttribute('src', fr.src);
+    // binary search: frames sorted by t
+    let lo = 0, hi = seg.frames.length - 1, idx = 0;
+    while (lo <= hi) { const mid = (lo + hi) >> 1;
+      if (seg.frames[mid].t <= local) { idx = mid; lo = mid + 1; } else hi = mid - 1; }
+    return seg.frames[idx];
+  };
+  const tick = () => {
+    if (!__alive) return;
     requestAnimationFrame(tick);
-  })();
+    if (!visible || document.hidden) { t0 += 16.7; return; }
+    const elapsed = ((performance.now() - t0) * speed) % total;
+    const fr = pick(elapsed);
+    // swap straight from cache; hold the current frame if the target is not
+    // loaded yet (brief pause) rather than flashing white
+    if (fr.src !== lastSrc && fr.ready) { lastSrc = fr.src; imgEl.setAttribute('src', fr.src); }
+  };
+  new IntersectionObserver((ents) => {
+    ents.forEach(e => { visible = e.isIntersecting; });
+  }, { threshold: 0.05 }).observe(imgEl);
+  requestAnimationFrame(tick);
 }
 // @ai mention → asks, streams a reply, then a follow-up (two real recordings)
 once($('#mentionSeq'), () => playRecording($('#mentionSeq'), ['02-comment-ai-mention', '03-comment-reply-followup']), 0.2);

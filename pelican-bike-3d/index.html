@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pelican Ride — 3D motion test</title>
+<link rel="stylesheet" href="./style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="scene"></div>
+
+<div class="ui top">
+  <div class="title">
+    <span class="kicker">motion test • separate project</span>
+    <h1>PELICAN <em>RIDE</em></h1>
+    <p>procedural 3D • pedal cycle 1.2s • squash &amp; stretch + secondary motion</p>
+  </div>
+  <div class="stats">
+    <div><b id="speedVal">14</b><span>km/h</span></div>
+    <div><b id="cadVal">68</b><span>rpm</span></div>
+    <div><b>12</b><span>fps jiggle</span></div>
+  </div>
+</div>
+
+<div class="ui bottom">
+  <div class="controls">
+    <label>speed <input id="speed" type="range" min="0" max="30" value="14" /></label>
+    <div class="cams">
+      <button data-cam="side" class="active">side</button>
+      <button data-cam="chase">chase</button>
+      <button data-cam="front">front</button>
+      <button data-cam="low">low</button>
+    </div>
+    <button id="pause">pause</button>
+  </div>
+  <p class="hint">drag to orbit • scroll to dolly • bike stays at origin, world moves past</p>
+</div>
+
+<div class="loader" id="loader"><span>warming up feathers…</span></div>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>

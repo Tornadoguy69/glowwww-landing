@@ -1,0 +1,109 @@
+/* Senior motion layer — luxe reveals, kinetic hero, magnetic CTAs, tilt, marquee */
+.lp{
+  --ease-luxe:cubic-bezier(.16,1,.3,1);
+  --ease-snappy:cubic-bezier(.22,1,.36,1);
+}
+
+/* ---- luxe reveal: rise + de-blur + settle (keeps .reveal API) ---- */
+.lp .reveal{
+  opacity:0;transform:translateY(30px) scale(.992);filter:blur(8px);
+  transition:opacity 1s var(--ease-luxe),transform 1s var(--ease-luxe),filter 1s var(--ease-luxe);
+}
+.lp .reveal.in{opacity:1;transform:none;filter:blur(0)}
+.lp .reveal.d1{transition-delay:.07s}.lp .reveal.d2{transition-delay:.15s}
+.lp .reveal.d3{transition-delay:.23s}.lp .reveal.d4{transition-delay:.31s}
+.lp .hero .reveal{transform:translateY(22px) scale(.994)}
+
+/* ---- kinetic hero: word-mask char rise ---- */
+.lp .hero h1{overflow:hidden}
+.lp .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.lp .hero h1 .wi{display:inline-block;will-change:transform}
+.lp .hero h1 .ch{display:inline-block;transform:translateY(115%) rotate(4deg);opacity:0;transition:transform .9s var(--ease-luxe),opacity .6s ease}
+.lp .hero.is-ready h1 .ch{transform:none;opacity:1}
+.lp .hero h1 .em .ch{color:var(--red)}
+.lp .hero__sub{max-width:54ch;text-wrap:pretty}
+.lp .hero.is-ready .hero__mark{opacity:1;transform:none;transition:opacity .8s ease,transform .8s var(--ease-luxe)}
+.lp .hero__mark svg{height:40px;width:auto;color:#fff;display:block}
+.lp .nav .brand-mark{height:30px;width:auto;color:var(--text);display:block}
+.lp .nav-drawer__head .drawer-mark{color:var(--text);display:block}
+.lp .foot__logo svg{color:var(--faint);display:block}
+.lp .hero__scroll{transition:opacity .5s ease}
+.lp .hero.is-past .hero__scroll{opacity:0}
+
+/* ---- nav: underline links + ramped blur ---- */
+.lp .nav .links a{position:relative;padding:4px 0}
+.lp .nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;border-radius:2px;
+  background:linear-gradient(90deg,var(--red),var(--accent-hi));transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease-luxe)}
+.lp .nav .links a:hover::after{transform:scaleX(1)}
+.lp .scroll-prog{height:3px;border-radius:0 3px 3px 0}
+
+/* ---- magnetic + shine CTAs ---- */
+.lp .btn{will-change:transform;position:relative;overflow:hidden;isolation:isolate}
+.lp .btn--primary::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+  transform:translateX(-120%);transition:transform .8s var(--ease-luxe);pointer-events:none}
+.lp .btn--primary:hover::before{transform:translateX(120%)}
+.lp .btn--primary:hover{box-shadow:0 18px 48px rgba(239,68,68,.45)}
+.lp .btn .arr{display:inline-block;transition:transform .3s var(--ease-luxe)}
+.lp .btn:hover .arr{transform:translateX(4px)}
+.lp .nav .cta{will-change:transform}
+
+/* ---- hero strip: velocity marquee ---- */
+.lp .hero__strip{overflow:hidden}
+.lp .hero__strip-track.is-marquee{overflow:visible;width:max-content;animation:none;will-change:transform}
+.lp .hero__strip-track.is-marquee .hero__strip-cell{transform:skewX(var(--vel-skew,0deg));transition:transform .3s ease}
+.lp .hero__strip:hover .hero__strip-cell video{opacity:1}
+
+/* ---- scroll parallax hooks ---- */
+.lp [data-plx]{will-change:transform}
+.lp .hero__bg img,.lp .finale img.bg{will-change:transform;animation:none !important}
+.lp .interstitial img{will-change:transform}
+.lp .story__img img{will-change:transform;scale:1.08}
+
+/* ---- tilt cards + glare ---- */
+.lp .tilt{perspective:900px}
+.lp .tilt-inner{transform-style:preserve-3d;will-change:transform;transition:transform .5s var(--ease-luxe),box-shadow .4s ease;position:relative}
+.lp .tilt-glare{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s ease;border-radius:inherit;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.14),transparent 65%)}
+.lp .tilt:hover .tilt-glare{opacity:1}
+.lp .frame.tilt-inner:hover,.lp .tcard.tilt-inner:hover{transform:none}
+
+/* ---- boards rail: drag + progress ---- */
+.lp .boards-rail{cursor:grab;scrollbar-width:none}
+.lp .boards-rail.is-drag{cursor:grabbing;scroll-snap-type:none !important}
+.lp .boards-rail.is-drag .board-card{pointer-events:none}
+.lp .board-card{transition:transform .4s var(--ease-luxe),border-color .3s,box-shadow .4s}
+.lp .board-card:hover{transform:translateY(-5px) scale(1.015);border-color:rgba(229,57,53,.5);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.lp .board-card img{transition:transform .8s var(--ease-luxe)}
+.lp .board-card:hover img{transform:scale(1.04)}
+.lp .boards-progress{height:2px;max-width:1240px;margin:18px auto 0;padding:0 clamp(18px,5vw,44px)}
+.lp .boards-progress i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(.1);
+  background:linear-gradient(90deg,var(--red),var(--accent-hi));border-radius:2px}
+.lp .boards-nav{display:flex;gap:8px;justify-content:flex-end;max-width:1240px;margin:0 auto;padding:0 clamp(18px,5vw,44px) 10px}
+.lp .boards-arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--border-strong);
+  background:var(--surface);color:var(--text);font-size:18px;line-height:1;cursor:pointer;
+  transition:transform .25s var(--ease-luxe),background .25s,border-color .25s}
+.lp .boards-arrow:hover{background:var(--accent);border-color:transparent;color:#fff;transform:translateY(-1px)}
+
+/* ---- recording frames: never flash white, no layout shift ---- */
+.lp .frame{background:#0b0b0e}
+.lp .frame img.shot{background:#0b0b0e;display:block;width:100%;height:auto;min-height:280px}
+.lp .frame .frame__glow{pointer-events:none}
+
+/* ---- lightbox luxe open ---- */
+.lp .board-lb__fig{transform:translateY(14px) scale(.97);opacity:0;transition:transform .45s var(--ease-luxe),opacity .35s ease}
+.lp .board-lb.is-open .board-lb__fig{transform:none;opacity:1}
+
+/* ---- section eyebrow draw ---- */
+.lp .sec-head .tagchip{position:relative}
+.lp .sec-head.in .tagchip,.lp .reveal.in .tagchip{animation:chipin .7s var(--ease-luxe) both}
+@keyframes chipin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .lp .hero h1 .ch{transform:none !important;opacity:1 !important;transition:none !important}
+  .lp .reveal{filter:none !important}
+  .lp .hero__strip-track.is-marquee{transform:none !important}
+  .lp .tilt-inner{transform:none !important}
+  .lp .btn--primary::before{display:none}
+}

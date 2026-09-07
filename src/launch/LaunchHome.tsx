@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import './launch.css';
+import './motion-senior.css';
 import body from './launchBody.html?raw';
 import { initLaunch } from './launchScript.js';
+import { initSeniorMotion } from './motion-senior.js';
 import { QuantumLogo } from '../components/QuantumLogo';
 import { InstallPwaPrompt } from '../components/InstallPwaPrompt';
 import { BlogPreviewMount } from '../components/BlogPreviewMount';
@@ -18,6 +20,7 @@ export function LaunchHome() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const teardown = initLaunch();
+    const teardownSenior = initSeniorMotion();
     const roots: Root[] = [];
 
     const qNode = ref.current?.querySelector('#quantumMount') as HTMLElement | null;
@@ -38,6 +41,7 @@ export function LaunchHome() {
 
     return () => {
       if (typeof teardown === 'function') teardown();
+      if (typeof teardownSenior === 'function') teardownSenior();
       roots.forEach((r) => r.unmount());
     };
   }, []);

@@ -36,10 +36,20 @@ export function createOrb(canvas) {
   const envMap = pmrem.fromScene(envScene).texture;
 
   const base = { metalness: 1.0, roughness: 0.1, clearcoat: 1.0, clearcoatRoughness: 0.05, envMap, envMapIntensity: 2.0 };
-  const redMat = new THREE.MeshPhysicalMaterial({ ...base, color: 0xe53935, emissive: 0x5f0508, emissiveIntensity: 0 });
+  // solid brand red like the logo mark — tamed reflections so the ring
+  // never glares white (white gloss lives only on the swoosh/eyes)
+  const redMat = new THREE.MeshPhysicalMaterial({ ...base, color: 0xe53935, metalness: 0.5, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.25, envMapIntensity: 0.8, emissive: 0x5f0508, emissiveIntensity: 0.15 });
   const whiteMat = new THREE.MeshPhysicalMaterial({ ...base, color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.4 });
 
   const logo = new THREE.Group();
+  // solid black core so the middle reads as black, not see-through.
+  // flat disc parked behind the arcs so the white swoosh stays visible.
+  const core = new THREE.Mesh(
+    new THREE.CircleGeometry(9.8, 64),
+    new THREE.MeshBasicMaterial({ color: 0x060607 })
+  );
+  core.position.z = -2;
+  logo.add(core);
   const ring = new THREE.Mesh(new THREE.TorusGeometry(11, 1.0, 48, 96), redMat);
   logo.add(ring);
 
