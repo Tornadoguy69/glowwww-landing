@@ -48,13 +48,13 @@ export function BlogPage() {
                 <path d="M5 19.5 6.2 15.2 16.8 4.6a1.8 1.8 0 0 1 2.6 2.6L8.8 17.8 5 19.5z" />
               </svg>
             </span>
-            Blog &amp; updates
+            Blog
           </div>
           <h1 className="blog-page__title">
-            News from <span className="em">Glowwww</span>.
+            I write about what I ship.
           </h1>
           <p className="blog-page__lead">
-            Notes from a solo build — what shipped, what surprised me, and what&apos;s coming next.
+            What landed, what broke, what surprised me. Same person who built the app.
           </p>
         </motion.header>
 

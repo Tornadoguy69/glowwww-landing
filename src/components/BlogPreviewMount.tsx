@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { BrandCover } from "./BrandCover";
 import { blogPosts } from "../content/posts";
 
@@ -23,9 +22,9 @@ export function BlogPreviewMount() {
   if (!posts.length) {
     return (
       <div className="center">
-        <Link to="/blog" className="btn btn--ghost">
+        <a href="/blog" className="btn btn--ghost">
           Read the blog →
-        </Link>
+        </a>
       </div>
     );
   }
@@ -34,7 +33,7 @@ export function BlogPreviewMount() {
     <div className="blog-preview">
       <div className="blog-preview-grid">
         {posts.map((post) => (
-          <Link key={post.slug} to={`/blog/${post.slug}`} className="frame blog-preview-card">
+          <a key={post.slug} href={`/blog/${post.slug}`} className="frame blog-preview-card">
             <BrandCover
               category={post.category}
               title={post.title}
@@ -49,13 +48,13 @@ export function BlogPreviewMount() {
               <p>{post.excerpt}</p>
               <span className="blog-preview-card__go">Read post →</span>
             </div>
-          </Link>
+          </a>
         ))}
       </div>
       <div className="center mt">
-        <Link to="/blog" className="btn btn--ghost">
+        <a href="/blog" className="btn btn--ghost">
           Read the blog →
-        </Link>
+        </a>
       </div>
     </div>
   );

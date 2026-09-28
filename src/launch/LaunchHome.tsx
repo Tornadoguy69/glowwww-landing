@@ -19,30 +19,62 @@ export function LaunchHome() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const teardown = initLaunch();
-    const teardownSenior = initSeniorMotion();
     const roots: Root[] = [];
+    const teardowns: Array<() => void> = [];
 
-    const qNode = ref.current?.querySelector('#quantumMount') as HTMLElement | null;
-    if (qNode) {
-      const r = createRoot(qNode);
-      r.render(<QuantumLogo />);
-      roots.push(r);
+    // Mount React islands FIRST so content shows even if 3D/imperative code fails.
+    try {
+      const qNode = ref.current?.querySelector('#quantumMount') as HTMLElement | null;
+      if (qNode) {
+        const r = createRoot(qNode);
+        r.render(<QuantumLogo />);
+        roots.push(r);
+      }
+    } catch {
+      /* 3D logo is decorative — never block the page */
     }
 
-    const bNode = ref.current?.querySelector('#blogMount') as HTMLElement | null;
-    if (bNode) {
-      const r = createRoot(bNode);
-      r.render(<BlogPreviewMount />);
-      roots.push(r);
-      // Ensure visible even if parent was empty when scroll-reveal observed it
-      bNode.classList.add('blog-mount--ready');
+    try {
+      const bNode = ref.current?.querySelector('#blogMount') as HTMLElement | null;
+      if (bNode) {
+        const r = createRoot(bNode);
+        r.render(<BlogPreviewMount />);
+        roots.push(r);
+        // Ensure visible even if parent was empty when scroll-reveal observed it
+        bNode.classList.add('blog-mount--ready');
+      }
+    } catch {
+      /* blog fallback link in HTML stays visible */
+    }
+
+    try {
+      const teardown = initLaunch();
+      if (typeof teardown === 'function') teardowns.push(teardown);
+    } catch {
+      /* imperative demos are progressive enhancement */
+    }
+    try {
+      const teardownSenior = initSeniorMotion();
+      if (typeof teardownSenior === 'function') teardowns.push(teardownSenior);
+    } catch {
+      /* ignore */
     }
 
     return () => {
-      if (typeof teardown === 'function') teardown();
-      if (typeof teardownSenior === 'function') teardownSenior();
-      roots.forEach((r) => r.unmount());
+      teardowns.forEach((fn) => {
+        try {
+          fn();
+        } catch {
+          /* ignore */
+        }
+      });
+      roots.forEach((r) => {
+        try {
+          r.unmount();
+        } catch {
+          /* ignore */
+        }
+      });
     };
   }, []);
 
