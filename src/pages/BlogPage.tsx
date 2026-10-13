@@ -1,123 +1,99 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { BlogBackButton } from "../components/BlogBackButton";
-import { BrandCover } from "../components/BrandCover";
-import { PageShell } from "../components/layout/PageShell";
-import { blogPosts, formatDate } from "../content/posts";
-import { easeOutExpo, fadeUp } from "../motion";
+import { blogPosts, formatDate, POST_COVERS, type BlogPost } from "../content/posts";
+import { Layout } from "../components/site/Layout";
+import { Icon } from "../components/site/Kit";
+import { Fade, FadeList } from "../components/site/Motion";
+import { LogoMark } from "../components/LogoMark";
 
-const categoryLabel: Record<string, string> = {
+export const CATEGORY_LABEL: Record<string, string> = {
   update: "Update",
   product: "Product",
   company: "Company",
 };
 
-function shortDate(iso: string) {
-  return new Date(iso + "T12:00:00").toLocaleDateString("en-US", {
-    month: "short",
-    year: "numeric",
-  });
+export const monthYear = (iso: string) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
+/**
+ * Cover art. Uses the post's image when it has one and falls back to the
+ * category mark, so a new post is never published with an empty box.
+ */
+function Cover({ post, className = "" }: { post: BlogPost; className?: string }) {
+  const cover = POST_COVERS[post.slug];
+
+  return (
+    <div className={`cover ${className}`.trim()} aria-hidden={cover ? undefined : true}>
+      {cover ? (
+        <img src={cover.src} alt={cover.alt} loading="lazy" decoding="async" />
+      ) : (
+        <>
+          <LogoMark size={44} />
+          <span className="cover__cat">{CATEGORY_LABEL[post.category] ?? post.category}</span>
+        </>
+      )}
+    </div>
+  );
 }
 
 export function BlogPage() {
   const [featured, ...rest] = blogPosts;
 
   return (
-    <PageShell>
-      <main className="blog-page">
-        <motion.div
-          className="blog-page__back"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: easeOutExpo }}
-        >
-          <BlogBackButton to="/" label="Back to home" />
-        </motion.div>
+    <Layout>
+      <div className="page-head">
+        <div className="wrap">
+          <Fade as="p">
+            <Link className="link-arrow" to="/">
+              <span style={{ display: "inline-flex", rotate: "180deg" }}>
+                <Icon.arrow size={15} />
+              </span>
+              Back to the site
+            </Link>
+          </Fade>
 
-        <motion.header
-          className="blog-page__header"
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          custom={0}
-        >
-          <div className="blog-page__eyebrow">
-            <span className="ic" aria-hidden>
-              <svg className="ic-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M13.5 5.5 18.5 10.5" />
-                <path d="M5 19.5 6.2 15.2 16.8 4.6a1.8 1.8 0 0 1 2.6 2.6L8.8 17.8 5 19.5z" />
-              </svg>
-            </span>
-            Blog
-          </div>
-          <h1 className="blog-page__title">
-            I write about what I ship.
-          </h1>
-          <p className="blog-page__lead">
-            What landed, what broke, what surprised me. Same person who built the app.
-          </p>
-        </motion.header>
+          <Fade>
+            <p className="eyebrow">Writing</p>
+            <h1>What I shipped, and what broke.</h1>
+            <p className="lede">
+              Notes from building one app alone. The wins, the failures, and the parts I still
+              don&rsquo;t understand. Same person who wrote the code.
+            </p>
+          </Fade>
+        </div>
+      </div>
 
-        {featured && (
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08, ease: easeOutExpo }}
-          >
-            <Link to={`/blog/${featured.slug}`} className="blog-featured">
-              <BrandCover
-                category={featured.category}
-                title={featured.title}
-                size="hero"
-                className="blog-featured__cover"
-              />
-              <div className="blog-featured__inner">
-                <div className="blog-featured__badge">Latest</div>
-                <div className="blog-featured__meta">
-                  <span>{categoryLabel[featured.category]}</span>
-                  <time dateTime={featured.date}>{formatDate(featured.date)}</time>
-                </div>
-                <h2 className="blog-featured__title">{featured.title}</h2>
-                <p className="blog-featured__excerpt">{featured.excerpt}</p>
-                <span className="blog-featured__read">Read post →</span>
+      <div className="wrap" style={{ paddingBottom: "var(--bay)" }}>
+        {featured ? (
+          <Fade>
+            <Link className="post-featured" to={`/blog/${featured.slug}`}>
+              <Cover post={featured} />
+              <div>
+                <p className="post__meta">
+                  {CATEGORY_LABEL[featured.category]} · {formatDate(featured.date)}
+                </p>
+                <h2>{featured.title}</h2>
+                <p className="post__excerpt">{featured.excerpt}</p>
               </div>
             </Link>
-          </motion.div>
-        )}
+          </Fade>
+        ) : null}
 
-        <div className="blog-list">
-          {rest.map((post, i) => (
-            <motion.div
-              key={post.slug}
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.55,
-                delay: 0.14 + i * 0.05,
-                ease: easeOutExpo,
-              }}
-            >
-              <Link to={`/blog/${post.slug}`} className="blog-card">
-                <BrandCover
-                  category={post.category}
-                  title={post.title}
-                  size="compact"
-                  className="blog-card__cover"
-                />
-                <div className="blog-card__body">
-                  <div className="blog-card__meta">
-                    <span>{categoryLabel[post.category]}</span>
-                    <time dateTime={post.date}>{shortDate(post.date)}</time>
-                  </div>
-                  <h2 className="blog-card__title">{post.title}</h2>
-                  <p className="blog-card__excerpt">{post.excerpt}</p>
-                  <span className="blog-card__read">Read post →</span>
-                </div>
-              </Link>
-            </motion.div>
+        <FadeList className="list" itemClass="list__wrap">
+          {rest.map((post) => (
+            <Link className="post-row" to={`/blog/${post.slug}`} key={post.slug}>
+              <Cover post={post} className="post-row__cover" />
+              <span className="post-row__text">
+                <time dateTime={post.date}>{monthYear(post.date)}</time>
+                <b>{post.title}</b>
+                <span>{post.excerpt}</span>
+              </span>
+              <Icon.arrow size={16} />
+            </Link>
           ))}
-        </div>
-      </main>
-    </PageShell>
+        </FadeList>
+      </div>
+    </Layout>
   );
 }
+
+export default BlogPage;

@@ -9,18 +9,18 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const STORAGE_KEY = "theme";
+
 function readStoredTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
-  // Prefer launch-page key so landing ↔ blog stay in sync
+  if (typeof window === "undefined") return "light";
   try {
-    const lp = localStorage.getItem("lp-theme");
-    if (lp === "light" || lp === "dark") return lp;
-    const legacy = localStorage.getItem("theme") as Theme | null;
-    if (legacy === "light" || legacy === "dark") return legacy;
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
   } catch {
-    /* ignore */
+    /* private mode */
   }
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  // The site is designed light-first; only honour an explicit OS dark preference.
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -28,32 +28,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.style.colorScheme = theme;
     try {
-      localStorage.setItem("theme", theme);
-      localStorage.setItem("lp-theme", theme);
+      localStorage.setItem(STORAGE_KEY, theme);
     } catch {
       /* ignore */
     }
-    document.documentElement.classList.add("theme-transitioning");
-    const timer = setTimeout(() => {
-      document.documentElement.classList.remove("theme-transitioning");
-    }, 400);
-    return () => clearTimeout(timer);
   }, [theme]);
-
-  // Stay in sync when the launch page toggles theme (same tab)
-  useEffect(() => {
-    const sync = () => {
-      const next = readStoredTheme();
-      setTheme((cur) => (cur === next ? cur : next));
-    };
-    window.addEventListener("lp-theme-change", sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener("lp-theme-change", sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, []);
 
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 

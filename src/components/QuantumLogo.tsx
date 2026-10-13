@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import gsap from "gsap";
 
@@ -12,8 +13,6 @@ const SVG_LOGO = `
   <path d="M3 13C6 17 18 17 21 13" stroke="#E53935" stroke-width="3" fill="none" stroke-linecap="round"/>
   <path d="M5 12C8 9 16 9 19 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
 </svg>`;
-
-const PARTICLE_COUNT = 150000;
 
 const particleVertexShader = `
 attribute vec3 aTarget;
@@ -79,10 +78,15 @@ export function QuantumLogo() {
     let h = container.clientHeight;
     if (w === 0 || h === 0) return;
 
+    /* Phones don't get the full field. The mark still assembles; it just costs less. */
+    const particleCount = window.matchMedia("(max-width: 800px)").matches ? 48000 : 140000;
+
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x010002, 0.002);
 
-    const frustumSize = 28;
+    /* Wider than the mark, so the glow dies out inside the canvas instead of
+       being cut into a rectangle at the buffer edge. */
+    const frustumSize = 40;
     const aspect = w / h;
     const camera = new THREE.OrthographicCamera(
       (frustumSize * aspect) / -2, (frustumSize * aspect) / 2,
@@ -90,17 +94,88 @@ export function QuantumLogo() {
     );
     camera.position.set(0, 0, 100);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: "high-performance" });
+    const renderer = new THREE.WebGLRenderer({
+      antialias: false,
+      alpha: true,
+      premultipliedAlpha: false,
+      powerPreference: "high-performance",
+    });
     renderer.setClearColor(0x000000, 0);
     renderer.setSize(w, h);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const renderScene = new RenderPass(scene, camera);
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 0.3, 0.2, 0.1);
+    const renderScene = new RenderPass(scene, camera, null, new THREE.Color(0, 0, 0), 0);
+    /* A short canvas turns the same pixel bloom into a halo around the ring. */
+    const bloomLevels = (height: number, peak: boolean) => {
+      const compact = height < 420;
+      if (peak) return compact ? { strength: 0.42, radius: 0.38 } : { strength: 0.8, radius: 1 };
+      return compact ? { strength: 0.2, radius: 0.22 } : { strength: 0.3, radius: 0.5 };
+    };
+    const settle0 = bloomLevels(h, false);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), settle0.strength, settle0.radius, 0.1);
+    /* Outside the circle the canvas is transparent, so there is no square.
+       Inside it, empty space stays black — on a light page those cutouts
+       would otherwise show the paper and the mark would look washed out. */
+    const alphaPass = new ShaderPass({
+      uniforms: {
+        tDiffuse: { value: null },
+        uAspect: { value: aspect },
+        /* 0 while the field is gathering, 1 once the ring has locked. */
+        uContain: { value: 0 },
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float uAspect;
+        uniform float uContain;
+        varying vec2 vUv;
+        void main() {
+          vec4 c = texture2D(tDiffuse, vUv);
+          vec2 p = vUv - 0.5;
+          p.x *= uAspect;
+          float dist = length(p);
+          /* Black fill stops at the outer ring. Bright particles carry the rim,
+             so the disc does not leave a dark halo on a light page. Once the
+             ring has locked, that shine may not keep going: on a short mobile
+             canvas the bloom otherwise becomes a glare around the mark. */
+          float inside = 1.0 - smoothstep(0.255, 0.285, dist);
+          float luma = max(c.r, max(c.g, c.b));
+          float glow = smoothstep(0.16, 0.42, luma);
+          float edge = mix(2.4, 0.308, uContain);
+          float edgeOut = mix(2.8, 0.342, uContain);
+          float rim = 1.0 - smoothstep(edge, edgeOut, dist);
+          float alpha = max(inside, glow * rim);
+          float hole = inside * (1.0 - smoothstep(0.05, 0.16, luma));
+          vec3 rgb = mix(c.rgb, vec3(0.0), hole);
+          gl_FragColor = vec4(rgb, alpha);
+        }
+      `,
+    });
+    alphaPass.material.blending = THREE.NoBlending;
+    alphaPass.material.transparent = false;
+    alphaPass.material.depthTest = false;
+    alphaPass.material.depthWrite = false;
+    const drawAlpha = alphaPass.render.bind(alphaPass);
+    alphaPass.render = (gl, writeBuffer, readBuffer, deltaTime, maskActive) => {
+      if (alphaPass.renderToScreen) {
+        gl.setRenderTarget(null);
+        gl.setClearColor(0x000000, 0);
+        gl.clear(true, true, true);
+      }
+      drawAlpha(gl, writeBuffer, readBuffer, deltaTime, maskActive);
+    };
+
     const composer = new EffectComposer(renderer);
     composer.addPass(renderScene);
     composer.addPass(bloomPass);
+    composer.addPass(alphaPass);
 
     const shaderUniforms = {
       uTime: { value: 0 },
@@ -132,13 +207,13 @@ export function QuantumLogo() {
       if (!pixels.length || disposed) return;
 
       const geo = new THREE.BufferGeometry();
-      const pos = new Float32Array(PARTICLE_COUNT * 3);
-      const tgt = new Float32Array(PARTICLE_COUNT * 3);
-      const rnd = new Float32Array(PARTICLE_COUNT * 3);
-      const col = new Float32Array(PARTICLE_COUNT * 3);
-      const typ = new Float32Array(PARTICLE_COUNT);
+      const pos = new Float32Array(particleCount * 3);
+      const tgt = new Float32Array(particleCount * 3);
+      const rnd = new Float32Array(particleCount * 3);
+      const col = new Float32Array(particleCount * 3);
+      const typ = new Float32Array(particleCount);
 
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
+      for (let i = 0; i < particleCount; i++) {
         const p = pixels[Math.floor(Math.random() * pixels.length)];
         const tx = (p.x / 1024) * 24 - 12;
         const ty = -((p.y / 1024) * 24 - 12);
@@ -181,6 +256,8 @@ export function QuantumLogo() {
       }, 1500);
     };
 
+    const STATE = { phase: "GALAXY", time: 0, simulatedAudio: 0 };
+
     const onResize = () => {
       const ww = container.clientWidth, hh = container.clientHeight, a = ww / hh;
       if (ww === 0 || hh === 0) return;
@@ -189,13 +266,17 @@ export function QuantumLogo() {
       camera.updateProjectionMatrix();
       renderer.setSize(ww, hh);
       composer.setSize(ww, hh);
+      if (alphaPass.uniforms.uAspect) alphaPass.uniforms.uAspect.value = a;
+      if (STATE.phase === "LINKED") {
+        const next = bloomLevels(hh, false);
+        bloomPass.strength = next.strength;
+        bloomPass.radius = next.radius;
+      }
     };
 
     const ro = new ResizeObserver(onResize);
     ro.observe(container);
     window.addEventListener("resize", onResize);
-
-    const STATE = { phase: "GALAXY", time: 0, simulatedAudio: 0 };
 
     const startAssembly = () => {
       if (STATE.phase !== "GALAXY") return;
@@ -208,16 +289,28 @@ export function QuantumLogo() {
       });
 
       tl.to(shaderUniforms.uAssembly, { value: 1, duration: 4, ease: "power2.inOut" }, 0);
-      tl.to(bloomPass, { strength: 0.8, radius: 1, duration: 0.4, ease: "power2.in" }, 3.5);
-      tl.to(bloomPass, { strength: 0.3, radius: 0.5, duration: 1.5, ease: "power2.out" }, 3.9);
+      tl.to(bloomPass, { ...bloomLevels(container.clientHeight, true), duration: 0.4, ease: "power2.in" }, 3.5);
+      tl.to(bloomPass, { ...bloomLevels(container.clientHeight, false), duration: 1.5, ease: "power2.out" }, 3.9);
     };
 
     const timer = new THREE.Timer();
-    let raf: number;
+    let raf = 0;
+    let onScreen = true;
+    const io = new IntersectionObserver((entries) => {
+      onScreen = entries.some((entry) => entry.isIntersecting);
+    });
+    io.observe(container);
 
-    function loop() {
+    const loop = () => {
       if (disposed) return;
       raf = requestAnimationFrame(loop);
+      const assembled = shaderUniforms.uAssembly.value;
+      const containT = Math.min(1, Math.max(0, (assembled - 0.75) / 0.2));
+      if (alphaPass.uniforms.uContain) {
+        alphaPass.uniforms.uContain.value = containT * containT * (3 - 2 * containT);
+      }
+      /* Parked in the wordmark: keep the scene, stop paying for frames. */
+      if (!onScreen || document.hidden || container.closest("[data-docked='1']")) return;
       timer.update();
       const delta = timer.getDelta();
       STATE.time += delta;
@@ -235,12 +328,13 @@ export function QuantumLogo() {
       } catch {
         /* swallow render errors after dispose */
       }
-    }
+    };
     loop();
 
     return () => {
       disposed = true;
       cancelAnimationFrame(raf);
+      io.disconnect();
       ro.disconnect();
       window.removeEventListener("resize", onResize);
       gsap.killTweensOf(shaderUniforms.uAssembly);
@@ -248,6 +342,7 @@ export function QuantumLogo() {
       renderer.dispose();
       composer.dispose?.();
       bloomPass.dispose?.();
+      alphaPass.dispose();
       
       if (particleSystem) {
         particleSystem.geometry.dispose();
@@ -258,9 +353,8 @@ export function QuantumLogo() {
   }, []);
 
   return (
-    <div className="quantum-wrap" style={{ position: "relative", width: "100%", height: "100%", minHeight: "300px" }}>
+    <div className="quantum-wrap" style={{ position: "relative", width: "100%", height: "100%" }}>
       <div ref={containerRef} style={{ position: "absolute", inset: 0, zIndex: 1 }} />
-      <div className="quantum-vignette" />
     </div>
   );
 }

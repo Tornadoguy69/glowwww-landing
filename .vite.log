@@ -1,0 +1,82 @@
+
+> glowwww-page@1.0.0 dev
+> vite --port 5180 --strictPort
+
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m212[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5180[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m9:18:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/main.tsx, /src/pages/NotFound.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx, /src/exp/Chrome.tsx, /src/exp/Field.tsx[22m
+[2m9:18:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/main.tsx[22m Could not Fast Refresh ("true" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:18:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m9:18:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/main.tsx, /src/pages/NotFound.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx, /src/exp/Chrome.tsx, /src/exp/Field.tsx[22m
+[2m9:18:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/main.tsx[22m Could not Fast Refresh ("true" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:18:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m9:18:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/main.tsx, /src/pages/NotFound.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx, /src/exp/Chrome.tsx, /src/exp/Field.tsx[22m
+[2m9:18:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/main.tsx[22m Could not Fast Refresh ("true" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:18:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Film.tsx, /src/components/site/Rail.tsx, /src/components/site/Layout.tsx, /src/exp/Split.tsx, /src/components/site/Motion.tsx, /src/components/home/Install.tsx, /src/components/site/LazyVideo.tsx, /src/components/home/Agent.tsx[22m
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/site/Layout.tsx[22m Could not Fast Refresh ("NAV_LINKS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/HomePage.tsx, /src/pages/NotFound.tsx, /src/pages/PrivacyPage.tsx, /src/pages/BlogPostPage.tsx, /src/pages/BlogPage.tsx, /src/pages/GoalPage.tsx[22m
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/site/Motion.tsx[22m Could not Fast Refresh ("useBox" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.tsx, /src/pages/PrivacyPage.tsx, /src/pages/BlogPostPage.tsx, /src/pages/BlogPage.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx[22m
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:19:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m
+[2m9:19:18 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/exp.css[22m
+[2m9:19:34 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/main.tsx, /src/pages/NotFound.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx, /src/exp/Chrome.tsx, /src/exp/Field.tsx, /src/components/site/Rail.tsx, /src/components/site/Layout.tsx, /src/exp/Split.tsx, /src/components/site/Motion.tsx, /src/components/site/LazyVideo.tsx[22m
+[2m9:19:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/main.tsx, /src/pages/NotFound.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx, /src/exp/Chrome.tsx, /src/exp/Field.tsx, /src/components/site/Rail.tsx, /src/components/site/Layout.tsx, /src/exp/Split.tsx, /src/components/site/Motion.tsx, /src/components/site/LazyVideo.tsx[22m
+[2m9:25:14 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Layout.tsx[22m
+[2m9:25:20 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Layout.tsx[22m
+[2m9:25:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Field.tsx[22m
+[2m9:25:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Cursor.tsx[22m
+[2m9:25:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Chrome.tsx[22m
+[2m9:26:01 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/tokens.css[22m
+[2m9:26:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/tokens.css[22m
+[2m9:26:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/exp.css[22m
+[2m9:28:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/home.css[22m
+[2m9:29:03 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Hero.tsx[22m
+[2m9:29:13 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Why.tsx[22m
+[2m9:29:34 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Film.tsx[22m
+[2m9:29:48 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Agent.tsx[22m
+[2m9:30:00 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/TheApp.tsx[22m
+[2m9:30:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Install.tsx[22m
+[2m9:30:48 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Sections.tsx[22m
+[2m9:30:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/parts.tsx[22m
+[2m9:31:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/exp.css[22m
+[2m9:31:25 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/site.css[22m
+[2m9:31:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/GoalPage.tsx[22m
+[2m9:31:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.tsx[22m
+[2m9:32:17 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/blog.css[22m
+[2m9:32:26 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/blog.css[22m
+[2m9:36:14 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/home.css[22m
+[2m9:36:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Why.tsx[22m
+[2m9:36:33 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/Why.tsx[22m
+[2m9:37:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Layout.tsx[22m
+[2m9:37:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/site/Layout.tsx[22m Could not Fast Refresh ("NAV_LINKS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:37:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/home/HomePage.tsx, /src/pages/NotFound.tsx, /src/pages/PrivacyPage.tsx, /src/pages/BlogPostPage.tsx, /src/pages/BlogPage.tsx, /src/pages/GoalPage.tsx[22m
+[2m9:37:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:37:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m
+[2m9:38:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Motion.tsx[22m
+[2m9:38:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/site/Motion.tsx[22m Could not Fast Refresh ("useBox" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:38:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.tsx, /src/pages/PrivacyPage.tsx, /src/pages/BlogPostPage.tsx, /src/pages/BlogPage.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx[22m
+[2m9:38:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:38:30 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m
+[2m9:39:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Motion.tsx[22m
+[2m9:39:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/site/Motion.tsx[22m Could not Fast Refresh ("useBox" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:39:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.tsx, /src/pages/PrivacyPage.tsx, /src/pages/BlogPostPage.tsx, /src/pages/BlogPage.tsx, /src/pages/GoalPage.tsx, /src/components/home/Film.tsx, /src/components/home/Why.tsx, /src/components/home/TheApp.tsx, /src/components/home/Agent.tsx, /src/components/home/Sections.tsx, /src/components/home/Hero.tsx, /src/components/home/Install.tsx[22m
+[2m9:39:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:39:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m
+[2m9:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/BlogPage.tsx[22m
+[2m9:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/exp.css[22m
+[2m9:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m
+[2m9:41:03 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:41:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:41:28 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:41:35 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:41:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/exp/Window.tsx[22m
+[2m9:42:01 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/BlogPage.tsx[22m
+[2m9:42:01 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/BlogPage.tsx[22m Could not Fast Refresh ("CATEGORY_LABEL" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m9:42:01 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/pages/BlogPostPage.tsx[22m

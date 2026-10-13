@@ -2,10 +2,13 @@
  * Canonical Glowwww mark — paths must match public/favicon.svg exactly.
  * viewBox 0 0 24 24
  *
- *   circle  r=11 fill #222 stroke #E53935 sw=2
+ *   circle  r=11 fill #1C1917 stroke #E53935 sw=2
  *   top arc     M3 11C6 7 18 7 21 11   #E53935 sw=3
  *   bottom arc  M3 13C6 17 18 17 21 13 #E53935 sw=3
  *   white arc   M5 12C8 9 16 9 19 12   white   sw=3
+ *
+ * The disc is the warm ink colour rather than a neutral black so the mark sits
+ * in the paper palette instead of reading as a hole punched in it.
  */
 type LogoMarkProps = {
   size?: number | string;
@@ -30,7 +33,7 @@ export function LogoMark({ size = 24, className = "", title }: LogoMarkProps) {
       aria-label={decorative ? undefined : title}
     >
       {!decorative && title ? <title>{title}</title> : null}
-      <circle cx="12" cy="12" r="11" fill="#222" stroke="#E53935" strokeWidth="2" />
+      <circle cx="12" cy="12" r="11" fill="#1C1917" stroke="#E53935" strokeWidth="2" />
       <path
         d="M3 11C6 7 18 7 21 11"
         stroke="#E53935"

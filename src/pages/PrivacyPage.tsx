@@ -1,90 +1,112 @@
 import { Link } from "react-router-dom";
-import "../styles/blog.css";
+import { Layout } from "../components/site/Layout";
+import { Icon } from "../components/site/Kit";
+import { Fade } from "../components/site/Motion";
 
 export function PrivacyPage() {
   return (
-    <div className="blog-page privacy-page">
-      <div className="blog-page__inner" style={{ maxWidth: 720, margin: "0 auto", padding: "48px 20px 80px" }}>
-        <p style={{ marginBottom: 24 }}>
-          <Link to="/" style={{ color: "var(--red, #e53935)", fontWeight: 600 }}>
-            ← Glowwww
-          </Link>
-        </p>
-        <p style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "#a2a2a8", fontWeight: 600 }}>
-          Legal · last updated Aug 2026
-        </p>
-        <h1 style={{ fontSize: "clamp(28px, 5vw, 40px)", fontWeight: 700, letterSpacing: "-0.03em", margin: "12px 0 20px" }}>
-          Privacy &amp; data
-        </h1>
-        <p style={{ color: "#a2a2a8", lineHeight: 1.65, marginBottom: 28 }}>
-          Glowwww is built by one person (Tornado). This page is written in plain language so you know
-          what is private, what is not, and what is still early.
-        </p>
+    <Layout>
+      <article className="doc">
+        <div className="page-head">
+          <div className="wrap">
+            <Fade as="p">
+              <Link className="link-arrow" to="/">
+                <span style={{ display: "inline-flex", rotate: "180deg" }}>
+                  <Icon.arrow size={15} />
+                </span>
+                Back to the site
+              </Link>
+            </Fade>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>End-to-end messaging</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Direct messages are end-to-end encrypted. Message content is not readable as cleartext on the
-            server. Optional key backup is under your control when enabled. Metadata needed to deliver
-            messages (who talks to whom, timestamps) may still exist for routing — that is not the same as
-            reading message bodies.
-          </p>
-        </section>
+            <Fade>
+              <p className="eyebrow">Legal</p>
+              <h1>What I can see, and what I can't.</h1>
+              <p className="lede">
+                Glowwww is built by one person. This page is written in plain language so you
+                know exactly what is private, what is not, and what is still early.
+              </p>
+              <p className="doc__updated">Last updated August 2026</p>
+            </Fade>
+          </div>
+        </div>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>What AI can see</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            AI features run with the context you give them: chat messages, mentions in threads, and (in agent
-            mode) on-screen app context so the agent can act. On-device models are used where possible.
-            Cloud inference may be used for heavier tasks. Do not put secrets in prompts you would not
-            type into any other AI product.
-          </p>
-        </section>
+        <div className="wrap" style={{ paddingBottom: "var(--bay)" }}>
+          <div className="doc__body">
+            <p className="doc__lead">
+              The short version: <strong>your message bodies are encrypted end to end</strong>,{" "}
+              <strong>what you publish is public</strong>, and{" "}
+              <strong>the AI sees what you give it</strong>. Everything else is detail.
+            </p>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Public by design — private by choice</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Content you choose to publish — posts, media, and public communities — is public by design.
-            That is the product, not a privacy leak. You can also keep your account private: limit who can
-            see your profile, posts, and activity so discovery stays under your control. Private messaging
-            stays end-to-end encrypted either way.
-          </p>
-        </section>
+            <h2>End-to-end messaging</h2>
+            <p>
+              Direct messages are end-to-end encrypted. Message content is not readable as
+              cleartext on the server. When you turn on optional key backup, those keys stay
+              under your control — I don't hold a copy.
+            </p>
+            <p>
+              The metadata needed to deliver a message may still exist for routing: who talks to
+              whom, and when. That's not the same as being able to read what you wrote.
+            </p>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Account &amp; product data</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Account credentials and settings are stored to run the service. Analytics are kept restrained —
-            enough to run and improve the product, not to build an ad profile.
-          </p>
-        </section>
+            <h2>What the AI can see</h2>
+            <p>
+              AI features run with the context you hand them: chat messages, @ai mentions in
+              threads, and — in agent mode — on-screen context, because that's how the agent
+              knows which screen it's on and whether its action actually worked.
+            </p>
+            <p>
+              On-device models are used where possible; heavier tasks may go to cloud inference.
+              The practical advice is simple: don't put secrets in a prompt that you wouldn't
+              type into any other AI product.
+            </p>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Early product honesty</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Glowwww is early access (~69 users at last count). Agent mode can still hallucinate; it tries to
-            verify app state before claiming success, but verification is not perfect. Report issues —
-            that feedback is how this gets safer.
-          </p>
-        </section>
+            <h2>Public by design, private by choice</h2>
+            <p>
+              Anything you choose to publish — posts, media, public communities — is public.
+              That is the product working, not a leak.
+            </p>
+            <p>
+              You can also keep your account private, which limits who sees your profile,
+              posts, and activity. Direct messages stay end-to-end encrypted either way.
+            </p>
 
-        <section style={{ marginBottom: 28 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 600, marginBottom: 10 }}>Contact</h2>
-          <p style={{ color: "#c8c8ce", lineHeight: 1.65 }}>
-            Questions or deletion requests: open{" "}
-            <a href="https://glowwww.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: "#ef4444" }}>
-              Glowwww
-            </a>{" "}
-            and message <strong style={{ color: "#f1f1f2" }}>TESTUSER2</strong> — that&apos;s the right place for
-            account deletion and privacy questions.
-          </p>
-        </section>
+            <h2>Account and product data</h2>
+            <p>
+              Account credentials and settings are stored so the service can run. Analytics are
+              kept deliberately restrained — enough to keep the product healthy and improve it,
+              not enough to build an advertising profile.
+            </p>
 
-        <p style={{ color: "#666", fontSize: 13, marginTop: 40 }}>
-          This is a living document for an indie product. It will get more formal as the product grows.
-        </p>
-      </div>
-    </div>
+            <h2>Early-product honesty</h2>
+            <p>
+              Glowwww is early access — around seventy-nine people at last count. Agent mode can
+              still make things up. It tries to verify app state before reporting success, but
+              verification isn't perfect and I'd rather say so than imply otherwise.
+            </p>
+            <p>
+              If something is broken or privacy-relevant, tell me. That feedback is genuinely
+              the fastest way this gets safer.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+              Questions or deletion requests: open{" "}
+              <a href="https://glowwww.vercel.app" target="_blank" rel="noopener noreferrer">
+                Glowwww
+              </a>{" "}
+              and message <strong>TESTUSER2</strong> — that's the right place for account
+              deletion and privacy questions.
+            </p>
+
+            <p className="doc__foot">
+              This is a living document for an indie product. It'll get more formal as the
+              product grows.
+            </p>
+          </div>
+        </div>
+      </article>
+    </Layout>
   );
 }
 

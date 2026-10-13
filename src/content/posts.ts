@@ -9,9 +9,71 @@ export type BlogPost = {
   body: BodyItem[];
 };
 
+/**
+ * Cover art per post. Kept beside the posts rather than inside each object so
+ * the writing stays readable, and so a post can be re-skinned by changing one
+ * line. Anything without an entry falls back to the category mark.
+ */
+export const POST_COVERS: Record<string, { src: string; alt: string }> = {
+  "redesign-liquid-glass-and-what-shipped": {
+    src: "/launch/assets/shots/feed2.webp",
+    alt: "The Glowwww feed on the web",
+  },
+  "ai-chat-native-app-tools": {
+    src: "/launch/assets/shots/agent-mode.webp",
+    alt: "Agent mode inside Glowwww",
+  },
+  "glowwww-ai-mention-real-time": {
+    src: "/launch/assets/shots/comment-ai-mention.webp",
+    alt: "An AI mention in a Glowwww comment",
+  },
+  "inline-video-messages": {
+    src: "/launch/assets/shots/messages-thread.webp",
+    alt: "A Glowwww message thread",
+  },
+  "built-in-video-editor": {
+    src: "/launch/assets/shots/editor.webp",
+    alt: "The Glowwww video editor",
+  },
+  "ai-chat-voice-code-artifacts": {
+    src: "/launch/assets/shots/voice-expanded.webp",
+    alt: "Voice expanded inside Glowwww",
+  },
+  "glowwww-v1-launch": {
+    src: "/launch/assets/shots/feed.webp",
+    alt: "The Glowwww home feed",
+  },
+  "how-glowwww-keeps-getting-better": {
+    src: "/launch/assets/shots/explore.webp",
+    alt: "The Glowwww explore view",
+  },
+};
+
 
 /** Add new posts at the top — newest first */
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "redesign-liquid-glass-and-what-shipped",
+    title: "The redesign, liquid glass, and four things that actually shipped",
+    date: "2026-10-03",
+    category: "update",
+    excerpt:
+      "A quieter, faster interface built on real liquid glass. Group chats, controls that live in front of you before you upload, an AI assistant inside the video editor, and a rebuilt agent harness.",
+    body: [
+      "The redesign, liquid glass, and four things that actually shipped.",
+      "I have been rebuilding the interface for a while now, and the biggest change was not a feature. It was deciding to stop adding surface. Every panel I removed made the app faster, and every one of them made it feel more confident.",
+      "Liquid Glass — The interface now runs on real liquid glass rather than a flat approximation of it. The material has thickness, it refracts what is behind it, and it responds to where your attention actually is. It is not decoration. It is the clearest way I have found to show which surface is in front, and the app got noticeably calmer once the hierarchy was visible instead of implied.",
+      { type: "image", src: "/launch/assets/shots/editor.webp", alt: "The Glowwww video editor with the new liquid glass surfaces" },
+      "Group Chats — Group chats are in. Threads, mentions, and replies now hold up at full conversation scale instead of degrading the moment a fourth person joins. If you have been waiting to move a conversation off another app, this is the one.",
+      "Controls Before You Upload — This was the most requested change and it deserved the most work. You no longer upload first and hunt for controls afterwards. The settings that shape your post now sit in front of you while you are still deciding what to post — captions, visibility, who can reply, and the rest. By the time you hit upload, everything is already correct.",
+      { type: "image", src: "/launch/assets/shots/create-scheduler.webp", alt: "Post composer with controls visible before upload" },
+      "An AI Assistant Inside the Video Editor — The assistant now lives where the work happens. Ask it to tighten a cut, find the moment the audio peaks, or get you a first pass at captions and it works on your timeline, not in a separate chat window you have to copy out of. It can see the clip you are looking at.",
+      { type: "video", src: "/launch/assets/footage/editor-b.mp4" },
+      "The Harness — Underneath, I rebuilt the agent harness the assistant runs on. Same interface, far fewer dead ends: tool calls report what they did, failures are surfaced instead of guessed around, and long tasks recover instead of collapsing. Most of what users called the AI feeling unreliable was a harness problem, not a model problem.",
+      "What did not change — Glowwww is still built by one person, still privacy-first, still free of an algorithm deciding what you get to see. The redesign does not trade any of that away for a nicer picture.",
+      "More is coming. This was the foundation pass, not the last one.",
+    ],
+  },
   {
     slug: "why-i-built-afterglow",
     title: "Why I built Afterglow — space science you can play with",
