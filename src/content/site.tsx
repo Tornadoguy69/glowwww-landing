@@ -102,16 +102,16 @@ export const SITE = {
 
   film: {
     eyebrow: "The film",
-    title: "I made you a 70-second tour.",
+    title: "I made you a 56-second tour.",
     lede: (
       <>
         What the app is and where it&rsquo;s going. Cut to music, so leave the
         sound on.
       </>
     ),
-    src: "/Glowwww-Make-Room%20(1).mp4",
-    poster: "/poster-2.webp",
-    durationLabel: "1:10",
+    src: "/m2_builtbyone.mp4",
+    poster: "/m2_builtbyone_poster.jpg",
+    durationLabel: "0:56",
     play: "Play the film",
     replay: "Watch again",
     loading: "Loading the film…",
@@ -243,6 +243,8 @@ export const SITE = {
       { id: "android", label: "Android" },
       { id: "desktop", label: "Desktop" },
     ],
+    video: "/m2_install.mp4",
+    poster: "/m2_install_poster.jpg",
     panels: {
       ios: {
         device: "phone",
